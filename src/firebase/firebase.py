@@ -9,4 +9,4 @@ firebase_sdk = credentials.Certificate('./sanva-project-54f54-firebase-adminsdk-
 firebase_admin.initialize_app(firebase_sdk,{'databaseURL':'https://sanva-project-54f54-default-rtdb.firebaseio.com/'})
 
 ref = db.reference('/gollds')
-ref.push({'user':'dasdasdwqeqwds','password':'Dani123','email':'daniel@gmail.com'})
+ref.push({'user':'Daniel12345','password':'Dani123','email':'daniel@gmail.com'})
