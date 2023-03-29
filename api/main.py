@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from fastapi.responses import JSONResponse
 from schemas import User
 from firebase.post_user import run as run_post_user
 from firebase.get_user_by_email import get_user
@@ -29,6 +28,6 @@ async def get_user_by_email(email : str):
         find_user = get_user(email)
         if find_user:
             return find_user
-        return "usuario no encontrado"
+        return "user not found"
     except Exception as e:
         return {"error": str(e)}
