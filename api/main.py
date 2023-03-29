@@ -29,6 +29,6 @@ async def get_user_by_email(email : str):
         find_user = get_user(email)
         if find_user:
             return find_user
-        return "usuario no encontrado"
+        return "user not found"
     except Exception as e:
         return {"error": str(e)}
