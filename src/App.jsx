@@ -5,7 +5,8 @@ import { Login } from './components/Login';
 import { User } from './components/User';
 import { Footer } from './components/footer';
 
-function App() {
+
+function App () {
   return (
 
     <BrowserRouter>
@@ -17,9 +18,6 @@ function App() {
       <Footer/>
     </BrowserRouter>
   )
-  
-
-
 }
 
 export default App
