@@ -36,7 +36,7 @@ export const Register = () => {
 		return errors;
 	};
 
-	return (
+	return (	
 		<div className="h-screen flex flex-col justify-center items-center bg-gradient-to-r from-sky-600 to-sky-300">
 			<img className='mt-10 rounded-full w-32' src="https://us.123rf.com/450wm/imagevectors/imagevectors1606/imagevectors160600225/58872992-blanco-perfil-de-usuario-icono-en-el-bot%C3%B3n-azul-aislado-en-blanco.jpg" alt="user" />
 			<Formik
