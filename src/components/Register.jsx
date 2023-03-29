@@ -110,7 +110,7 @@ export const Register = () => {
 											)}
 										</div>
 									)}
-								</Field>
+								</Field>	
 						{/* <div className="">
 							<Field name="password" placeholder="Contraseña" type="password" />
 							<ErrorMessage name="password" />
