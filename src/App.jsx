@@ -1,10 +1,10 @@
 import './App.css'
-import { BrowserRouter,Route, Routes  } from 'react-router-dom';
-import { Register } from './components/Register';
-import { Login } from './components/Login';
-import { User } from './components/User';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Register } from './components/Register'
+import { Login } from './components/Login'
+import { User } from './components/User'
 
-function App() {
+function App () {
   return (
 
     <BrowserRouter>
@@ -15,9 +15,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   )
-  
-
-
 }
 
 export default App
