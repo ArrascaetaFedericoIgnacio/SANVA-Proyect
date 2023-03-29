@@ -5,7 +5,19 @@ from firebase.post_user import run as run_post_user
 
 app = FastAPI()
 
+@app.get("/")
+def index():
+    return ("hola mundo")
+
 @app.post('/user')
-async def post_user(user : User):
-    new_user = run_post_user(user)
-    return JSONResponse(content=new_user)
+def post_user(user : User):
+    try:
+        new_user = {
+            "username" : user.user,
+            "password" : user.password,
+            "email" : user.email
+        }
+        run_post_user(new_user)
+        return "usuario creado"
+    except Exception as e:
+        return {"error": str(e)}
