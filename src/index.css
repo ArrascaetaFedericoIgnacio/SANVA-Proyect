@@ -31,11 +31,11 @@ a:hover {
 }
 
 body {
-	/* margin: 0;
-	display: flex;
-	place-items: center;
-	min-width: 320px;
-	min-height: 100vh; */
+	/* margin: 0; */
+	/* display: flex; */
+	/* place-items: center; */
+	/* min-width: 320px; */
+	/* min-height: 100vh; */
 	background: radial-gradient(circle, rgba(0,252,255,1) 27%, rgba(45,206,253,1) 71%);
 }
 
@@ -55,13 +55,13 @@ button {
 	cursor: pointer;
 	transition: border-color 0.25s;
 }
-button:hover {
+/* button:hover {
 	border-color: #646cff;
-}
-button:focus,
+} */
+/* button:focus,
 button:focus-visible {
 	outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 @media (prefers-color-scheme: light) {
 	:root {

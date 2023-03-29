@@ -1,9 +1,11 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { HiOutlineUser, HiOutlineLockClosed, HiOutlineMail } from "react-icons/hi"
 
 export const Register = () => {
 	const HandleSubmit = (values, { setSubmitting }) => {
 		setSubmitting(false);
+		console.log(values);
 	};
 
 	const validateCamps = (values) => {
@@ -35,7 +37,8 @@ export const Register = () => {
 	};
 
 	return (
-		<div>
+		<div className="h-screen flex flex-col justify-center items-center bg-gradient-to-r from-sky-600 to-sky-300">
+			<img className='mt-10 rounded-full w-32' src="https://us.123rf.com/450wm/imagevectors/imagevectors1606/imagevectors160600225/58872992-blanco-perfil-de-usuario-icono-en-el-bot%C3%B3n-azul-aislado-en-blanco.jpg" alt="user" />
 			<Formik
 				initialValues={{
 					name: "",
@@ -47,16 +50,72 @@ export const Register = () => {
 				validate={validateCamps}
 			>
 				{({ isSubmitting }) => (
-					<Form>
-						<div className="my-1">
-							<Field name="name" type="text" placeholder="Nombre" />
-							<ErrorMessage name="name" />
-						</div>
-						<div className="my-1">
+					<Form className=" flex flex-col gap-5 py-10">
+								<Field 
+									name="name">
+									{({field, form: { touched, errors }, meta}) => (
+										<div>
+											<input
+												className="h-10 w-64 rounded-lg px-5 outline-none border-2 focus:border-sky-600 transition duration-200"
+												type="text" placeholder="Nombre"
+												{...field}
+											/>
+											{meta.touched && meta.error && (
+												<div className="pt-2 text-red-600 font-semibold">{meta.error}</div>
+											)}
+										</div>
+									)}
+								</Field>
+								<Field 
+									name="password">
+									{({field, form: { touched, errors }, meta}) => (
+										<div>
+											<input
+												className="h-10 w-64 rounded-lg px-5 outline-none border-2 focus:border-sky-600 transition duration-200"
+												type="password" placeholder="Contraseña"
+												{...field}
+											/>
+											{meta.touched && meta.error && (
+												<div className="pt-2 text-red-600 font-semibold">{meta.error}</div>
+											)}
+										</div>
+									)}
+								</Field>
+								<Field 
+									name="verifyPassword">
+									{({field, form: { touched, errors }, meta}) => (
+										<div>
+											<input
+												className="h-10 w-64 rounded-lg px-5 outline-none border-2 focus:border-sky-600 transition duration-200"
+												type="password" placeholder="Verificar Contraseña"
+												{...field}
+											/>
+											{meta.touched && meta.error && (
+												<div className="pt-2 text-red-600 font-semibold">{meta.error}</div>
+											)}
+										</div>
+									)}
+								</Field>
+								<Field 
+									name="email">
+									{({field, form: { touched, errors }, meta}) => (
+										<div>
+											<input
+												className="h-10 w-64 rounded-lg px-5 outline-none border-2 focus:border-sky-600 transition duration-200"
+												type="email" placeholder="Correo Electronico"
+												{...field}
+											/>
+											{meta.touched && meta.error && (
+												<div className="pt-2 text-red-600 font-semibold">{meta.error}</div>
+											)}
+										</div>
+									)}
+								</Field>
+						{/* <div className="">
 							<Field name="password" placeholder="Contraseña" type="password" />
 							<ErrorMessage name="password" />
 						</div>
-						<div className="my-1">
+						<div className="">
 							<Field
 								name="verifyPassword"
 								type="password"
@@ -64,16 +123,16 @@ export const Register = () => {
 							/>
 							<ErrorMessage name="verifyPassword" />
 						</div>
-						<div className="my-1">
+						<div className="">
 							<Field
 								name="email"
 								type="email"
 								placeholder="Correo Electronico"
 							/>
 							<ErrorMessage name="email" />
-						</div>
-						<div className="my-1">
-							<button disabled={isSubmitting} type="submit">
+						</div> */}
+						<div className="mt-5">
+							<button className="outline-none bg-white rounded-3xl hover:border-sky-700 hover:border-2" disabled={isSubmitting} type="submit">
 								Registrar
 							</button>
 						</div>
