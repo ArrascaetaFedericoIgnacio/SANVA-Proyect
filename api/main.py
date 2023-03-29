@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from schemas import User
 from firebase.post_user import run as run_post_user
+from firebase.get_user_by_email import get_user
 
 app = FastAPI()
 
@@ -10,7 +11,7 @@ def index():
     return ("hola mundo")
 
 @app.post('/user')
-def post_user(user : User):
+async def post_user(user : User):
     try:
         new_user = {
             "username" : user.user,
@@ -19,5 +20,15 @@ def post_user(user : User):
         }
         run_post_user(new_user)
         return "usuario creado"
+    except Exception as e:
+        return {"error": str(e)}
+    
+@app.get("/user/{email}")
+async def get_user_by_email(email : str):
+    try:
+        find_user = get_user(email)
+        if find_user:
+            return find_user
+        return "usuario no encontrado"
     except Exception as e:
         return {"error": str(e)}
