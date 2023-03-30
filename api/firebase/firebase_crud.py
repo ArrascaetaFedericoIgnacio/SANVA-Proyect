@@ -15,7 +15,7 @@ def get_user(email):
         return {'user_id': user_id, **user_info}
     else:
         return None
-    
+   
 def find_user(email, password):
     ref = db.reference('/User')
     users = ref.order_by_child('email').equal_to(email).get()
