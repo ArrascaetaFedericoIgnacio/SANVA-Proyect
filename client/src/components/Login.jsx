@@ -2,16 +2,26 @@ import React from 'react'
 import axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import Persona from '../assets/logo_persona_azul_2.jpg'
+import { useNavigate } from 'react-router'
 
 export const Login = () => {
+  const navigate = useNavigate()
   const Logearse = async (values) => {
     try {
       const response = await axios.post('http://localhost:8000/login', values)
       console.log(response.data)
+      if (response.data === 'Succesfully logged in') {
+        navigate('/user')
+      } else if (response.data === 'Wrong password') {
+        alert('Wrong password')
+      } else {
+        alert("The user doesn't exists")
+      }
     } catch (error) {
       console.log(error)
     }
   }
+
   const HandleSubmit = (values, { setSubmitting }) => {
     setSubmitting(false)
     Logearse(values)
