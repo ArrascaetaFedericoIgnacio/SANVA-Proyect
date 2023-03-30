@@ -3,7 +3,7 @@ import { HiHome, HiOutlineUser, HiOutlineHeart } from 'react-icons/hi'
 
 export const Footer = () => {
   return (
-    <div className='w-full flex justify-evenly p-2 bg-sky-400 text-white'>
+    <div className='w-full flex justify-evenly py-3 bg-sky-400 text-white'>
       <HiHome className='text-3xl'/>
       <HiOutlineUser className='text-3xl' />
       <HiOutlineHeart className='text-3xl' />

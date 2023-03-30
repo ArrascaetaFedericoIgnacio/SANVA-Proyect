@@ -5,8 +5,10 @@ import { CheckIcon } from "./check";
 import Check from "../../public/checked.svg"
 import Logo from "../../public/logosanva.png"
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
+	const navigate = useNavigate()
 	const CrearCuenta = async (values) => {
 		try {
 			console.log(values);
@@ -15,6 +17,7 @@ export const Register = () => {
 				values
 			);
 			console.log(resultado);
+			navigate('/user')
 		} catch (error) {
 			console.log(error);
 		}
@@ -56,8 +59,12 @@ export const Register = () => {
 		return errors;
 	};
 
-	return (	
-		<div className="xl:h-screen flex flex-col justify-center items-center xl:pt-8 pt-20 bg-gradient-to-r from-sky-600 to-sky-300">
+	return (
+		<div className="relative w-screen h-screen flex justify-center items-center">
+		<div className="absolute w-screen h-screen -translate-y-40 skew-y-[40deg] bg-[#6abce2]"></div>
+		<div className="absolute w-screen h-screen translate-y-20 skew-y-[40deg] bg-[#58afdd]"></div>
+		<div className="absolute w-screen h-screen translate-y-[48rem] skew-y-[40deg] bg-[#3982b8]"></div>
+		<div className="absolute h-screen w-full flex flex-col justify-center items-center xl:pt-8 pt-20">
 			<img className="fixed top-3 right-3 w-32" src={Logo} />
 			<img className='mt-10 rounded-full w-32' src="https://us.123rf.com/450wm/imagevectors/imagevectors1606/imagevectors160600225/58872992-blanco-perfil-de-usuario-icono-en-el-bot%C3%B3n-azul-aislado-en-blanco.jpg" alt="user" />
 			<Formik
@@ -75,7 +82,7 @@ export const Register = () => {
 							{({ field, form: { touched, errors }, meta }) => (
 								<div>
 									<input
-										className='h-10 w-64 rounded-lg px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
+										className='text-black  h-10 w-64 rounded-lg bg-white px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
 										type='text'
 										placeholder='Nombre'
 										{...field}
@@ -92,7 +99,7 @@ export const Register = () => {
 							{({ field, form: { touched, errors }, meta }) => (
 								<div>
 									<input
-										className='h-10 w-64 rounded-lg px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
+										className='text-black h-10 w-64 rounded-lg bg-white px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
 										type='password'
 										placeholder='Contraseña'
 										{...field}
@@ -126,7 +133,7 @@ export const Register = () => {
 							{({ field, form: { touched, errors }, meta }) => (
 								<div>
 									<input
-										className='h-10 w-64 rounded-lg px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
+										className='text-black  h-10 w-64 rounded-lg bg-white px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
 										type='email'
 										placeholder='Correo Electronico'
 										{...field}
@@ -167,6 +174,7 @@ export const Register = () => {
 					</Form>
 				)}
 			</Formik>
+		</div>
 		</div>
 	);
 };
