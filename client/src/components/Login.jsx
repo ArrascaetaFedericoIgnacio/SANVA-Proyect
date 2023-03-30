@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import Persona from '../assets/logo_persona_azul_2.jpg'
 import Logo from '../assets/logo_sanva.jpg'
 import { useNavigate } from 'react-router'
+import {Link} from 'react-router-dom'
 
 export const Login = () => {
   const navigate = useNavigate()
@@ -70,10 +71,16 @@ export const Login = () => {
               </Form>
           }
         </Formik>
-        <div className="w-full mt-40 ml-10">
 
-        <img src={Persona} alt="logo_persona_azul" className="w-[5rem] h-[5rem] rounded-[500px]"></img>
+        <Link to="/register" >
+        <div className="w-full mt-40 ml-10">
+        <img src={Persona} alt="logo_persona_azul" className="w-[5rem] h-[5rem] rounded-[500px]">
+          
+        </img>
         </div>
+        </Link>
+       
+        
         </div>
       </div>
     </>
