@@ -6,9 +6,20 @@ import Check from "../../public/checked.svg"
 import Logo from "../../public/logosanva.png"
 
 export const Register = () => {
+
+	const CrearCuenta = async (values) => {
+		try {
+			const resultado = await axios.post("http://localhost:8000/user", values);
+			console.log(resultado);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	const HandleSubmit = (values, { setSubmitting }) => {
 		setSubmitting(false);
 		console.log(values);
+		CrearCuenta(values);
 	};
 
 	const validateCamps = (values) => {
