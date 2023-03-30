@@ -15,8 +15,6 @@ export const Login = () => {
         navigate('/user')
       } else if (response.data === 'Wrong password') {
         alert('Wrong password')
-      } else {
-        alert("The user doesn't exists")
       }
     } catch (error) {
       console.log(error)
@@ -72,7 +70,7 @@ export const Login = () => {
               </Form>
           }
         </Formik>
-        <div className="w-full mt-28 ml-10">
+        <div className="w-full mt-40 ml-10">
 
         <img src={Persona} alt="logo_persona_azul" className="w-[5rem] h-[5rem] rounded-[500px]"></img>
         </div>
