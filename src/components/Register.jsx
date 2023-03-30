@@ -1,6 +1,9 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { HiOutlineUser, HiOutlineLockClosed, HiOutlineMail } from "react-icons/hi"
+import { CheckIcon } from "./check";
+import Check from "../../public/checked.svg"
+import Logo from "../../public/logosanva.png"
 
 export const Register = () => {
 	const HandleSubmit = (values, { setSubmitting }) => {
@@ -37,7 +40,8 @@ export const Register = () => {
 	};
 
 	return (	
-		<div className="h-screen flex flex-col justify-center items-center bg-gradient-to-r from-sky-600 to-sky-300">
+		<div className="xl:h-screen flex flex-col justify-center items-center xl:pt-8 pt-20 bg-gradient-to-r from-sky-600 to-sky-300">
+			<img className="fixed top-3 right-3 w-32" src={Logo} />
 			<img className='mt-10 rounded-full w-32' src="https://us.123rf.com/450wm/imagevectors/imagevectors1606/imagevectors160600225/58872992-blanco-perfil-de-usuario-icono-en-el-bot%C3%B3n-azul-aislado-en-blanco.jpg" alt="user" />
 			<Formik
 				initialValues={{
@@ -132,8 +136,8 @@ export const Register = () => {
 							<ErrorMessage name="email" />
 						</div> */}
 						<div className="mt-5">
-							<button className="outline-none bg-white rounded-3xl hover:border-sky-700 hover:border-2" disabled={isSubmitting} type="submit">
-								Registrar
+							<button className="outline-none rounded-full " disabled={isSubmitting} type="submit">
+								<img className="hover:border-sky-700 hover:border-2 hover:rounded-full" src={Check}></img>
 							</button>
 						</div>
 					</Form>
