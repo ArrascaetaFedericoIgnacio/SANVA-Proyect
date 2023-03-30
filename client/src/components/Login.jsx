@@ -2,18 +2,11 @@ import React from 'react'
 import axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import Persona from '../assets/logo_persona_azul_2.jpg'
-<<<<<<< HEAD
 import Logo from '../assets/logo_sanva.jpg'
-=======
->>>>>>> 57755212a1f9565b2b4350d2161f9d3ba83c9c7c
 import { useNavigate } from 'react-router'
 
 export const Login = () => {
   const navigate = useNavigate()
-<<<<<<< HEAD
-
-=======
->>>>>>> 57755212a1f9565b2b4350d2161f9d3ba83c9c7c
   const Logearse = async (values) => {
     try {
       const response = await axios.post('https://purebadeploy.onrender.com/login', values)
@@ -22,11 +15,6 @@ export const Login = () => {
         navigate('/user')
       } else if (response.data === 'Wrong password') {
         alert('Wrong password')
-<<<<<<< HEAD
-=======
-      } else {
-        alert("The user doesn't exists")
->>>>>>> 57755212a1f9565b2b4350d2161f9d3ba83c9c7c
       }
     } catch (error) {
       console.log(error)
