@@ -16,9 +16,9 @@ def get_user(email):
     else:
         return None
     
-def find_user(username,password):
+def find_user(email, password):
     ref = db.reference('/User')
-    users = ref.order_by_child('username').equal_to(username).get()
+    users = ref.order_by_child('email').equal_to(email).get()
     if users:
         # Verificar la contraseña
         for user in users.values():

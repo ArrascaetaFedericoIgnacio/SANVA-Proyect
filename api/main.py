@@ -10,6 +10,7 @@ firebase_sdk = credentials.Certificate("./sanva-project-54f54-firebase-adminsdk-
 #Referencia a la base de datos
 firebase_admin.initialize_app(firebase_sdk,{'databaseURL':'https://sanva-project-54f54-default-rtdb.firebaseio.com/'})
 
+
 app = FastAPI()
 
 @app.get("/")
@@ -20,7 +21,7 @@ def index():
 async def register_user(user : User):
     try:
         new_user = {
-            "username" : user.user,
+            "username" : user.username,
             "password" : user.password,
             "email" : user.email
         }
@@ -43,6 +44,7 @@ async def get_user_by_email(email : str):
 @app.post("/login")
 async def log_in_user(user : Login):
     try:
-        return find_user(user.username, user.password)
+        return find_user(user.email, user.password)
     except Exception as e:
         return {"error" : e}
+
