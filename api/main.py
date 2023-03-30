@@ -42,10 +42,10 @@ async def register_user(user : User):
     except Exception as e:
         return {"error": str(e)}
     
-@app.get("/user/{email}")
-async def get_user_by_email(email : str):
+@app.get("/user/{username}")
+async def get_user_by_email(username : str):
     try:
-        find_user = get_user(email)
+        find_user = get_user(username)
         if find_user:
             return find_user
         return "User not found"

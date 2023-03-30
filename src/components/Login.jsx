@@ -2,7 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import Persona from '../assets/logo_persona_azul_2.jpg'
-import Logo from '../assets/logo_sanva.jpg'
 
 export const Login = () => {
   const Logearse = async (values) => {
@@ -53,7 +52,7 @@ export const Login = () => {
 
           {({ isSubmitting }) =>
               <Form className="w-3/5 flex flex-wrap space-y-4">
-                <Field name="username" type="username" placeholder="Nombre" className="w-[200px] bg-white rounded-[5px]"/>
+                <Field name="username" type="username" placeholder="Nombre" className="w-[200px] bg-white rounded-[5px] text-black"/>
               <ErrorMessage name="username" />
                 <Field name="password" type="password" placeholder="ContraseÃ±a" className="w-[200px] bg-white rounded-[5px] text-black"/>
               <ErrorMessage name="password" type="password" />
