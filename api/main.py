@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from schemas import User
+from schemas import Login_user
 from firebase.post_user import run as run_post_user
 from firebase.get_user_by_email import get_user
+from firebase.login_user import find_user
 
 app = FastAPI()
 
@@ -31,3 +33,8 @@ async def get_user_by_email(email : str):
         return "user not found"
     except Exception as e:
         return {"error": str(e)}
+    
+@app.post("/login")
+async def login_user(user: Login_user):
+    return find_user(user.email, user.password)
+
