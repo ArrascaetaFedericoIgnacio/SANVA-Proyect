@@ -3,7 +3,7 @@ import { FaPencilAlt } from 'react-icons/fa'
 
 export const User = () => {
   return (
-    <div className='h-screen w-full xl:w-7/12 xl:mx-auto'>   
+    <div className='h-screen w-full xl:w-7/12 xl:mx-auto'>
       <div className='p-5 flex flex-col justify-between items-center bg-[#6abce2] text-white'>
         <img className='mt-3 rounded-full w-28' src="https://us.123rf.com/450wm/imagevectors/imagevectors1606/imagevectors160600225/58872992-blanco-perfil-de-usuario-icono-en-el-bot%C3%B3n-azul-aislado-en-blanco.jpg" alt="user" />
         <div className='flex items-center gap-2'>

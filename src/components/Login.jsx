@@ -24,7 +24,7 @@ export const Login = () => {
     // valida el usuario
     if (!values.username) {
       errores.username = 'El usuario es obligatorio'
-    } else if (values.username.length < 6) {
+    } else if (values.username.length < 3) {
       errores.username = 'El usuario debe tener al menos 6 caracteres'
     }
 
