@@ -27,5 +27,5 @@ def find_user(email, password):
             else:
                 return "Wrong password"
     else:
-        return "User doesn't exist"
+        return "The user doesn't exist"
     
