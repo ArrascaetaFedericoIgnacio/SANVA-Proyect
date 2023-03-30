@@ -1,3 +1,4 @@
+/* Estilos generales */
 #root {
   /* max-width: 1280px; */
   /* margin: 0 auto; */
@@ -11,9 +12,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -39,4 +42,21 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 480px) {
+  #root {
+    height: 100%;
+    width: 100%;
+  }
+
+  .logo {
+    height: 4em;
+    padding: 1em;
+  }
+
+  .card {
+    padding: 1em;
+  }
 }
