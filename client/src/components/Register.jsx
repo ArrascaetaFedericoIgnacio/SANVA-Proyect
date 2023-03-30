@@ -11,7 +11,7 @@ export const Register = () => {
 		try {
 			console.log(values);
 			const resultado = await axios.post(
-				'http://localhost:8000/user',
+				'https://purebadeploy.onrender.com/user',
 				values
 			);
 			console.log(resultado);
