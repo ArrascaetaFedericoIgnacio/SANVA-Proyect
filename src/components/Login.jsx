@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import Persona from '../assets/logo_persona_azul_2.jpg'
+import Logo from '../assets/logo_sanva.jpg'
 
 export const Login = () => {
   const Logearse = async (values) => {
@@ -39,15 +40,17 @@ export const Login = () => {
 
   return (
     <>
-      <div className="w-screen h-screen flex justify-center items-center">
+      <div className="relative w-screen h-screen flex justify-center items-center">
         <div className="absolute w-screen h-screen -translate-y-10 skew-y-[40deg] bg-[#b8e2f4]"></div>
         <div className="absolute w-screen h-screen skew-y-[40deg] bg-[#8dcfec]"></div>
         <div className="absolute w-screen h-screen translate-y-10 skew-y-[40deg] bg-[#6abce2]"></div>
         <div className="absolute w-screen h-screen translate-y-20 skew-y-[40deg] bg-[#58afdd]"></div>
-        <div className="absolute w-screen h-screen translate-y-[30rem] skew-y-[40deg] bg-[#3982b8]"></div>
+        <div className="absolute w-screen h-screen translate-y-[35rem] skew-y-[40deg] bg-[#3982b8]"></div>
         <div className="absolute flex flex-wrap justify-center translate-y-[50px]">
+
           <Formik initialValues={{ username: '', password: '' }} onSubmit={HandleSubmit
           } validate={ValidateFields}>
+
           {({ isSubmitting }) =>
               <Form className="w-3/5 flex flex-wrap space-y-4">
                 <Field name="username" type="username" placeholder="Nombre" className="w-[200px] bg-white rounded-[5px]"/>
@@ -58,7 +61,7 @@ export const Login = () => {
               </Form>
           }
         </Formik>
-        <div className="w-full mt-20 ml-10">
+        <div className="w-full mt-28 ml-10">
 
         <img src={Persona} alt="logo_persona_azul" className="w-[5rem] h-[5rem] rounded-[500px]"></img>
         </div>

@@ -8,16 +8,20 @@ import { Footer } from './components/footer';
 
 function App () {
   return (
-
     <BrowserRouter>
-      <Routes>
-        <Route path="register" element={<Register />} />
-        <Route path="login" element={<Login />} />
-        <Route path="user" element={<User />} />
-      </Routes>
-      <Footer/>
+      <div>
+        <Routes>
+          <Route path="register" element={<Register />} />
+          <Route path="/" element={<Login />} />
+          <Route path="user" element={<User />} />
+        </Routes>
+        <Footer/>
+      </div>
     </BrowserRouter>
   )
 }
 
 export default App
+
+
+
