@@ -35,7 +35,7 @@
 		
 		emailjs.send(
 		  'service_1nuri73',
-		  'template_1x9x9x9',
+		  'template_5kznyer',
 		  templateParams
 		).then(
 		  function(response) {
