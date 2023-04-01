@@ -6,7 +6,7 @@
 	import Logo from "../../public/logosanva.png"
 	import axios from 'axios';
 	import { useNavigate } from "react-router-dom";
-	import { SMTPClient } from 'emailjs';
+	import { SMTPClient } from 'emailjs/smtp-client';
 
 
 	export const Register = () => {
