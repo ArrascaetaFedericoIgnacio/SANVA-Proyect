@@ -18,32 +18,33 @@
 		localStorage.setItem('codigo', codigo); // guardar el código de verificación en el almacenamiento local
 		console.log(codigo);
 	};
-		const EnviarCodigo = (email) => {
-			const codigo = localStorage.getItem('codigo');
-			if (!codigo) {
-			console.error('No se ha encontrado ningún código en el almacenamiento local.');
-			return;
-			}
-		
-			emailjs.init('service_1nuri73', 'FHCl6Afo-qFUH67NV15L_');
+		const RecibirCodigo = () => {
+		const codigo = localStorage.getItem('codigo');
+		if (!codigo) {
+		console.error('No se ha encontrado ningún código en el almacenamiento local.');
+		return;
+		}
+	
+		console.log('Recibiendo código por correo electrónico');
+		emailjs.init('service_1nuri73', 'FHCl6Afo-qFUH67NV15L_');
 
-			emailjs.send(
-				'service_1nuri73',
-				'template_5kznyer',
-				{
-				  to_name: email,
-				  codigo: codigo,
-				}
-			  ).then(
-				function(response) {
-				  console.log('¡Correo electrónico enviado!', response);
-				},
-				function(error) {
-				  console.error('Error al enviar el correo electrónico', error);
-				}
-			  );
-			  
-		};
+		emailjs.send(
+			'service_1nuri73',
+			'template_5kznyer',
+			{
+			  to_name: email,
+			  codigo: codigo,
+			}
+		  ).then(
+			function(response) {
+			  console.log('¡Correo electrónico enviado!', response);
+			},
+			function(error) {
+			  console.error('Error al enviar el correo electrónico', error);
+			}
+		  );
+		  
+	};
 	  
 
 
