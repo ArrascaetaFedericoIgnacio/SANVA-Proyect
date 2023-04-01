@@ -71,14 +71,16 @@ export const Login = () => {
               </Form>
           }
         </Formik>
-
-        <Link to="/register" >
+<div className="w-full mt-40 ml-10">
+<Link to="/register" >
         <div className="w-full mt-40 ml-10">
         <img src={Persona} alt="logo_persona_azul" className="w-[5rem] h-[5rem] rounded-[500px]">
           
         </img>
         </div>
         </Link>
+</div>
+     
        
         
         </div>
