@@ -21,18 +21,21 @@
 
 	const EnviarCodigo = (email) => {
 		const codigo = localStorage.getItem('codigo'); // obtener el código de verificación del almacenamiento local
+		const templateParams = {
+		to_name: email,
+		message: `Tu código de verificación es: ${codigo}`,
+		from_name: 'Pureba',
+		}
 		emailjs.send(
-		'service_1x9x9x9',
+		'service_1nuri73',
 		'template_1x9x9x9',
-		{
-			code: codigo,
-			to_email: email,
-		},
-		'user_1x9x9x9'
+		templateParams,
+		'v5ygCVGVTrm0Eyvxw'
 		);
+
 	};
 
-	
+
 
 	const CrearCuenta = async (values) => {
 		try {
