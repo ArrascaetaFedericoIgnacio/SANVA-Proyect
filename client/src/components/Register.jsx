@@ -25,11 +25,8 @@
 			return;
 			}
 		
-			const templateParams = {
-			to_name: email,
-			message: `Tu código de verificación es: ${codigo}`,
-			from_name: 'Prueba',
-			};
+			emailjs.init('service_1nuri73', 'FHCl6Afo-qFUH67NV15L_');
+
 			emailjs.send(
 				'service_1nuri73',
 				'template_5kznyer',
