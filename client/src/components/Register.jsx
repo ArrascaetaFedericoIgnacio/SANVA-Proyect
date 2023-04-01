@@ -6,33 +6,34 @@
 	import Logo from "../../public/logosanva.png"
 	import axios from 'axios';
 	import { useNavigate } from "react-router-dom";
-	import { SMTPClient } from 'emailjs';
+	import emailjs from '@emailjs/browser';
+	
+	
 
 
 	export const Register = () => {
 		const navigate = useNavigate()
-	// crea una función para enviar el código por correo electrónico utilizando la nueva documentación
+		const CrearCodigo = () => {
+		const codigo = Math.floor(Math.random() * 1000000 + 1); // crear un código de verificación aleatorio de 6 dígitos
+		localStorage.setItem('codigo', codigo); // guardar el código de verificación en el almacenamiento local
+		console.log(codigo);
+	};
+
 	const EnviarCodigo = (email) => {
-		const client = new SMTPClient({
-		user: 'user',
-		password: 'password',
-		host: 'smtp.your-email.com',
-		ssl: true,
-		});
-	
-		client.send(
+		const codigo = localStorage.getItem('codigo'); // obtener el código de verificación del almacenamiento local
+		emailjs.send(
+		'service_1x9x9x9',
+		'template_1x9x9x9',
 		{
-			text: `Tu código de verificación es: ${localStorage.getItem("codigo")}`,
-			from: 'you <username@your-email.com>',
-			to: email,
-			subject: 'Código de verificación',
+			code: codigo,
+			to_email: email,
 		},
-		(err, message) => {
-			console.log(err || message);
-		}
+		'user_1x9x9x9'
 		);
 	};
+
 	
+
 	const CrearCuenta = async (values) => {
 		try {
 		console.log(values);
