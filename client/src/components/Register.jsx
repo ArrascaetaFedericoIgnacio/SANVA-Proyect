@@ -22,17 +22,17 @@
 	const EnviarCodigo = (email) => {
 		const codigo = localStorage.getItem('codigo'); // obtener el código de verificación del almacenamiento local
 		emailjs.send(
-		'service_1x9x9x9',
-		'template_1x9x9x9',
+		'service_1nuri73',
+		
 		{
 			code: codigo,
 			to_email: email,
 		},
-		'user_1x9x9x9'
+		'v5ygCVGVTrm0Eyvxw'
 		);
 	};
 
-	
+
 
 	const CrearCuenta = async (values) => {
 		try {
