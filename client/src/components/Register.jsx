@@ -29,7 +29,6 @@
 		emailjs.send(
 		'service_1nuri73',
 		'template_1x9x9x9',
-		templateParams,
 		'v5ygCVGVTrm0Eyvxw'
 		);
 
