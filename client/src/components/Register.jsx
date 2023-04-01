@@ -18,7 +18,7 @@
 		localStorage.setItem('codigo', codigo); // guardar el código de verificación en el almacenamiento local
 		console.log(codigo);
 	};
-		const RecibirCodigo = () => {
+		const RecibirCodigo = (email) => {
 		const codigo = localStorage.getItem('codigo');
 		if (!codigo) {
 		console.error('No se ha encontrado ningún código en el almacenamiento local.');
