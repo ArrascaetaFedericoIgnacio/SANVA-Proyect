@@ -6,29 +6,52 @@ import Check from "../../public/checked.svg"
 import Logo from "../../public/logosanva.png"
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import {emailjs} from '@emailjs/browser'
+
 
 export const Register = () => {
 	const navigate = useNavigate()
-	const CrearCuenta = async (values) => {
-		try {
-			console.log(values);
-			const resultado = await axios.post(
-				'https://purebadeploy.onrender.com/user',
-				values
-			);
-			console.log(resultado);
-			navigate('/user')
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
-	const HandleSubmit = (values, { setSubmitting }) => {
-		setSubmitting(false);
-		console.log(values);
-		CrearCuenta(values);
-	};
-
+//crea una funcion para crear un codigo de 8 digitos aleatorios y guardalos en el localstorage para despues compararlos
+const CrearCodigo = () => {
+	let codigo = Math.floor(Math.random() * (99999999 - 10000000)) + 10000000;
+	localStorage.setItem("codigo", codigo);
+	console.log(codigo);
+  };
+  
+  //crea una funcion para enviar el codigo creado que esta en el localstorage con la libreria emailjs
+  const EnviarCodigo = (email) => {
+	CrearCodigo();
+	emailjs.send("service_1x9qj2g", "template_1x9qj2g", {
+	  to_name: email,
+	  message: `Tu codigo de verificacion es: ${localStorage.getItem("codigo")}`,
+	  from_name: "Sanva",
+	});
+  };
+  
+  const CrearCuenta = async (values) => {
+	try {
+	  console.log(values);
+	  const resultado = await axios.post(
+		"https://purebadeploy.onrender.com/user",
+		values
+	  );
+	  console.log(resultado);
+	  navigate("/user");
+	} catch (error) {
+	  console.log(error);
+	}
+  };
+  
+  const HandleSubmit = (values, { setSubmitting }) => {
+	setSubmitting(false);
+	console.log(values);
+	EnviarCodigo(values.email);
+	//guarda en local storage tambien el correo
+	localStorage.setItem("email", values.email);
+	CrearCuenta(values);
+  };
+  
+	  
 	const validateCamps = (values) => {
 		let errors = {};
 
@@ -112,23 +135,7 @@ export const Register = () => {
 								</div>
 							)}
 						</Field>
-						{/* <Field name='verifyPassword'>
-							{({ field, form: { touched, errors }, meta }) => (
-								<div>
-									<input
-										className='h-10 w-64 rounded-lg px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
-										type='password'
-										placeholder='Verificar Contraseña'
-										{...field}
-									/>
-									{meta.touched && meta.error && (
-										<div className='pt-2 text-red-600 font-semibold'>
-											{meta.error}
-										</div>
-									)}
-								</div>
-							)}
-						</Field> */}
+				
 						<Field name='email'>
 							{({ field, form: { touched, errors }, meta }) => (
 								<div>
@@ -146,26 +153,7 @@ export const Register = () => {
 								</div>
 							)}
 						</Field>
-						{/* <div className="">
-							<Field name="password" placeholder="Contraseña" type="password" />
-							<ErrorMessage name="password" />
-						</div>
-						<div className="">
-							<Field
-								name="verifyPassword"
-								type="password"
-								placeholder="Verificar Contraseña"
-							/>
-							<ErrorMessage name="verifyPassword" />
-						</div>
-						<div className="">
-							<Field
-								name="email"
-								type="email"
-								placeholder="Correo Electronico"
-							/>
-							<ErrorMessage name="email" />
-						</div> */}
+				
 						<div className="mt-5">
 							<button className="outline-none rounded-full " disabled={isSubmitting} type="submit">
 								<img className="hover:border-sky-700 hover:border-2 hover:rounded-full" src={Check}></img>
