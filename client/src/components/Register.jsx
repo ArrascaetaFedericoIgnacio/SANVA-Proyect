@@ -28,13 +28,14 @@
 		console.log('Recibiendo código por correo electrónico');
 		emailjs.init('service_1nuri73', 'FHCl6Afo-qFUH67NV15L_');
 
-		emailjs.send(
+		emailjs.sendForm(
 			'service_1nuri73',
 			'template_5kznyer',
 			{
 			  to_name: email,
 			  codigo: codigo,
-			}
+			},
+			"v5ygCVGVTrm0Eyvxw"
 		  ).then(
 			function(response) {
 			  console.log('¡Correo electrónico enviado!', response);
