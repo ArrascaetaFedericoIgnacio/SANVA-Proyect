@@ -4,6 +4,7 @@ import { Register } from './components/Register'
 import { Login } from './components/Login'
 import { User } from './components/User'
 import { Footer } from './components/footer'
+import Tomas from './components/Tomas'
 
 function App () {
   return (
@@ -13,6 +14,7 @@ function App () {
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Login />} />
           <Route path="/user" element={<User />} />
+          <Route path='/tomas' element={<Tomas />} />
         </Routes>
 
       </div>
