@@ -1,46 +1,31 @@
-import React, { useState } from 'react';
-import { Button, Input } from 'antd';
-import nodemailer from 'nodemailer';
+import React from 'react'
 
-const CodeGenerator = () => {
-  const [email, setEmail] = useState('');
-  const [code, setCode] = useState('');
+export const Verification = () => {
+ const email = localStorage.getItem("email");
+ const code = localStorage.getItem("codigo");
 
-  const generateCode = () => {
-    const code = Math.floor(100000 + Math.random() * 900000).toString();
-    setCode(code);
+  const handleCode = (e) => {
+    e.preventDefault();
+    const codeInput = document.getElementById('code').value;
+    if (codeInput === code) {
+      console.log('Código correcto');
+    } else {
+      console.log('Código incorrecto');
+    }
+  }
+ 
 
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'tu_correo@gmail.com',
-        pass: 'tu_contraseña'
-      }
-    });
+return (
+  <div class="h-screen w-screen flex flex-col justify-center items-center">
+  <h1 class="text-2xl font-bold mb-4">Verificación</h1>
+  <p class="text-center mb-4">Se ha enviado un código de verificación a {email}</p>
+  <form class="flex flex-col items-center" onSubmit={handleCode}>
+    <input class="w-64 p-2 mb-4 border border-gray-300 rounded-md" type="text" id="code" placeholder="Introduce el código aquí" />
+    <button class="bg-blue-500 text-white px-4 py-2 rounded-md" type="submit">Verificar</button>
+  </form>
+</div>
 
-    const mailOptions = {
-      from: 'tu_correo@gmail.com',
-      to: email,
-      subject: 'Código de verificación',
-      text: `Tu código de verificación es: ${code}`
-    };
+  )
+}
 
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Correo enviado: ' + info.response);
-      }
-    });
-  };
-
-  return (
-    <div>
-      <Input placeholder="Correo electrónico" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <Button type="primary" onClick={generateCode}>Generar código</Button>
-      {code && <p>Tu código es: {code}</p>}
-    </div>
-  );
-};
-
-export default CodeGenerator;
+export default Verification

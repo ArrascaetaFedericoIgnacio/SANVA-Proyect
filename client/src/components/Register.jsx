@@ -13,57 +13,28 @@
 
 	export const Register = () => {
 		const navigate = useNavigate()
+		
+
 		const CrearCodigo = () => {
-		const codigo = Math.floor(Math.random() * 1000000 + 1); // crear un código de verificación aleatorio de 6 dígitos
-		localStorage.setItem('codigo', codigo); // guardar el código de verificación en el almacenamiento local
-		console.log(codigo);
-	};
-		const RecibirCodigo = (email) => {
-		const codigo = localStorage.getItem('codigo');
-		if (!codigo) {
-		console.error('No se ha encontrado ningún código en el almacenamiento local.');
-		return;
+			const codigo = Math.floor(Math.random() * 1000000); // crear un código de verificación aleatorio
+			localStorage.setItem("codigo", codigo); // guardar el código en el almacenamiento local
 		}
-	
-		console.log('Recibiendo código por correo electrónico');
-		emailjs.init('service_1nuri73', 'FHCl6Afo-qFUH67NV15L_');
 
-		emailjs.sendForm(
-			'service_1nuri73',
-			'template_5kznyer',
-			{
-			  to_name: email,
-			  codigo: codigo,
-			},
-			"v5ygCVGVTrm0Eyvxw"
-		  ).then(
-			function(response) {
-			  console.log('¡Correo electrónico enviado!', response);
-			},
-			function(error) {
-			  console.error('Error al enviar el correo electrónico', error);
-			}
-		  );
-		  
-	};
-	  
+		const EnviarCodigo = (email) => {
+			const codigo = localStorage.getItem("codigo"); // obtener el código de verificación del almacenamiento local
+			const templateParams = {
+				to_name: email,
+				message: `Tu código de verificación es: ${codigo}`,
+				from_name: "Sanva",
+			};
+			emailjs.send(
+				"service_1nuri73",
+				"template_5kznyer",
+				templateParams,
+				"v5ygCVGVTrm0Eyvxw"
+			);
+		};
 
-
-	const CrearCuenta = async (values) => {
-		try {
-		console.log(values);
-		const resultado = await axios.post(
-			'https://purebadeploy.onrender.com/user',
-			values
-		);
-		EnviarCodigo(values.email); // enviar el código de verificación por correo electrónico
-		console.log(resultado);
-		navigate('/user');
-		} catch (error) {
-		console.log(error);
-		}
-	};
-	
 	const HandleSubmit = (values, { setSubmitting }) => {
 		setSubmitting(false);
 		console.log(values);
@@ -71,9 +42,28 @@
 		//guarda en localstorage el email
 		localStorage.setItem("email", email);
 		CrearCodigo(); // crear un nuevo código de verificación
-		CrearCuenta(values); // crear la cuenta y enviar el código de verificación por correo electrónico
+		// CrearCuenta(values);
+		EnviarCodigo(email); // enviar el código de verificación por correo electrónico
+
+		navigate('/verification');
 	};
 		
+
+		// const CrearCuenta = async (values) => {
+	// 	try {
+	// 	console.log(values);
+	// 	const resultado = await axios.post(
+	// 		'https://purebadeploy.onrender.com/user',
+	// 		values
+	// 	);
+	// 	EnviarCodigo(values.email); // enviar el código de verificación por correo electrónico
+	// 	console.log(resultado);
+	// 	navigate('/user');
+	// 	} catch (error) {
+	// 	console.log(error);
+	// 	}
+	// };
+
 		const validateCamps = (values) => {
 			let errors = {};
 
