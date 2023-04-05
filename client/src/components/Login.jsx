@@ -13,6 +13,7 @@ export const Login = () => {
       const response = await axios.post('http://localhost:8000/user/login', values)
       console.log(response.data)
       if (response.data === 'Succesfully logged in') {
+        localStorage.setItem('user', response.data)
         navigate('/user')
       } else if (response.data === 'Wrong password') {
         alert('Wrong password')
