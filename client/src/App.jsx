@@ -19,7 +19,7 @@ function App() {
           <Route path="/user" element={<User />} />
           <Route path="/verification" element={<Verification />} />
           <Route path='/tomas' element={<Tomas />} />
-          <Route path='/alianza' element={<Alianza />}/>
+          <Route path='/alianza' element={<Alianza />} />
           <Route path='/PersonalData' element={<PersonalData />} />
         </Routes>
 

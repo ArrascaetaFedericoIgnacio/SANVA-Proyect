@@ -14,11 +14,12 @@ export const PersonalData = () => {
       console.log(values)
       values.height = values.height.toString()
       values.weight = values.weight.toString()
-      const resultado = await axios.post(
+      const response = await axios.post(
         'http://localhost:8000/user',
         values
       )
-      console.log(resultado)
+      console.log(response)
+      localStorage.setItem('user', response)
       navigate('/user')
     } catch (error) {
       console.log(error)
