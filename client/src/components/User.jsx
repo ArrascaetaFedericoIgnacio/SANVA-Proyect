@@ -3,14 +3,20 @@ import { FaPencilAlt } from 'react-icons/fa'
 import { Footer } from './footer'
 
 export const User = () => {
+  const [user, setUserLogin] = useState(null)
+  console.log(user)
   
   useEffect(() => {
-    const userlocal = localStorage('user')
+    const userlocal = localStorage.getItem('user')
     setUserLogin(userlocal)
+    console.log(userlocal)
   })
-  const [user, setUserLogin] = useState(null)
-  const { username, email, birthdate, gender, height, weight } = user
 
+  useEffect((user) => {
+    const { username, email, birthdate, gender, height, weight } = user
+  }, [user])
+
+  
   
   return (
     <div className='h-full w-full text-lg font-semibold'>
