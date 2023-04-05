@@ -15,6 +15,7 @@ export const Login = () => {
       console.log('response.data', response.data)
       if (response.data.username === values.username && response.data.password === values.password) {
         console.log('setItem')
+        localStorage.removeItem('user')
         localStorage.setItem('user', JSON.stringify(response.data))
         console.log('navigate')
         navigate('/user')
