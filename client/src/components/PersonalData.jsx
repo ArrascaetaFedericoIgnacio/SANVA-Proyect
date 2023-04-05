@@ -12,12 +12,10 @@ export const PersonalData = () => {
   const PostInfo = async (values) => {
     try {
       console.log(values)
-      // const resultado = await axios.post(
-      //   'https://purebadeploy.onrender.com/user',
-      //   values
-      // )
+      values.height = values.height.toString()
+      values.weight = values.weight.toString()
       const resultado = await axios.post(
-        'http://0.0.0.0:8000/user',
+        'http://localhost:8000/user',
         values
       )
       console.log(resultado)
@@ -41,8 +39,8 @@ export const PersonalData = () => {
       errors.birthdate = 'La fecha de nacimiento es obligatoria'
     }
     // verify password
-    if (!values.genre) {
-      errors.genre = 'El género es obligatorio'
+    if (!values.gender) {
+      errors.gender = 'El género es obligatorio'
     }
     // verify password
     if (!values.height) {
@@ -71,7 +69,7 @@ export const PersonalData = () => {
           password: localStorage.getItem('password'),
           email: localStorage.getItem('email'),
           birthdate: '',
-          genre: '',
+          gender: '',
           height: '',
           weight: ''
         }}
@@ -92,7 +90,7 @@ export const PersonalData = () => {
                   <div className="flex row">
                     <Field
                       type="radio"
-                      name='genre'
+                      name='gender'
                       value='M'
                     >
                       {({ field, form: { touched, errors }, meta }) => (
@@ -109,7 +107,7 @@ export const PersonalData = () => {
                     </Field>
                     <Field
                       type="radio"
-                      name='genre'
+                      name='gender'
                       value='F'
                     >
                       {({ field, form: { touched, errors }, meta }) => (

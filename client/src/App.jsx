@@ -6,7 +6,7 @@ import { User } from './components/User'
 import { Footer } from './components/footer'
 import { Verification } from './components/Verification'
 import Tomas from './components/Tomas'
-
+import { PersonalData } from './components/PersonalData'
 
 function App () {
   return (
@@ -18,6 +18,8 @@ function App () {
           <Route path="/user" element={<User />} />
           <Route path="/verification" element={<Verification />} />
           <Route path='/tomas' element={<Tomas />} />
+          <Route path='/PersonalData' element={<PersonalData />} />
+
         </Routes>
 
       </div>
