@@ -8,7 +8,6 @@ import { Verification } from './components/Verification'
 import Tomas from './components/Tomas'
 import { PersonalData } from './components/PersonalData'
 
-
 function App() {
   return (
     <BrowserRouter>
