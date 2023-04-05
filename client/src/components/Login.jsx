@@ -13,7 +13,7 @@ export const Login = () => {
       console.log(values)
       const response = await axios.post('https://purebadeploy.onrender.com/user/login', values)
       console.log(response.data)
-      if (response.data === values) {
+      if (response.data.username === values.username && response.data.password === values.password) {
         localStorage.setItem('user', JSON.stringify(response.data))
 
         navigate('/user')
