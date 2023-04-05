@@ -13,6 +13,7 @@ async def index():
 
 @app.post("/", response_model=User)
 async def post_user(user: User):
+    print(user)
     if type(search_user("email", user.email)) == User:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="El usuario ya existe")
