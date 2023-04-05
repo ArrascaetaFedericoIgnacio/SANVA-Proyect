@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from schemas import User, Login
 from firebase.firebase_crud import get_user, find_user, post_user
+from fastapi.middleware.cors import CORSMiddleware
 import firebase_admin
 from firebase_admin import credentials
 
@@ -13,12 +14,22 @@ firebase_admin.initialize_app(firebase_sdk,{'databaseURL':'https://sanva-project
 
 app = FastAPI()
 
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 @app.get("/")
 def index():
     return ("hola mundo")
 
 @app.post('/user')
 async def register_user(user : User):
+    print(user)
     try:
         new_user = {
             "username" : user.username,
@@ -31,10 +42,10 @@ async def register_user(user : User):
     except Exception as e:
         return {"error": str(e)}
     
-@app.get("/user/{email}")
-async def get_user_by_email(email : str):
+@app.get("/user/{username}")
+async def get_user_by_email(username : str):
     try:
-        find_user = get_user(email)
+        find_user = get_user(username)
         if find_user:
             return find_user
         return "User not found"
@@ -44,7 +55,6 @@ async def get_user_by_email(email : str):
 @app.post("/login")
 async def log_in_user(user : Login):
     try:
-        return find_user(user.email, user.password)
+        return find_user(user.username, user.password)
     except Exception as e:
         return {"error" : e}
-

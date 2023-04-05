@@ -7,18 +7,19 @@ def post_user(user):
         return True
     return False
 
-def get_user(email):
+def get_user(username):
     ref = db.reference('/User')
-    users = ref.order_by_child('email').equal_to(email).get()
+    users = ref.order_by_child('username').equal_to(username).get()
     if users:
         user_id, user_info = users.popitem()
         return {'user_id': user_id, **user_info}
     else:
         return None
     
-def find_user(email, password):
+def find_user(username, password):
+
     ref = db.reference('/User')
-    users = ref.order_by_child('email').equal_to(email).get()
+    users = ref.order_by_child('username').equal_to(username).get()
     if users:
         # Verificar la contraseña
         for user in users.values():
