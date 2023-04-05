@@ -107,87 +107,85 @@ export const Register = () => {
 
 	return (
 		<div className="relative w-screen h-screen flex justify-center items-center">
-			return (
-			<div className="relative w-screen h-screen flex justify-center items-center">
-				<div className="absolute w-screen h-screen -translate-y-40 skew-y-[40deg] bg-[#6abce2]"></div>
-				<div className="absolute w-screen h-screen translate-y-20 skew-y-[40deg] bg-[#58afdd]"></div>
-				<div className="absolute w-screen h-screen translate-y-[48rem] skew-y-[40deg] bg-[#3982b8]"></div>
-				<div className="absolute h-screen w-full flex flex-col justify-center items-center xl:pt-8 pt-20">
-					<img className="fixed top-3 right-3 w-32" src={Logo} />
-					<img className='mt-10 rounded-full w-32' src="https://us.123rf.com/450wm/imagevectors/imagevectors1606/imagevectors160600225/58872992-blanco-perfil-de-usuario-icono-en-el-bot%C3%B3n-azul-aislado-en-blanco.jpg" alt="user" />
-					<Formik
-						initialValues={{
-							username: '',
-							password: '',
-							email: ''
-							// verifyPassword: '',
-						}}
-						onSubmit={HandleSubmit}
-						validate={validateCamps}>
-						{({ isSubmitting }) => (
-							<Form className=' flex flex-col gap-5 py-10'>
-								<Field name='username'>
-									{({ field, form: { touched, errors }, meta }) => (
-										<div>
-											<input
-												className='text-black  h-10 w-64 rounded-lg bg-white px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
-												type='text'
-												placeholder='Nombre'
-												{...field}
-											/>
-											{meta.touched && meta.error && (
-												<div className='pt-2 text-red-600 font-semibold'>
-													{meta.error}
-												</div>
-											)}
-										</div>
-									)}
-								</Field>
-								<Field name='password'>
-									{({ field, form: { touched, errors }, meta }) => (
-										<div>
-											<input
-												className='text-black h-10 w-64 rounded-lg bg-white px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
-												type='password'
-												placeholder='Contraseña'
-												{...field}
-											/>
-											{meta.touched && meta.error && (
-												<div className='pt-2 text-red-600 font-semibold'>
-													{meta.error}
-												</div>
-											)}
-										</div>
-									)}
-								</Field>
+			<div className="absolute w-screen h-screen -translate-y-40 skew-y-[40deg] bg-[#6abce2]"></div>
+			<div className="absolute w-screen h-screen translate-y-20 skew-y-[40deg] bg-[#58afdd]"></div>
+			<div className="absolute w-screen h-screen translate-y-[48rem] skew-y-[40deg] bg-[#3982b8]"></div>
+			<div className="absolute h-screen w-full flex flex-col justify-center items-center xl:pt-8 pt-20">
+				<img className="fixed top-3 right-3 w-32" src={Logo} />
+				<img className='mt-10 rounded-full w-32' src="https://us.123rf.com/450wm/imagevectors/imagevectors1606/imagevectors160600225/58872992-blanco-perfil-de-usuario-icono-en-el-bot%C3%B3n-azul-aislado-en-blanco.jpg" alt="user" />
+				<Formik
+					initialValues={{
+						username: '',
+						password: '',
+						email: ''
+						// verifyPassword: '',
+					}}
+					onSubmit={HandleSubmit}
+					validate={validateCamps}>
+					{({ isSubmitting }) => (
+						<Form className=' flex flex-col gap-5 py-10'>
+							<Field name='username'>
+								{({ field, form: { touched, errors }, meta }) => (
+									<div>
+										<input
+											className='text-black  h-10 w-64 rounded-lg bg-white px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
+											type='text'
+											placeholder='Nombre'
+											{...field}
+										/>
+										{meta.touched && meta.error && (
+											<div className='pt-2 text-red-600 font-semibold'>
+												{meta.error}
+											</div>
+										)}
+									</div>
+								)}
+							</Field>
+							<Field name='password'>
+								{({ field, form: { touched, errors }, meta }) => (
+									<div>
+										<input
+											className='text-black h-10 w-64 rounded-lg bg-white px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
+											type='password'
+											placeholder='Contraseña'
+											{...field}
+										/>
+										{meta.touched && meta.error && (
+											<div className='pt-2 text-red-600 font-semibold'>
+												{meta.error}
+											</div>
+										)}
+									</div>
+								)}
+							</Field>
 
-								<Field name='email'>
-									{({ field, form: { touched, errors }, meta }) => (
-										<div>
-											<input
-												className='text-black  h-10 w-64 rounded-lg bg-white px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
-												type='email'
-												placeholder='Correo Electronico'
-												{...field}
-											/>
-											{meta.touched && meta.error && (
-												<div className='pt-2 text-red-600 font-semibold'>
-													{meta.error}
-												</div>
-											)}
-										</div>
-									)}
-								</Field>
+							<Field name='email'>
+								{({ field, form: { touched, errors }, meta }) => (
+									<div>
+										<input
+											className='text-black  h-10 w-64 rounded-lg bg-white px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
+											type='email'
+											placeholder='Correo Electronico'
+											{...field}
+										/>
+										{meta.touched && meta.error && (
+											<div className='pt-2 text-red-600 font-semibold'>
+												{meta.error}
+											</div>
+										)}
+									</div>
+								)}
+							</Field>
 
-								<div className="mt-5">
-									<button className="outline-none rounded-full " disabled={isSubmitting} type="submit">
-										<img className="hover:border-sky-700 hover:border-2 hover:rounded-full" src={Check}></img>
-									</button>
-								</div>
-							</Form>
-						)}
-					</Formik>
-				</div>
+							<div className="mt-5">
+								<button className="outline-none rounded-full " disabled={isSubmitting} type="submit">
+									<img className="hover:border-sky-700 hover:border-2 hover:rounded-full" src={Check}></img>
+								</button>
+							</div>
+						</Form>
+					)}
+				</Formik>
 			</div>
-			)
+		</div>
+	)
 }
