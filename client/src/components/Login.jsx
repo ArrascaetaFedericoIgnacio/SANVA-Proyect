@@ -10,9 +10,10 @@ export const Login = () => {
   const navigate = useNavigate()
   const Logearse = async (values) => {
     try {
-      const response = await axios.get('https://purebadeploy.onrender.com/user/login', values)
+      console.log(values)
+      const response = await axios.post('https://purebadeploy.onrender.com/user/login', values)
       console.log(response.data)
-      if (response.data === 'Succesfully logged in') {
+      if (response.data === values) {
         localStorage.setItem('user', JSON.stringify(response.data))
 
         navigate('/user')
