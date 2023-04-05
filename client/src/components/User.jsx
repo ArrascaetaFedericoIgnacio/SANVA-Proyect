@@ -10,11 +10,8 @@ export const User = () => {
     const userlocal = localStorage.getItem('user')
     setUserLogin(userlocal)
     console.log(userlocal)
-  })
-
-  useEffect((user) => {
-    const { username, email, birthdate, gender, height, weight } = user
-  }, [user])
+  },[])
+  const { username, email, birthdate, gender, height, weight } = user
 
   
   
@@ -23,7 +20,7 @@ export const User = () => {
       <div className='py-8 flex flex-col justify-between items-center bg-[#6abce2] text-white'>
         <img className='mt-3 rounded-full w-28' src="https://us.123rf.com/450wm/imagevectors/imagevectors1606/imagevectors160600225/58872992-blanco-perfil-de-usuario-icono-en-el-bot%C3%B3n-azul-aislado-en-blanco.jpg" alt="user" />
         <div className='flex items-center gap-2'>
-          <h3 className='py-3'>{username}</h3>
+         {username ? <h3 className='py-3'>{username}</h3> : <h3 className='py-3'>Nombre</h3>} 
           <FaPencilAlt/>
         </div>
         <p>{email}</p>
