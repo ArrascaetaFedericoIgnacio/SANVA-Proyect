@@ -7,10 +7,12 @@ export const User = () => {
   console.log('user', user)
 
   useEffect(() => {
+    console.log('useEffect')
     const userlocal = localStorage.getItem('user')
+    console.log('userlocal', userlocal)
     const userparseado = JSON.parse(userlocal)
-    setUser(userparseado)
     console.log('userparseado', userparseado)
+    setUser(userparseado)
   }, [])
 
   const { username, email, birthdate, gender, height, weight } = user || {}
