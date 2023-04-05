@@ -19,7 +19,7 @@ export const PersonalData = () => {
         values
       )
       console.log(response)
-      localStorage.setItem('user', response)
+      localStorage.setItem('user', response.data)
       navigate('/user')
     } catch (error) {
       console.log(error)
