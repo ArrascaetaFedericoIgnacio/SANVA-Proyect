@@ -130,7 +130,7 @@ export const PersonalData = () => {
                   {({ field, form: { touched, errors }, meta }) => (
                     <div>
                       <div className='flex'>
-                        <input type="number" className="bg-white text-black w-1/2 rounded-[5px] mr-2" placeholder='Talla' {...field}></input>
+                        <input type="number" className="bg-white text-black w-1/2 rounded-[5px] mr-2 py-2" placeholder='Talla' {...field}></input>
                         <p>Mts</p>
                       </div>
                       {meta.touched && meta.error && (
@@ -145,7 +145,7 @@ export const PersonalData = () => {
                   {({ field, form: { touched, errors }, meta }) => (
                     <div>
                       <div className='flex'>
-                        <input type="number" className="bg-white text-black w-1/2 rounded-[5px] mr-2" placeholder='Peso' {...field}></input>
+                        <input type="number" className="bg-white text-black w-1/2 rounded-[5px] mr-2 py-2" placeholder='Peso' {...field}></input>
                         <p>Kg</p>
                       </div>
                       {meta.touched && meta.error && (
