@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { FaPencilAlt } from 'react-icons/fa';
-import { Footer } from './footer';
+import React, { useEffect, useState } from 'react'
+import { FaPencilAlt } from 'react-icons/fa'
+import { Footer } from './footer'
 
 export const User = () => {
-  const [user, setUser] = useState(null);
-  console.log(user);
+  const [user, setUser] = useState(null)
+  console.log('user', user)
 
   useEffect(() => {
-    const userlocal = localStorage.getItem('user');
-    const userparseado= JSON.parse(userlocal)
-    setUser(userparseado);
-    console.log(userparseado);
-  }, []);
+    const userlocal = localStorage.getItem('user')
+    const userparseado = JSON.parse(userlocal)
+    setUser(userparseado)
+    console.log('userparseado', userparseado)
+  }, [])
 
-  const { username, email, birthdate, gender, height, weight } = user || {};
+  const { username, email, birthdate, gender, height, weight } = user || {}
 
   return (
     <div className="h-full w-full text-lg font-semibold">
@@ -24,11 +24,13 @@ export const User = () => {
           alt="user"
         />
         <div className="flex items-center gap-2">
-          {username ? (
+          {username
+            ? (
             <h3 className="py-3">{username}</h3>
-          ) : (
+              )
+            : (
             <h3 className="py-3">Nombre</h3>
-          )}
+              )}
           <FaPencilAlt />
         </div>
         <p>{email}</p>
@@ -66,5 +68,5 @@ export const User = () => {
       </div>
       <Footer />
     </div>
-  );
-};
+  )
+}
