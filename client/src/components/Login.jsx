@@ -10,12 +10,13 @@ export const Login = () => {
   const navigate = useNavigate()
   const Logearse = async (values) => {
     try {
-      console.log(values)
+      console.log('values', values)
       const response = await axios.post('https://purebadeploy.onrender.com/user/login', values)
-      console.log(response.data)
+      console.log('response.data', response.data)
       if (response.data.username === values.username && response.data.password === values.password) {
+        console.log('setItem')
         localStorage.setItem('user', JSON.stringify(response.data))
-
+        console.log('navigate')
         navigate('/user')
       } else if (response.data === 'Wrong password') {
         alert('Wrong password')
