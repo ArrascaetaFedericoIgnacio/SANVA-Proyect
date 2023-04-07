@@ -111,7 +111,7 @@ export const Register = () => {
 			<div className="absolute w-screen h-screen translate-y-20 skew-y-[40deg] bg-[#58afdd]"></div>
 			<div className="absolute w-screen h-screen translate-y-[48rem] skew-y-[40deg] bg-[#3982b8]"></div>
 			<div className="absolute h-screen w-full flex flex-col justify-center items-center xl:pt-8 pt-20">
-				<img className="fixed top-3 right-3 w-32" src={Logo} />
+				<img className="fixed top-3 right-3 w-32 " src={Logo} />
 				<img className='mt-10 rounded-full w-32' src="https://us.123rf.com/450wm/imagevectors/imagevectors1606/imagevectors160600225/58872992-blanco-perfil-de-usuario-icono-en-el-bot%C3%B3n-azul-aislado-en-blanco.jpg" alt="user" />
 				<Formik
 					initialValues={{
@@ -177,7 +177,7 @@ export const Register = () => {
 								)}
 							</Field>
 
-							<div className="mt-5">
+							<div className="mt-3">
 								<button className="outline-none rounded-full " disabled={isSubmitting} type="submit">
 									<img className="hover:border-sky-700 hover:border-2 hover:rounded-full" src={Check}></img>
 								</button>
