@@ -11,7 +11,7 @@ const Diseases = () => {
       <div className=" bg-[#6abce2]">
         <p className="text-center text-sm mt-5">Enfermedades</p>
       </div>
-      <div className="flex justify-between mt-20 px-5 mb-10 bg-[#6abce2]">
+      <div className="flex mt-20 px-5 mb-10 bg-[#6abce2] justify-center">
         <button className="bg-blue-500 text-white py-2rounded-lg font-bold border-none">
         Enfermedades
         </button>
