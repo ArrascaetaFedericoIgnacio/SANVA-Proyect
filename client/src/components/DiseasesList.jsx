@@ -14,10 +14,10 @@ const Diseases = () => {
       </div>
       <div className="flex mt-20 px-5 mb-10 bg-[#6abce2] justify-center">
        {/* usa el icono de virus */}
-       <div classname="p-2 rounded-full border-2 border-white">
+       <div classname="p-2 rounded-full border-2 border-white px-2">
         <BsVirus className="text-3xl text-white" />
        </div>
-        <div classname="p-2 rounded-full border-2 border-white">
+        <div classname="p-2 rounded-full border-2 border-white px-2">
         <BsVirus className="text-3xl text-white" />
         </div>
 
