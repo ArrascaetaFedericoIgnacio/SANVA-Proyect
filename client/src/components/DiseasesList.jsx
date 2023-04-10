@@ -3,6 +3,7 @@ import { Footer } from "./footer";
 import { HiOutlineHeart, HiCalendar } from "react-icons/hi";
 import { BsBuildings } from "react-icons/bs";
 import AccordionData from "./AccodionData";
+import {BsVirus} from "react-icons/bs"
 
 const Diseases = () => {
   return (
@@ -12,12 +13,14 @@ const Diseases = () => {
         <p className="text-center text-sm mt-5">Enfermedades</p>
       </div>
       <div className="flex mt-20 px-5 mb-10 bg-[#6abce2] justify-center">
-        <button className="bg-blue-500 text-white py-2rounded-lg font-bold border-none">
-        Enfermedades
-        </button>
-        <button className="bg-red-500 text-white  py-2 rounded-lg font-bold border-none">
-          Agregar 
-        </button>
+       {/* usa el icono de virus */}
+       <div classname="p-2 rounded-full border-2 border-white">
+        <BsVirus className="text-3xl text-white" />
+       </div>
+        <div classname="p-2 rounded-full border-2 border-white">
+        <BsVirus className="text-3xl text-white" />
+        </div>
+
       </div>
 
       <div className="flex justify-between items-center mt-5">
