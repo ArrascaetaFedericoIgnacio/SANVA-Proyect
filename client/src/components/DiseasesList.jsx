@@ -2,7 +2,7 @@
 
 const Diseases = () => {
   return (
-    <div className="max-w-360 mx-auto">
+    <div className="max-w-360 mx-auto h-full">
       <h2 className="text-center text-2xl font-bold mt-20">Enfermedades</h2>
       <div>
         <p className="text-center text-sm mt-5">
@@ -10,11 +10,11 @@ const Diseases = () => {
         </p>
 
       </div>
-      <div className="flex justify-between mt-20 mb-10">
+      <div className="flex justify-between mt-20 mb-10 bg-[#6abce2]">
         <button className="bg-blue-500 text-white px-4 py-2 rounded-lg font-bold border-none">
           Ver Enfermedades
         </button>
-        <button className="bg-red-500 text-white px-4 py-2 rounded-lg font-bold border-none">
+        <button className="bg-red-500 text-white px-6 py-2 rounded-lg font-bold border-none">
           Agregar Enfermedad
         </button>
       </div>
