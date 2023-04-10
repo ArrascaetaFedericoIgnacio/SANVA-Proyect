@@ -14,11 +14,13 @@ export const PersonalData = () => {
       console.log(values)
       values.height = values.height.toString()
       values.weight = values.weight.toString()
-      const resultado = await axios.post(
-        'http://localhost:8000/user',
+      const response = await axios.post(
+        'https://purebadeploy.onrender.com/user',
         values
       )
-      console.log(resultado)
+      console.log(response)
+      localStorage.removeItem('user')
+      localStorage.setItem('user', JSON.stringify(response.data))
       navigate('/user')
     } catch (error) {
       console.log(error)
@@ -128,7 +130,7 @@ export const PersonalData = () => {
                   {({ field, form: { touched, errors }, meta }) => (
                     <div>
                       <div className='flex'>
-                        <input type="number" className="bg-white text-black w-1/2 rounded-[5px] mr-2" placeholder='Talla' {...field}></input>
+                        <input type="number" className="bg-white text-black w-1/2 rounded-[5px] mr-2 py-2" placeholder='Talla' {...field}></input>
                         <p>Mts</p>
                       </div>
                       {meta.touched && meta.error && (
@@ -143,7 +145,7 @@ export const PersonalData = () => {
                   {({ field, form: { touched, errors }, meta }) => (
                     <div>
                       <div className='flex'>
-                        <input type="number" className="bg-white text-black w-1/2 rounded-[5px] mr-2" placeholder='Peso' {...field}></input>
+                        <input type="number" className="bg-white text-black w-1/2 rounded-[5px] mr-2 py-2" placeholder='Peso' {...field}></input>
                         <p>Kg</p>
                       </div>
                       {meta.touched && meta.error && (
