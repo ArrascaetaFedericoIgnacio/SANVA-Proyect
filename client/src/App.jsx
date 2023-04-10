@@ -8,7 +8,7 @@ import { Verification } from './components/Verification'
 import Tomas from './components/Tomas'
 import Alianza from './components/Alianza'
 import { PersonalData } from './components/PersonalData'
-import {DiseasesList} from './components/DiseasesList'
+import DiseasesList from  './components/DiseasesList'
 
 function App() {
   return (
