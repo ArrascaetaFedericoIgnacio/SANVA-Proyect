@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FaPencilAlt } from 'react-icons/fa'
 import { Footer } from './footer'
-import { NavLink } from 'react-router-dom'
 
 export const User = () => {
   const [user, setUser] = useState(null)
@@ -63,9 +62,7 @@ export const User = () => {
       <div className="px-4 pt-8 pb-24 bg-[#3982b8] text-white">
         <p className="mb-3">Informacion Medica</p>
         <div className="flex flex-col items-start px-10 gap-3">
-           <NavLink to="/diseases" className="text-black">
-            <p>Enfermedades</p>
-          </NavLink>
+          <p>Enfermedades</p>
           <p>Medicamento</p>
           <p>Alergias</p>
           <p>Insumos o Servicios</p>
