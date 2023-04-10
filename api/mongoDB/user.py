@@ -1,5 +1,5 @@
 from mongoDB.mySchema.userSchema import user_schema
-from schemas import User, Login
+from mongoDB.mySchema.models import User, Login
 from mongoDB.client import db
 
 # def post_user(user):
