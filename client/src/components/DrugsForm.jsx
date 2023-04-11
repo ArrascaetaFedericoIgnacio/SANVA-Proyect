@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Footer } from './footer.jsx'
 import { Formik, Form, Field } from 'formik'
 import { useNavigate } from 'react-router'
 
 const DrugsForm = () => {
   const navigate = useNavigate()
+
+  const [reminderActive, setReminderActive] = useState(false)
 
   const PostInfo = async (values) => {
     try {
@@ -72,7 +74,7 @@ const DrugsForm = () => {
         validate={validateFields}>
         {({ isSubmitting }) => (
           <Form>
-            <div className='flex flex-col py-9 gap-3 px-14 bg-[#58afdd] text-white'>
+            <div className='flex flex-col py-9 gap-3 bg-[#58afdd] text-white'>
               <div className='flex justify-center items-center gap-2'>
                 <p>Agregar Medicamento</p>
               </div>
@@ -80,7 +82,7 @@ const DrugsForm = () => {
                       name='name'
                     >
                       {({ field, form: { touched, errors }, meta }) => (
-                        <div>
+                        <div className="w-screen flex bg-white text-slate-400">
                           <label>Nombre </label>
                           <input type="text" className="bg-white" {...field}></input>
                           {meta.touched && meta.error && (
@@ -88,11 +90,134 @@ const DrugsForm = () => {
                               {meta.error}
                             </div>
                           )}
-                        </div>
+                          </div>
+                      )}
+                    </Field>
+                    <Field
+                      name='type'
+                    >
+                      {({ field, form: { touched, errors }, meta }) => (
+                        <div className="w-screen flex bg-white text-slate-400">
+                          <label>Tipo </label>
+                          <input type="text" className="bg-white" {...field}></input>
+                          {meta.touched && meta.error && (
+                            <div className='pt-2 text-red-600 font-semibold'>
+                              {meta.error}
+                            </div>
+                          )}
+                          </div>
+                      )}
+                    </Field>
+                    <Field
+                      name='doseAmount'
+                    >
+                      {({ field, form: { touched, errors }, meta }) => (
+                        <div className="w-screen flex bg-white text-slate-400">
+                          <label>Cantidad por dosis </label>
+                          <input type="number" className="bg-white" {...field}></input>
+                          {meta.touched && meta.error && (
+                            <div className='pt-2 text-red-600 font-semibold'>
+                              {meta.error}
+                            </div>
+                          )}
+                          </div>
+                      )}
+                    </Field>
+                    <Field
+                      name='doseFrequency'
+                    >
+                      {({ field, form: { touched, errors }, meta }) => (
+                        <div className="w-screen flex bg-white text-slate-400">
+                          <label>Frecuencia de dosis </label>
+                          <input type="text" className="bg-white" {...field}></input>
+                          {meta.touched && meta.error && (
+                            <div className='pt-2 text-red-600 font-semibold'>
+                              {meta.error}
+                            </div>
+                          )}
+                          </div>
+                      )}
+                    </Field>
+                    <Field
+                      name='firstDoseHour'
+                    >
+                      {({ field, form: { touched, errors }, meta }) => (
+                        <div className="w-screen flex bg-white text-slate-400">
+                          <label>Hora de primera dosis </label>
+                          <input type="text" className="bg-white" {...field}></input>
+                          {meta.touched && meta.error && (
+                            <div className='pt-2 text-red-600 font-semibold'>
+                              {meta.error}
+                            </div>
+                          )}
+                          </div>
+                      )}
+                    </Field>
+                    <Field
+                      name='dosesDays'
+                    >
+                      {({ field, form: { touched, errors }, meta }) => (
+                        <div className="w-screen flex bg-white text-slate-400">
+                          <label>Días de dosis </label>
+                          <input type="number" className="bg-white" {...field}></input>
+                          {meta.touched && meta.error && (
+                            <div className='pt-2 text-red-600 font-semibold'>
+                              {meta.error}
+                            </div>
+                          )}
+                          </div>
+                      )}
+                    </Field>
+                    <Field
+                      name='inventory'
+                    >
+                      {({ field, form: { touched, errors }, meta }) => (
+                        <div className="w-screen flex bg-white text-slate-400">
+                          <label>Inventario </label>
+                          <input type="number" className="bg-white" {...field}></input>
+                          {meta.touched && meta.error && (
+                            <div className='pt-2 text-red-600 font-semibold'>
+                              {meta.error}
+                            </div>
+                          )}
+                          </div>
+                      )}
+                    </Field>
+                    <Field
+                      name='reminder'
+                    >
+                      {({ field, form: { touched, errors }, meta }) => (
+                        <div className="w-screen flex bg-white text-slate-400">
+                          <label>Recordatorio </label>
+                          {reminderActive
+                            ? <button type="button" className="bg-black" onClick={() => { setReminderActive(false) }}{...field}></button>
+                            : <button type="button" className="bg-white" onClick={() => { setReminderActive(true) }}{...field}></button>
+                          }
+                          {meta.touched && meta.error && (
+                            <div className='pt-2 text-red-600 font-semibold'>
+                              {meta.error}
+                            </div>
+                          )}
+                          </div>
+                      )}
+                    </Field>
+                    <Field
+                      name='lackOfInventoryAlert'
+                    >
+                      {({ field, form: { touched, errors }, meta }) => (
+                        <div className="w-screen flex bg-white text-slate-400">
+                          <label>Alerta por falta de inventario </label>
+                          <input type="radio" className="bg-white" {...field}></input>
+                          {meta.touched && meta.error && (
+                            <div className='pt-2 text-red-600 font-semibold'>
+                              {meta.error}
+                            </div>
+                          )}
+                          </div>
                       )}
                     </Field>
                   </div>
-                </Form>)}
+                  </Form>)}
                 </Formik>
         </main>
         <footer>
