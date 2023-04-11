@@ -5,6 +5,7 @@ from mongoDB.client import db
 def search_user(field: str, value):
     try:
         user = db.users.find_one({field: value})
+        print("ASDASd",user)
         return User(**user_schema(user))
     except Exception as e:
         return {"error": str(e)}

@@ -1,16 +1,16 @@
 from fastapi import APIRouter, HTTPException, status
-from mongoDB.user import search_user
+from mongoDB.user import search_take
 from mongoDB.mySchema.models import Take
 from mongoDB.mySchema.hooks import take_schema, takes_schema
 from mongoDB.client import db
 
 app = APIRouter(prefix="/user", tags=["User"], responses={status.HTTP_404_NOT_FOUND: {"description": "Not found"}})
 
-# @app.get("/", response_model=list[Take])
+# @app.get("/", response_model=list[Take]) # sin finalizar
 # async def index():
 #     return takes
 
-@app.post("/", response_model=Take)
+@app.post("/", response_model=Take) #sin finalizar
 async def post_user(take: Take):
     if type(search_take("email", user.email)) == User:
         raise HTTPException(

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from mongoDB.routes.users import usersRoute
+from mongoDB.routes import usersRoute
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
