@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { Footer } from './footer.jsx'
 import { Formik, Form, Field } from 'formik'
 import { useNavigate } from 'react-router'
+import { CgPill } from 'react-icons/cg'
+import { BiPlusMedical } from 'react-icons/bi'
+import { BsCircle } from 'react-icons/bs'
 
 const DrugsForm = () => {
   const navigate = useNavigate()
@@ -60,10 +63,20 @@ const DrugsForm = () => {
 
   return (
     <div>
-        <header className="w-screen h-52 bg-[#4194cb] text-white flex justify-center items-center">
+        <header className="w-screen h-52 bg-[#4194cb] text-white flex justify-center items-center flex-col">
             <h1>Medicamentos</h1>
-            <img></img>
-            <img></img>
+            <div className="flex flex-row space-x-7 mt-12">
+              <div>
+                <BsCircle className="w-11 h-11"/>
+                <CgPill className="w-8 h-8 absolute -translate-y-[38px] translate-x-[6px]"/>
+              </div>
+              <div>
+                <BsCircle className="w-11 h-11"/>
+                <CgPill className="w-8 h-8 absolute -translate-y-[38px] translate-x-[6px]"/>
+                <BiPlusMedical className="w-3 h-3 absolute text-black -translate-y-6 translate-x-5"/>
+              </div>
+
+            </div>
         </header>
         <main>
         <Formik
