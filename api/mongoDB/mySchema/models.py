@@ -15,20 +15,42 @@ class Login(BaseModel):
     username : str
     password : str
 
-class Intake(BaseModel):
+class Take(BaseModel):
     id : Optional[str]
     type : str
     stock : str
-    input_per_day : str
-    period_of_use : str
+    inputPerDay : str
+    periodOfUse : str
     provider : str
     comments : Optional[str]
 
-class Drugs(BaseModel):
+class Drug(BaseModel):
     id : Optional[str]
+    name : str
+    type : str
+    doseAmount : str
+    doseFrequency : str
+    firstDoseHour : str
+    dosingDays : int
+    inventory : int
+    reminder : bool
+    lackOfInventoryAlert : bool
 
-class Diseases(BaseModel):
+class Disease(BaseModel):
     id : Optional[str]
+    name : str
+    medicName : str
+    treatment : str
+    nextDate : str
+    alertForDate : bool
+    comments : Optional[str]
 
-class Allergies(BaseModel):
+
+class Allergie(BaseModel):
     id : Optional[str]
+    allergieName : str
+    vaccine : str
+    inventory : int
+    vaccineFrequency : str
+    vaccineReminder : bool
+    comments : Optional[str]

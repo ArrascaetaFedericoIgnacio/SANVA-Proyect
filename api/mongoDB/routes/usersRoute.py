@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, status
 from mongoDB.user import search_user
 from mongoDB.mySchema.models import User, Login
-from mongoDB.mySchema.userSchema import user_schema, users_schema
+from mongoDB.mySchema.hooks import user_schema, users_schema
 from mongoDB.client import db
 from bson import ObjectId
 

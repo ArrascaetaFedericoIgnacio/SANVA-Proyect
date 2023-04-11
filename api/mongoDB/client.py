@@ -7,7 +7,7 @@ load_dotenv()
 
 try:
     db = MongoClient(os.getenv("MONGO_URI"))
-    db_name = "pruebas" 
+    db_name = "SANVA" 
     db = db[db_name]
     print("Connected to MongoDB")
 except ConnectionFailure as e:
