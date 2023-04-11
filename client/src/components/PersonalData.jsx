@@ -15,7 +15,7 @@ export const PersonalData = () => {
       values.height = values.height.toString()
       values.weight = values.weight.toString()
       const response = await axios.post(
-        'https://purebadeploy.onrender.com/user',
+        'https://apisanva.onrender.com/user',
         values
       )
       console.log(response)
