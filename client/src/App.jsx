@@ -9,6 +9,8 @@ import Tomas from './components/Tomas'
 import Alianza from './components/Alianza'
 import { PersonalData } from './components/PersonalData'
 import DiseasesList from  './components/DiseasesList'
+import NuevaToma from './components/NuevaToma'
+import FormEnfermedades from './components/Form/FormEnfermedades'
 
 function App() {
   return (
@@ -20,10 +22,12 @@ function App() {
           <Route path="/user" element={<User />} />
           <Route path="/verification" element={<Verification />} />
           <Route path='/tomas' element={<Tomas />} />
+          <Route path='/nuevatoma' element={<NuevaToma />} />
           <Route path='/alianza' element={<Alianza />} />
 
           <Route path='/PersonalData' element={<PersonalData />} />
           <Route path='/DiseasesList' element={<DiseasesList />} />
+          <Route path='/enfermedades' element={<FormEnfermedades />} />
         </Routes>
 
       </div>
