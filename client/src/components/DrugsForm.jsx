@@ -7,6 +7,7 @@ const DrugsForm = () => {
   const navigate = useNavigate()
 
   const [reminderActive, setReminderActive] = useState(false)
+  const [alertActive, setAlertActive] = useState(false)
 
   const PostInfo = async (values) => {
     try {
@@ -50,6 +51,13 @@ const DrugsForm = () => {
     return errors
   }
 
+  const handleReminderClick = () => {
+    setReminderActive(prevState => !prevState)
+  }
+  const handleAlertClick = () => {
+    setAlertActive(prevState => !prevState)
+  }
+
   return (
     <div>
         <header className="w-screen h-52 bg-[#4194cb] text-white">
@@ -67,8 +75,8 @@ const DrugsForm = () => {
           firstDoseHour: '',
           dosesDays: 0,
           inventory: 0,
-          reminder: true,
-          lackOfInventoryAlert: true
+          reminder: reminderActive,
+          lackOfInventoryAlert: alertActive
         }}
         onSubmit={HandleSubmit}
         validate={validateFields}>
@@ -189,10 +197,14 @@ const DrugsForm = () => {
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="w-screen flex bg-white text-slate-400">
                           <label>Recordatorio </label>
-                          {reminderActive
-                            ? <button type="button" className="bg-black" onClick={() => { setReminderActive(false) }}{...field}></button>
-                            : <button type="button" className="bg-white" onClick={() => { setReminderActive(true) }}{...field}></button>
-                          }
+                          {/* {reminderActive */}
+                            {/* ?  */}
+                            <button type="button" className={`${reminderActive ? 'bg-slate-500' : 'bg-slate-300'} border-[1px] rounded-[20%] border-black h-10 flex justify-center items-center`} onClick={handleReminderClick}{...field}>
+                                <div className={`transition ease-in-out w-8 h-8 rounded-full ${reminderActive ? 'translate-x-3' : '-translate-x-3'} ${reminderActive ? 'bg-slate-300' : 'bg-slate-500'}`}></div>
+                            </button>
+
+                            {/* : <button type="button" className="bg-white" onClick={() => { setReminderActive(true) }}{...field}></button> */}
+                          {/* } */}
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
@@ -207,12 +219,14 @@ const DrugsForm = () => {
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="w-screen flex bg-white text-slate-400">
                           <label>Alerta por falta de inventario </label>
-                          <input type="radio" className="bg-white" {...field}></input>
-                          {meta.touched && meta.error && (
+                          <button type="button" className={`${alertActive ? 'bg-slate-500' : 'bg-slate-300'} border-[1px] rounded-[20%] border-black h-10 flex justify-center items-center`} onClick={handleAlertClick}{...field}>
+                                <div className={`transition ease-in-out w-8 h-8 rounded-full ${alertActive ? 'translate-x-3' : '-translate-x-3'} ${alertActive ? 'bg-slate-300' : 'bg-slate-500'}`}></div>
+                            </button>
+                            {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
                             </div>
-                          )}
+                            )}
                           </div>
                       )}
                     </Field>
