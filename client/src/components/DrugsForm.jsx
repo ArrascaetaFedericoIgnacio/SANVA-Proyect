@@ -87,9 +87,9 @@ const DrugsForm = () => {
         initialValues={{
           name: '',
           type: '',
-          doseAmount: '',
-          doseFrequency: '',
-          firstDoseHour: '',
+          doseAmount: 0,
+          doseFrequency: '8 horas',
+          firstDoseHour: '12 hs',
           dosesDays: 0,
           inventory: 0,
           reminder: reminderActive,
@@ -109,7 +109,7 @@ const DrugsForm = () => {
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="w-screen flex bg-white text-slate-400 p-3">
                           <label className="w-[50%]">Nombre </label>
-                          <input type="text" className="bg-white" {...field}></input>
+                          <input type="text" className="bg-white" placeholder="Nombre" {...field}></input>
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
@@ -121,11 +121,17 @@ const DrugsForm = () => {
                     <hr></hr>
                     <Field
                       name='type'
+                      as="select"
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="w-screen flex bg-white text-slate-400 p-3">
                           <label className="w-[50%]">Tipo </label>
-                          <input type="text" className="bg-white" {...field}></input>
+                          <select name="type" className="bg-white" {...field}>
+                            <option value="píldora">Píldora</option>
+                            <option value="polvo">Polvo</option>
+                            <option value="líquido">Líquido</option>
+                            <option value="inyectable">Inyectable</option>
+                          </select>
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
@@ -141,7 +147,7 @@ const DrugsForm = () => {
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="w-screen flex bg-white text-slate-400 p-3">
                           <label className="w-[50%]">Cantidad por dosis </label>
-                          <input type="number" className="bg-white" {...field}></input>
+                          <input type="number" className="bg-white" placeholder="1" {...field}></input>
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
@@ -157,7 +163,12 @@ const DrugsForm = () => {
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="w-screen flex bg-white text-slate-400 p-3">
                           <label className="w-[50%]">Frecuencia de dosis </label>
-                          <input type="text" className="bg-white" {...field}></input>
+                          <select name="doseFrequency" className="bg-white" {...field}>
+                            <option value="4 hs">4 hs</option>
+                            <option value="8 hs">8 hs</option>
+                            <option value="12 hs">12 hs</option>
+                            <option value="24 hs">24 hs</option>
+                          </select>
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
@@ -173,8 +184,17 @@ const DrugsForm = () => {
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="w-screen flex bg-white text-slate-400 p-3">
                           <label className="w-[50%]">Hora de primera dosis </label>
-                          <input type="text" className="bg-white" {...field}></input>
-                          {meta.touched && meta.error && (
+                          <select name="firstDoseHour" className="bg-white" {...field}>
+                            <option value="7 AM">7 AM</option>
+                            <option value="8 AM">8 AM</option>
+                            <option value="9 AM">9 AM</option>
+                            <option value="10 AM">10 AM</option>
+                            <option value="11 AM">11 AM</option>
+                            <option value="12 AM">12 AM</option>
+                            <option value="1 PM">1 PM</option>
+                            <option value="2 PM">2 PM</option>
+                            <option value="3 PM">3 PM</option>
+                          </select>                          {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
                             </div>
