@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Footer } from "./footer"
 import { CgPill } from "react-icons/cg"
 import { Link } from "react-router-dom"
+import AccordionList from "./AcordionLista"
 
 const MedicinesList = () => {
 
@@ -12,7 +13,7 @@ const MedicinesList = () => {
     }
     setOpen(index)
   }
-  const ListaEnfermdedades = [
+  const ListaMedicamentos = [
     {
       nombre: "Covid-19",
       medico: "Dr. Juan Perez",
@@ -63,6 +64,17 @@ const MedicinesList = () => {
       <h2 className="text-xl py-2 bg-[#3982b8] text-white">
         Lista de Medicamentos
       </h2>
+      {
+        ListaMedicamentos?.map((elem, i) => (
+          <AccordionList key={i} open={open === i}
+            toggle={() => toggle(i)}
+            title={elem.nombre}
+            medico={elem.medico}
+            medicamento={elem.medicamento}
+            tratamiento={elem.tratamiento}
+          />
+        ))
+      }
       <Footer />
     </div>
   )

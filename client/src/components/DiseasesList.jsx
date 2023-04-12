@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Footer } from "./footer";
 import { FaBacterium } from "react-icons/fa";
 import { BsBuildings } from "react-icons/bs";
-import AccordionList from "./Form/AcordionLista";
+import AccordionList from "./AcordionLista";
 import { Link } from "react-router-dom";
 
 const Diseases = () => {
@@ -23,25 +23,25 @@ const Diseases = () => {
     },
     {
       nombre: "Nombre",
-      medico: "Dr. Ibra",
+      medico: "Dr. Ibra Cardozo",
       medicamento: "Medicamento",
       tratamiento: "Tratamiento",
     },
     {
       nombre: "Nombre",
-      medico: "Dr. Fede",
+      medico: "Dr. Fede Arrascaeta",
       medicamento: "Medicamento",
       tratamiento: "Tratamiento",
     },
     {
       nombre: "Nombre",
-      medico: "Dr. German",
+      medico: "Dr. German German",
       medicamento: "Medicamento",
       tratamiento: "Tratamiento",
     },
     {
       nombre: "Nombre",
-      medico: "Dr. Denis",
+      medico: "Dr. Denis Gabriel",
       medicamento: "Medicamento",
       tratamiento: "Tratamiento",
     },
