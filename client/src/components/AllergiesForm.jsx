@@ -3,9 +3,8 @@ import { Footer } from './footer.jsx'
 import { Link } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 import { useNavigate } from 'react-router'
-import { CgPill } from 'react-icons/cg'
 import { BiPlusMedical } from 'react-icons/bi'
-import { BsCircle } from 'react-icons/bs'
+import { BsCircle, BsVirus } from 'react-icons/bs'
 import { checkSwitch } from './switch.js'
 import axios from 'axios'
 
@@ -14,7 +13,6 @@ const DrugsForm = () => {
 
   const PostInfo = async (values) => {
     try {
-      values.doseAmount.toString()
       console.log(values)
       const response = await axios.post(
         'https://apisanva.onrender.com/user',
@@ -34,33 +32,21 @@ const DrugsForm = () => {
   const validateFields = (values) => {
     const errors = {}
 
-    // validate name
-    if (!values.name) {
-      errors.name = 'El nombre del medicamento es obligatorio'
+    // validate allergieNname
+    if (!values.allergieNname) {
+      errors.allergieNname = 'El nombre de la alergia es obligatorio'
     }
-    // verify type
-    if (!values.type) {
-      errors.type = 'El tipo de medicamento es obligatorio'
-    }
-    // verify doseAmount
-    if (!values.doseAmount) {
-      errors.doseAmount = 'La cantidad por dosis es obligatoria'
-    }
-    // verify doseFrequency
-    if (!values.doseFrequency) {
-      errors.doseFrequency = 'La frecuencia de la dosis es obligatoria'
-    }
-    // verify firstDoseHour
-    if (!values.firstDoseHour) {
-      errors.firstDoseHour = 'La hora de la primer dosis es obligatoria'
-    }
-    // verify dosingDays
-    if (!values.dosingDays) {
-      errors.dosingDays = 'Los días de la dosis son obligatorios'
+    // verify vaccine
+    if (!values.vaccine) {
+      errors.vaccine = 'El nombre de la vacuna es obligatorio'
     }
     // verify inventory
     if (!values.inventory) {
       errors.inventory = 'El inventario es obligatorio'
+    }
+    // verify vaccineFrequency
+    if (!values.vaccineFrequency) {
+      errors.vaccineFrequency = 'La frecuencia de la vacuna es obligatoria'
     }
 
     return errors
@@ -69,18 +55,18 @@ const DrugsForm = () => {
   return (
     <div>
         <header className="w-screen h-52 bg-[#4194cb] text-white flex justify-center items-center flex-col">
-            <h1>Medicamentos</h1>
+            <h1>Alergias</h1>
             <div className="flex flex-row space-x-7 mt-12">
-              <Link to="/DrugsList">
+              <Link to="/allergieslist">
                 <div>
                   <BsCircle className="w-11 h-11"/>
-                  <CgPill className="w-8 h-8 absolute -translate-y-[38px] translate-x-[6px]"/>
+                  <BsVirus className="w-8 h-8 absolute -translate-y-[38px] translate-x-[6px]"/>
                 </div>
               </Link>
-              {/* <Link to="/DrugsForm"> */}
+              {/* <Link to="/AllergiesForm"> */}
                 <div>
                   <BsCircle className="w-11 h-11"/>
-                  <CgPill className="w-8 h-8 absolute -translate-y-[38px] translate-x-[6px]"/>
+                  <BsVirus className="w-8 h-8 absolute -translate-y-[38px] translate-x-[6px]"/>
                   <BiPlusMedical className="w-3 h-3 absolute text-black -translate-y-6 translate-x-5"/>
                 </div>
               {/* </Link> */}
@@ -89,19 +75,16 @@ const DrugsForm = () => {
         <main>
         <Formik
         initialValues={{
-          name: '',
-          type: '',
-          doseAmount: 0,
-          doseFrequency: '8 horas',
-          firstDoseHour: '12 hs',
-          dosingDays: 0,
+          allergieName: '',
+          vaccine: '',
           inventory: 0,
-          reminder: false,
-          lackOfInventoryAlert: false
+          vaccineFrequency: '',
+          vaccineReminder: false,
+          comments: ''
         }}
         onSubmit={HandleSubmit}
         validate={validateFields}>
-        {({ isSubmitting }) => (
+        {/* {({ isSubmitting }) => (
           <Form className="text-black bg-white">
             <div className='flex flex-col bg-[#58afdd] text-white'>
               {/* <div className='flex justify-center items-center gap-2 py-5[20px]2'>
@@ -111,14 +94,14 @@ const DrugsForm = () => {
                      type="submit">
                         Agregar Medicamento
                   </button>
-                    <Field
+                    {/* <Field
                       name='name'
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
+                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
                           <label className="w-[50%]">Nombre </label>
-                          <input type="text" className="bg-white w-[50%] mr-5 h-9 w-48 text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="Nombre" {...field}></input>
+                          <input type="text" className="bg-white w-[50%] text-right mr-5" placeholder="Nombre" {...field}></input>
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
@@ -135,9 +118,9 @@ const DrugsForm = () => {
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
+                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
                           <label className="w-[50%]">Tipo </label>
-                          <select name="type" className="bg-white w-[50%] rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" {...field}>
+                          <select name="type" className="bg-white" {...field}>
                             <option value="píldora">Píldora</option>
                             <option value="polvo">Polvo</option>
                             <option value="líquido">Líquido</option>
@@ -158,9 +141,9 @@ const DrugsForm = () => {
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
+                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
                           <label className="w-[50%]">Cantidad por dosis </label>
-                          <input type="number" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="1" {...field}></input>
+                          <input type="number" className="bg-white w-[50%] text-right mr-5" placeholder="1" {...field}></input>
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
@@ -176,9 +159,9 @@ const DrugsForm = () => {
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
+                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
                           <label className="w-[50%]">Frecuencia de dosis </label>
-                          <select name="doseFrequency" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" {...field}>
+                          <select name="doseFrequency" className="bg-white" {...field}>
                             <option value="4 hs">4 hs</option>
                             <option value="8 hs">8 hs</option>
                             <option value="12 hs">12 hs</option>
@@ -199,9 +182,9 @@ const DrugsForm = () => {
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
+                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
                           <label className="w-[70%]">Hora de primera dosis </label>
-                          <select name="firstDoseHour" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" {...field}>
+                          <select name="firstDoseHour" className="bg-white" {...field}>
                             <option value="7 AM">7 AM</option>
                             <option value="8 AM">8 AM</option>
                             <option value="9 AM">9 AM</option>
@@ -222,13 +205,13 @@ const DrugsForm = () => {
                     </Field>
 
                     <Field
-                      name='dosingDays'
+                      name='dosesDays'
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
+                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
                           <label className="w-[50%]">Días de dosis </label>
-                          <input type="number" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" {...field}></input>
+                          <input type="number" className="bg-white w-[50%] text-right mr-5" {...field}></input>
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
@@ -244,9 +227,9 @@ const DrugsForm = () => {
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
+                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
                           <label className="w-[50%]">Inventario </label>
-                          <input type="number" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" {...field}></input>
+                          <input type="number" className="bg-white w-[50%] text-right mr-5" {...field}></input>
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
@@ -260,7 +243,7 @@ const DrugsForm = () => {
                     <Field name="reminder">
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                          <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
+                          <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
                             <label className="w-[50%]">Recordatorio: </label>
                                 <input
                                   className={checkSwitch}
@@ -285,7 +268,7 @@ const DrugsForm = () => {
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
+                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
                           <label className="w-[70%]">Alerta por falta de inventario: </label>
                                 <input
                                   className={checkSwitch}
@@ -307,7 +290,7 @@ const DrugsForm = () => {
 
                   </div>
                   </Form>)}
-                </Formik>
+                </Formik> */} */}
         </main>
         <footer>
 
