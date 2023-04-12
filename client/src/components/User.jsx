@@ -63,12 +63,18 @@ export const User = () => {
       <div className="px-4 pt-8 pb-24 bg-[#3982b8] text-white">
         <p className="mb-3">Informacion Medica</p>
         <div className="flex flex-col items-start px-10 gap-3">
-          <Link to="/enfermedades">
+          <Link to="/diseaseslist">
             <p>Enfermedades</p>
           </Link>
-          <p>Medicamento</p>
-          <p>Alergias</p>
-          <p>Insumos o Servicios</p>
+          <Link to="/medicineslist">
+            <p>Medicamento</p>
+          </Link>
+          <Link to="/allergieslist">
+            <p>Alergias</p>
+          </Link>
+          <Link to="/serviceslist">
+            <p>Insumos o Servicios</p>
+          </Link>
         </div>
       </div>
       <Footer />
