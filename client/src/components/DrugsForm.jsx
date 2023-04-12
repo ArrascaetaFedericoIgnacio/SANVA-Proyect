@@ -26,11 +26,11 @@ const DrugsForm = () => {
     }
   }
 
-  const HandleSubmit = (values, { setSubmitting }) => {
-    setSubmitting(false)
-    PostInfo(values)
-    navigate('/user')
-  }
+  // const HandleSubmit = (values, { setSubmitting }) => {
+  //   setSubmitting(false)
+  //   PostInfo(values)
+  //   navigate('/user')
+  // }
 
   const validateFields = (values) => {
     const errors = {}
@@ -92,10 +92,10 @@ const DrugsForm = () => {
           firstDoseHour: '12 hs',
           dosesDays: 0,
           inventory: 0,
-          reminder: reminderActive,
-          lackOfInventoryAlert: alertActive
+          reminder: false,
+          lackOfInventoryAlert: false
         }}
-        onSubmit={HandleSubmit}
+        // onSubmit={HandleSubmit}
         validate={validateFields}>
         {({ isSubmitting }) => (
           <Form>
@@ -238,12 +238,12 @@ const DrugsForm = () => {
                     <Field
                       name='reminder'
                     >
-                      {({ field, form: { touched, errors }, meta }) => (
-                        <div className="w-screen flex bg-white text-slate-400 space-x-[180px] p-3">
+                      {({ field, form: { touched, errors }, meta, setFieldValue }) => (
+                        <div className="w-screen flex bg-white text-slate-400 space-x-16 p-3">
                           <label className="w-[50%]">Recordatorio </label>
-                            <button type="button" className={`${reminderActive ? 'bg-slate-500' : 'bg-slate-300'} border-[1px] rounded-[20%] border-black h-10 flex justify-center items-center`} onClick={handleReminderClick}{...field}>
-                                <div className={`transition ease-in-out w-8 h-8 rounded-full ${reminderActive ? 'translate-x-3' : '-translate-x-3'} ${reminderActive ? 'bg-slate-300' : 'bg-slate-500'}`}></div>
-                            </button>
+                            <div className={`${reminderActive ? 'bg-slate-500' : 'bg-slate-300'} border-[1px] rounded-[20%] border-black w-16 h-10 flex justify-center items-center`}>
+                                <input type="checkbox" onChange={(e) => setFieldValue(e.target.checked)} name="reminder" className={`transition ease-in-out w-8 h-8 rounded-full ${reminderActive ? 'translate-x-3' : '-translate-x-3'} ${reminderActive ? 'bg-slate-300' : 'bg-slate-500'}`} onClick={handleReminderClick} {...field}></input>
+                            </div>
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
@@ -259,9 +259,9 @@ const DrugsForm = () => {
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="w-screen flex bg-white text-slate-400 space-x-16 p-3">
                           <label className="w-[50%]">Alerta por falta de inventario </label>
-                          <button type="button" className={`${alertActive ? 'bg-slate-500' : 'bg-slate-300'} border-[1px] rounded-[20%] border-black h-10 flex justify-center items-center`} onClick={handleAlertClick}{...field}>
-                                <div className={`transition ease-in-out w-8 h-8 rounded-full ${alertActive ? 'translate-x-3' : '-translate-x-3'} ${alertActive ? 'bg-slate-300' : 'bg-slate-500'}`}></div>
-                            </button>
+                          <div className={`${alertActive ? 'bg-slate-500' : 'bg-slate-300'} border-[1px] rounded-[20%] border-black w-16 h-10 flex justify-center items-center`}>
+                                <div type="checkbox" name="lackOfInventoryAlert" className={`transition ease-in-out w-8 h-8 rounded-full ${alertActive ? 'translate-x-3' : '-translate-x-3'} ${alertActive ? 'bg-slate-300' : 'bg-slate-500'}`} onClick={handleAlertClick}{...field}></div>
+                            </div>
                             {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
