@@ -33,22 +33,22 @@ const DrugsForm = () => {
   const validateFields = (values) => {
     const errors = {}
 
-    // // validate name
-    // if (!values.birthdate) {
-    //   errors.birthdate = 'La fecha de nacimiento es obligatoria'
-    // }
-    // // verify password
-    // if (!values.gender) {
-    //   errors.gender = 'El género es obligatorio'
-    // }
-    // // verify password
-    // if (!values.height) {
-    //   errors.height = 'La altura es obligatoria'
-    // }
-    // // verify password
-    // if (!values.weight) {
-    //   errors.weight = 'El peso es obligatorio'
-    // }
+    // validate name
+    if (!values.name) {
+      errors.birthdate = 'El nombre del medicamento es obligatorio'
+    }
+    // verify password
+    if (!values.type) {
+      errors.type = 'El tipo de medicamento es obligatorio'
+    }
+    // verify password
+    if (!values.doseAmount) {
+      errors.doseAmount = 'La cantidad por dosis es obligatoria'
+    }
+    // verify password
+    if (!values.doseFrequency) {
+      errors.doseFrequency = 'La frecuencia de la dosis es obligatoria'
+    }
 
     return errors
   }
