@@ -14,6 +14,7 @@ const DrugsForm = () => {
 
   const PostInfo = async (values) => {
     try {
+      values.doseAmount.toString()
       console.log(values)
       const response = await axios.post(
         'https://apisanva.onrender.com/user',
@@ -53,9 +54,9 @@ const DrugsForm = () => {
     if (!values.firstDoseHour) {
       errors.firstDoseHour = 'La hora de la primer dosis es obligatoria'
     }
-    // verify dosesDays
-    if (!values.dosesDays) {
-      errors.dosesDays = 'Los días de la dosis son obligatorios'
+    // verify dosingDays
+    if (!values.dosingDays) {
+      errors.dosingDays = 'Los días de la dosis son obligatorios'
     }
     // verify inventory
     if (!values.inventory) {
@@ -93,7 +94,7 @@ const DrugsForm = () => {
           doseAmount: 0,
           doseFrequency: '8 horas',
           firstDoseHour: '12 hs',
-          dosesDays: 0,
+          dosingDays: 0,
           inventory: 0,
           reminder: false,
           lackOfInventoryAlert: false
@@ -115,9 +116,9 @@ const DrugsForm = () => {
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
+                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
                           <label className="w-[50%]">Nombre </label>
-                          <input type="text" className="bg-white w-[50%] text-right mr-5" placeholder="Nombre" {...field}></input>
+                          <input type="text" className="bg-white w-[50%] mr-5 h-9 w-48 text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="Nombre" {...field}></input>
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
@@ -134,9 +135,9 @@ const DrugsForm = () => {
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
+                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
                           <label className="w-[50%]">Tipo </label>
-                          <select name="type" className="bg-white" {...field}>
+                          <select name="type" className="bg-white w-[50%] rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" {...field}>
                             <option value="píldora">Píldora</option>
                             <option value="polvo">Polvo</option>
                             <option value="líquido">Líquido</option>
@@ -157,9 +158,9 @@ const DrugsForm = () => {
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
+                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
                           <label className="w-[50%]">Cantidad por dosis </label>
-                          <input type="number" className="bg-white w-[50%] text-right mr-5" placeholder="1" {...field}></input>
+                          <input type="number" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="1" {...field}></input>
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
@@ -175,9 +176,9 @@ const DrugsForm = () => {
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
+                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
                           <label className="w-[50%]">Frecuencia de dosis </label>
-                          <select name="doseFrequency" className="bg-white" {...field}>
+                          <select name="doseFrequency" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" {...field}>
                             <option value="4 hs">4 hs</option>
                             <option value="8 hs">8 hs</option>
                             <option value="12 hs">12 hs</option>
@@ -198,9 +199,9 @@ const DrugsForm = () => {
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
+                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
                           <label className="w-[70%]">Hora de primera dosis </label>
-                          <select name="firstDoseHour" className="bg-white" {...field}>
+                          <select name="firstDoseHour" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" {...field}>
                             <option value="7 AM">7 AM</option>
                             <option value="8 AM">8 AM</option>
                             <option value="9 AM">9 AM</option>
@@ -221,13 +222,13 @@ const DrugsForm = () => {
                     </Field>
 
                     <Field
-                      name='dosesDays'
+                      name='dosingDays'
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
+                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
                           <label className="w-[50%]">Días de dosis </label>
-                          <input type="number" className="bg-white w-[50%] text-right mr-5" {...field}></input>
+                          <input type="number" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" {...field}></input>
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
@@ -243,9 +244,9 @@ const DrugsForm = () => {
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
+                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
                           <label className="w-[50%]">Inventario </label>
-                          <input type="number" className="bg-white w-[50%] text-right mr-5" {...field}></input>
+                          <input type="number" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" {...field}></input>
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
@@ -259,7 +260,7 @@ const DrugsForm = () => {
                     <Field name="reminder">
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                          <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
+                          <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
                             <label className="w-[50%]">Recordatorio: </label>
                                 <input
                                   className={checkSwitch}
@@ -284,7 +285,7 @@ const DrugsForm = () => {
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
+                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
                           <label className="w-[70%]">Alerta por falta de inventario: </label>
                                 <input
                                   className={checkSwitch}
