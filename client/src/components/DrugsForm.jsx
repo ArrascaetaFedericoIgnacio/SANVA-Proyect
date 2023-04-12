@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Footer } from './footer.jsx'
 import { Link } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
@@ -6,31 +6,29 @@ import { useNavigate } from 'react-router'
 import { CgPill } from 'react-icons/cg'
 import { BiPlusMedical } from 'react-icons/bi'
 import { BsCircle } from 'react-icons/bs'
+import { checkSwitch } from './switch.js'
+import axios from 'axios'
 
 const DrugsForm = () => {
   const navigate = useNavigate()
 
-  const [reminderActive, setReminderActive] = useState(false)
-  const [alertActive, setAlertActive] = useState(false)
-
   const PostInfo = async (values) => {
     try {
       console.log(values)
-      //   const response = await axios.post(
-      //     'https://purebadeploy.onrender.com/user',
-      //     values
-      //   )
-    //   navigate('/user')
+      const response = await axios.post(
+        'https://apisanva.onrender.com/user',
+        values
+      )
     } catch (error) {
       console.log(error)
     }
   }
 
-  // const HandleSubmit = (values, { setSubmitting }) => {
-  //   setSubmitting(false)
-  //   PostInfo(values)
-  //   navigate('/user')
-  // }
+  const HandleSubmit = (values, { setSubmitting }) => {
+    setSubmitting(false)
+    PostInfo(values)
+    navigate('/user')
+  }
 
   const validateFields = (values) => {
     const errors = {}
@@ -53,13 +51,6 @@ const DrugsForm = () => {
     // }
 
     return errors
-  }
-
-  const handleReminderClick = () => {
-    setReminderActive(prevState => !prevState)
-  }
-  const handleAlertClick = () => {
-    setAlertActive(prevState => !prevState)
   }
 
   return (
@@ -100,9 +91,13 @@ const DrugsForm = () => {
         {({ isSubmitting }) => (
           <Form>
             <div className='flex flex-col bg-[#58afdd] text-white'>
-              <div className='flex justify-center items-center gap-2 py-2'>
+              {/* <div className='flex justify-center items-center gap-2 py-2'>
                 <p>Agregar Medicamento</p>
-              </div>
+              </div> */}
+              <button className="py-2 w-full rounded-none text-white bg-[#3982b8]"
+                     type="submit">
+                        Agregar Medicamento
+                  </button>
                     <Field
                       name='name'
                     >
@@ -235,33 +230,41 @@ const DrugsForm = () => {
                       )}
                     </Field>
                     <hr></hr>
-                    <Field
-                      name='reminder'
-                    >
-                      {({ field, form: { touched, errors }, meta, setFieldValue }) => (
-                        <div className="w-screen flex bg-white text-slate-400 space-x-16 p-3">
-                          <label className="w-[50%]">Recordatorio </label>
-                            <div className={`${reminderActive ? 'bg-slate-500' : 'bg-slate-300'} border-[1px] rounded-[20%] border-black w-16 h-10 flex justify-center items-center`}>
-                                {/* <input type="checkbox" onChange={(e) => setFieldValue(e.target.)} name="reminder" className={`transition ease-in-out w-8 h-8 rounded-full ${reminderActive ? 'translate-x-3' : '-translate-x-3'} ${reminderActive ? 'bg-slate-300' : 'bg-slate-500'}`} onClick={handleReminderClick} {...field}></input> */}
+                    <Field name="reminder">
+                      {({ field, form: { touched, errors }, meta }) => (
+                          <div className="w-screen flex bg-white text-slate-400 space-x-16 p-3">
+                            <label className="w-[50%]">Recordatorio: </label>
+                                <input
+                                  className={checkSwitch}
+                                  type='checkbox'
+                                  role="switch"
+                                  // placeholder='Recordatorio'
+                                  {...field}
+                                  style={{ scale: '1.3' }}
+                                  />
+                            {meta.touched && meta.error && (
+                                <div className='pb-2 text-red-600 font-semibold'>
+                                  {meta.error}
+                                  </div>
+                            )}
                             </div>
-                          {meta.touched && meta.error && (
-                            <div className='pt-2 text-red-600 font-semibold'>
-                              {meta.error}
-                            </div>
-                          )}
-                          </div>
                       )}
-                    </Field>
+                  </Field>
                     <hr></hr>
                     <Field
                       name='lackOfInventoryAlert'
                     >
                       {({ field, form: { touched, errors }, meta }) => (
                         <div className="w-screen flex bg-white text-slate-400 space-x-16 p-3">
-                          <label className="w-[50%]">Alerta por falta de inventario </label>
-                          <div className={`${alertActive ? 'bg-slate-500' : 'bg-slate-300'} border-[1px] rounded-[20%] border-black w-16 h-10 flex justify-center items-center`}>
-                                <div type="checkbox" name="lackOfInventoryAlert" className={`transition ease-in-out w-8 h-8 rounded-full ${alertActive ? 'translate-x-3' : '-translate-x-3'} ${alertActive ? 'bg-slate-300' : 'bg-slate-500'}`} onClick={handleAlertClick}{...field}></div>
-                            </div>
+                          <label className="w-[50%]">Alerta por falta de inventario: </label>
+                                <input
+                                  className={checkSwitch}
+                                  type='checkbox'
+                                  role="switch"
+                                  // placeholder='Alerta por falta de inventario'
+                                  {...field}
+                                  style={{ scale: '1.3' }}
+                                  />
                             {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
