@@ -242,7 +242,7 @@ const DrugsForm = () => {
                         <div className="w-screen flex bg-white text-slate-400 space-x-16 p-3">
                           <label className="w-[50%]">Recordatorio </label>
                             <div className={`${reminderActive ? 'bg-slate-500' : 'bg-slate-300'} border-[1px] rounded-[20%] border-black w-16 h-10 flex justify-center items-center`}>
-                                <input type="checkbox" onChange={(e) => setFieldValue(e.target.checked)} name="reminder" className={`transition ease-in-out w-8 h-8 rounded-full ${reminderActive ? 'translate-x-3' : '-translate-x-3'} ${reminderActive ? 'bg-slate-300' : 'bg-slate-500'}`} onClick={handleReminderClick} {...field}></input>
+                                {/* <input type="checkbox" onChange={(e) => setFieldValue(e.target.)} name="reminder" className={`transition ease-in-out w-8 h-8 rounded-full ${reminderActive ? 'translate-x-3' : '-translate-x-3'} ${reminderActive ? 'bg-slate-300' : 'bg-slate-500'}`} onClick={handleReminderClick} {...field}></input> */}
                             </div>
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
