@@ -35,19 +35,31 @@ const DrugsForm = () => {
 
     // validate name
     if (!values.name) {
-      errors.birthdate = 'El nombre del medicamento es obligatorio'
+      errors.name = 'El nombre del medicamento es obligatorio'
     }
-    // verify password
+    // verify type
     if (!values.type) {
       errors.type = 'El tipo de medicamento es obligatorio'
     }
-    // verify password
+    // verify doseAmount
     if (!values.doseAmount) {
       errors.doseAmount = 'La cantidad por dosis es obligatoria'
     }
-    // verify password
+    // verify doseFrequency
     if (!values.doseFrequency) {
       errors.doseFrequency = 'La frecuencia de la dosis es obligatoria'
+    }
+    // verify firstDoseHour
+    if (!values.firstDoseHour) {
+      errors.firstDoseHour = 'La hora de la primer dosis es obligatoria'
+    }
+    // verify dosesDays
+    if (!values.dosesDays) {
+      errors.dosesDays = 'Los días de la dosis son obligatorios'
+    }
+    // verify inventory
+    if (!values.inventory) {
+      errors.inventory = 'El inventario es obligatorio'
     }
 
     return errors
@@ -86,7 +98,7 @@ const DrugsForm = () => {
           reminder: false,
           lackOfInventoryAlert: false
         }}
-        // onSubmit={HandleSubmit}
+        onSubmit={HandleSubmit}
         validate={validateFields}>
         {({ isSubmitting }) => (
           <Form>
@@ -102,6 +114,7 @@ const DrugsForm = () => {
                       name='name'
                     >
                       {({ field, form: { touched, errors }, meta }) => (
+                        <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen flex bg-white text-slate-400 p-3">
                           <label className="w-[50%]">Nombre </label>
                           <input type="text" className="bg-white" placeholder="Nombre" {...field}></input>
@@ -111,14 +124,16 @@ const DrugsForm = () => {
                             </div>
                           )}
                           </div>
+                          </div>
                       )}
                     </Field>
-                    <hr></hr>
+
                     <Field
                       name='type'
                       as="select"
                     >
                       {({ field, form: { touched, errors }, meta }) => (
+                        <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen flex bg-white text-slate-400 p-3">
                           <label className="w-[50%]">Tipo </label>
                           <select name="type" className="bg-white" {...field}>
@@ -133,13 +148,15 @@ const DrugsForm = () => {
                             </div>
                           )}
                           </div>
+                          </div>
                       )}
                     </Field>
-                    <hr></hr>
+
                     <Field
                       name='doseAmount'
                     >
                       {({ field, form: { touched, errors }, meta }) => (
+                        <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen flex bg-white text-slate-400 p-3">
                           <label className="w-[50%]">Cantidad por dosis </label>
                           <input type="number" className="bg-white" placeholder="1" {...field}></input>
@@ -149,13 +166,15 @@ const DrugsForm = () => {
                             </div>
                           )}
                           </div>
+                          </div>
                       )}
                     </Field>
-                    <hr></hr>
+
                     <Field
                       name='doseFrequency'
                     >
                       {({ field, form: { touched, errors }, meta }) => (
+                        <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen flex bg-white text-slate-400 p-3">
                           <label className="w-[50%]">Frecuencia de dosis </label>
                           <select name="doseFrequency" className="bg-white" {...field}>
@@ -170,13 +189,15 @@ const DrugsForm = () => {
                             </div>
                           )}
                           </div>
+                          </div>
                       )}
                     </Field>
-                    <hr></hr>
+
                     <Field
                       name='firstDoseHour'
                     >
                       {({ field, form: { touched, errors }, meta }) => (
+                        <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen flex bg-white text-slate-400 p-3">
                           <label className="w-[50%]">Hora de primera dosis </label>
                           <select name="firstDoseHour" className="bg-white" {...field}>
@@ -195,13 +216,15 @@ const DrugsForm = () => {
                             </div>
                           )}
                           </div>
+                      </div>
                       )}
                     </Field>
-                    <hr></hr>
+
                     <Field
                       name='dosesDays'
                     >
                       {({ field, form: { touched, errors }, meta }) => (
+                        <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen flex bg-white text-slate-400 p-3">
                           <label className="w-[50%]">Días de dosis </label>
                           <input type="number" className="bg-white" {...field}></input>
@@ -211,13 +234,15 @@ const DrugsForm = () => {
                             </div>
                           )}
                           </div>
+                          </div>
                       )}
                     </Field>
-                    <hr></hr>
+
                     <Field
                       name='inventory'
                     >
                       {({ field, form: { touched, errors }, meta }) => (
+                        <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen flex bg-white text-slate-400 p-3">
                           <label className="w-[50%]">Inventario </label>
                           <input type="number" className="bg-white" {...field}></input>
@@ -227,11 +252,13 @@ const DrugsForm = () => {
                             </div>
                           )}
                           </div>
+                          </div>
                       )}
                     </Field>
-                    <hr></hr>
+
                     <Field name="reminder">
                       {({ field, form: { touched, errors }, meta }) => (
+                        <div className="border-b-[1.8px] border-[#3982b8]">
                           <div className="w-screen flex bg-white text-slate-400 space-x-16 p-3">
                             <label className="w-[50%]">Recordatorio: </label>
                                 <input
@@ -248,13 +275,15 @@ const DrugsForm = () => {
                                   </div>
                             )}
                             </div>
+                            </div>
                       )}
                   </Field>
-                    <hr></hr>
+
                     <Field
                       name='lackOfInventoryAlert'
                     >
                       {({ field, form: { touched, errors }, meta }) => (
+                        <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen flex bg-white text-slate-400 space-x-16 p-3">
                           <label className="w-[50%]">Alerta por falta de inventario: </label>
                                 <input
@@ -271,9 +300,10 @@ const DrugsForm = () => {
                             </div>
                             )}
                           </div>
+                          </div>
                       )}
                     </Field>
-                    <hr></hr>
+
                   </div>
                   </Form>)}
                 </Formik>
