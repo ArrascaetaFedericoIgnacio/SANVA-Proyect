@@ -1,5 +1,6 @@
 import { Footer } from "./footer"
 import { HiOutlineHeart, HiCalendar } from "react-icons/hi"
+import { FaPlus } from "react-icons/fa"
 import { BsBuildings } from "react-icons/bs"
 import AccordionData from "./AccodionData"
 import { useState } from "react"
@@ -48,8 +49,9 @@ const Tomas = () => {
          <h1 className="py-6 bg-[#6abce2] text-white">Tomas</h1>
          <div className="pb-3 flex justify-center items-center gap-4 bg-[#6abce2] text-white">
             <Link to="/nuevatoma">
-               <div className="p-1 rounded-full border-2 border-white">
+               <div className="relative p-1 rounded-full border-2 border-white">
                   <HiOutlineHeart className="text-4xl" />
+                  <FaPlus className="absolute text-blue-950 text-[1.1rem] top-[1.2rem] right-2" />
                </div>
             </Link>
             <div className="p-2 rounded-full border-2 border-white">

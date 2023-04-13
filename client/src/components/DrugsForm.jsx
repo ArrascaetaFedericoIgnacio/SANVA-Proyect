@@ -71,7 +71,7 @@ const DrugsForm = () => {
         <header className="w-screen h-52 bg-[#4194cb] text-white flex justify-center items-center flex-col">
             <h1>Medicamentos</h1>
             <div className="flex flex-row space-x-7 mt-12">
-              <Link to="/DrugsList">
+              <Link to="/medicineslist">
                 <div>
                   <BsCircle className="w-11 h-11"/>
                   <CgPill className="w-8 h-8 absolute -translate-y-[38px] translate-x-[6px]"/>
@@ -108,7 +108,7 @@ const DrugsForm = () => {
                 <p>Agregar Medicamento</p>
               </div> */}
               <button className="py-2 w-full rounded-none text-white bg-[#3982b8]"
-                     type="submit">
+                    type="submit">
                         Agregar Medicamento
                   </button>
                     <Field
@@ -118,7 +118,7 @@ const DrugsForm = () => {
                         <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
                           <label className="w-[50%]">Nombre </label>
-                          <input type="text" className="bg-white w-[50%] mr-5 h-9 w-48 text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="Nombre" {...field}></input>
+                          <input type="text" className="bg-white w-[50%] mr-5 h-9 text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="Nombre" {...field}></input>
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}

@@ -60,28 +60,67 @@ export const Login = () => {
         <div className="absolute w-screen h-screen translate-y-10 skew-y-[40deg] bg-[#6abce2]"></div>
         <div className="absolute w-screen h-screen translate-y-20 skew-y-[40deg] bg-[#58afdd]"></div>
         <div className="absolute w-screen h-screen translate-y-[48rem] skew-y-[40deg] bg-[#3982b8]"></div>
-        <div className="absolute flex flex-wrap justify-center translate-y-[160px]">
+        <div className="absolute flex flex-col justify-center items-center mt-10">
           <img src={Logo} alt="logo_sanva" className="w-[10rem] h-[10rem]"></img>
 
           <Formik initialValues={{ username: '', password: '' }} onSubmit={HandleSubmit
           } validate={ValidateFields}>
 
             {({ isSubmitting }) =>
-              <Form className="w-3/5 flex flex-wrap space-y-4">
-                <Field name="username" type="username" placeholder="Nombre" className="w-[200px] bg-white rounded-[5px] text-black" />
-                <ErrorMessage name="username" />
-                <Field name="password" type="password" placeholder="Contraseña" className="w-[200px] bg-white rounded-[5px] text-black" />
-                <ErrorMessage name="password" type="password" />
-                <button disabled={isSubmitting} type="submit" className="w-[200px] h-[1.5rem] leading-[0.1rem] rounded-[5px] bg-[#3271a5]">Log In</button>
+              <Form className="flex flex-col gap-5 pt-8">
+                {/* <Field name="username" type="username" placeholder="Nombre" className="w-[200px] bg-white rounded-[5px] text-black" />
+                <ErrorMessage name="username" /> */}
+                <Field name="username">
+                  {({ field, form: { touched, errors }, meta}) => (
+                    <div className="">
+                      <input
+                        className='text-black h-10 w-56 rounded-lg bg-white px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
+                        type='text'
+                        placeholder='Nombre'
+                        {...field}
+                      />
+                      {meta.touched && meta.error && (
+                        <div className='pt-2 text-red-600 font-semibold'>
+                          {meta.error}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </Field>
+                {/* <Field name="password" type="password" placeholder="Contraseña" className="w-[200px] bg-white rounded-[5px] text-black" />
+                <ErrorMessage name="password" type="password" /> */}
+                <Field name="password">
+                  {({ field, form: { touched, errors }, meta}) => (
+                    <div className="">
+                      <input
+                        className='text-black h-10 w-56 rounded-lg bg-white px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
+                        type='password'
+                        placeholder='password'
+                        {...field}
+                      />
+                      {meta.touched && meta.error && (
+                        <div className='pt-2 text-red-600 font-semibold'>
+                          {meta.error}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </Field>
+                <button 
+                  className="py-1.5 rounded-[5px] text-white bg-[#3271a5]"
+                  disabled={isSubmitting} 
+                  type="submit">
+                    Log In
+                </button>
               </Form>
             }
           </Formik>
-          <div className="w-full mt-28 ml-10">
+          {/* <div className="w-full mt-28 ml-10"> */}
             <Link to="/register" >
-              <img src={Persona} alt="logo_persona_azul" className="w-[5rem] h-[5rem] rounded-[500px]">
+              <img src={Persona} alt="logo_persona_azul" className="fixed bottom-10 left-8 w-[5rem] h-[5rem] rounded-full">
               </img>
             </Link>
-          </div>
+          {/* </div> */}
         </div>
       </div>
     </>

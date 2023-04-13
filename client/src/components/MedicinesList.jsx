@@ -50,12 +50,12 @@ const MedicinesList = () => {
     <div className="h-full mb-[54px] text-white bg-[#6abce2]">
       <h2 className="py-6 text-[40px]">Medicamentos</h2>
       <div className="pb-3 flex justify-center items-center gap-5">
-        <Link to="/">
+        <Link to="/medicineslist">
           <div className="p-2 rounded-full border-2 border-white">
             <CgPill className="text-3xl" />
           </div>
         </Link>
-        <Link to="/">
+        <Link to="/DrugsForm">
           <div className="p-2 rounded-full border-2 border-white">
             <CgPill className="text-3xl" />
           </div>
