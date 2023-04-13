@@ -33,7 +33,7 @@ const DrugsForm = () => {
     const errors = {}
 
     // validate allergieNname
-    if (!values.allergieNname) {
+    if (!values.allergieName) {
       errors.allergieNname = 'El nombre de la alergia es obligatorio'
     }
     // verify vaccine
@@ -116,7 +116,7 @@ const DrugsForm = () => {
                         <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
                           <label className="w-[50%]">Vacuna </label>
-                          <input type="text" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="Nombre de la vacuna" {...field}></input>
+                          <input type="text" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="Nombre de vacuna" {...field}></input>
                           {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                               {meta.error}
