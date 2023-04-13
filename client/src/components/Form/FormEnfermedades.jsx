@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from "formik";
-import { FaBacterium } from "react-icons/fa"
+import { FaBacterium, FaPlus } from "react-icons/fa"
 import { Footer } from "../footer";
 import DatePikerField from "../DatePicker";
 import { Link } from "react-router-dom";
@@ -41,8 +41,9 @@ const FormEnfermedades = () => {
                </div>
             </Link>
             <Link to="/enfermedades">
-               <div className="p-2 rounded-full border-2 border-white">
+               <div className="relative p-2 rounded-full border-2 border-white">
                   <FaBacterium className="text-3xl" />
+                  <FaPlus className="absolute text-blue-950 text-[1.1rem] top-[1.4rem] right-2" />
                </div>
             </Link>
          </div>
@@ -60,7 +61,7 @@ const FormEnfermedades = () => {
             validate={validateCamps}
          >
             {({ isSubmitting }) => (
-               <Form className="text-black bg-white">
+               <Form className="text-slate-500 bg-white">
                   <button className="py-2 w-full rounded-none text-white bg-[#3982b8]" 
                      type="submit">
                         Agregar Enfermedad
@@ -69,11 +70,11 @@ const FormEnfermedades = () => {
                      {({ field, form: { touched, errors }, meta}) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
                            <div className="pt-4 pb-3 flex justify-between px-[30px] items-center">
-                              <p>Nombre</p>
+                              <label className="font-medium">Nombre</label>
                               <input
-                                 className='text-black h-9 w-48 rounded-lg bg-white px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
+                                 className='text-black h-9 w-[11.5rem] rounded-lg bg-white px-3.5 outline-none border-2 focus:border-sky-600 transition duration-200'
                                  type='text'
-                                 placeholder='Nombre'
+                                 placeholder='Nombre del paciente'
                                  {...field}
                                  />
                            </div>
@@ -89,9 +90,9 @@ const FormEnfermedades = () => {
                      {({ field, form: { touched, errors }, meta}) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
                            <div className="py-3 flex justify-between px-[30px] items-center">
-                              <p>Medico</p>
+                              <label className="font-medium">Medico</label>
                               <input
-                                 className='text-black h-9 w-48 rounded-lg bg-white px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
+                                 className='text-black h-9 w-[11.5rem] rounded-lg bg-white px-3.5 outline-none border-2 focus:border-sky-600 transition duration-200'
                                  type='text'
                                  placeholder='Nombre del Medico'
                                  {...field}
@@ -109,9 +110,9 @@ const FormEnfermedades = () => {
                      {({ field, form: { touched, errors }, meta}) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
                            <div className="py-3 flex justify-between px-[30px] items-center">
-                              <p>Medicamento</p>
+                              <label className="font-medium">Medicamento</label>
                               <input
-                                 className='text-black h-9 w-48 rounded-lg bg-white px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
+                                 className='text-black h-9 w-[11.5rem] rounded-lg bg-white px-3.5 outline-none border-2 focus:border-sky-600 transition duration-200'
                                  type='text'
                                  placeholder='Nombre de medicamento'
                                  {...field}
@@ -129,9 +130,9 @@ const FormEnfermedades = () => {
                      {({ field, form: { touched, errors }, meta}) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
                            <div className="py-3 flex justify-between px-[30px] items-center">
-                              <p>Tratamiento</p>
+                              <label className="font-medium">Tratamiento</label>
                               <input
-                                 className='text-black h-9 w-48 rounded-lg bg-white px-5 outline-none border-2 focus:border-sky-600 transition duration-200'
+                                 className='text-black h-9 w-[11.5rem] rounded-lg bg-white px-3.5 outline-none border-2 focus:border-sky-600 transition duration-200'
                                  type='text'
                                  placeholder='Nombre'
                                  {...field}
@@ -149,7 +150,7 @@ const FormEnfermedades = () => {
                      {({ field, form: { touched, errors }, meta}) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
                            <div className="py-3 flex justify-between px-[30px] items-center">
-                              <p>Proxima cita medica</p>
+                              <label className="font-medium">Proxima cita medica</label>
                               <DatePikerField name="proxima"/>
                            </div>
                            {meta.touched && meta.error && (
@@ -164,7 +165,7 @@ const FormEnfermedades = () => {
                      {({ field, form: { touched, errors }, meta}) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
                            <div className="h-[56px] py-3 flex justify-between pl-[30px] pr-[60px] items-center">
-                              <p>Alerta para cita medica</p>
+                              <label className="font-medium">Alerta para cita medica</label>
                               <input
                                  className={checkSwitch}
                                  type='checkbox'
