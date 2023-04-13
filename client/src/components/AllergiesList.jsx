@@ -16,34 +16,34 @@ const AllergiesList = () => {
 
   const ListaAlergia = [
     {
-      nombre: "Covid-19",
-      medico: "Dr. Juan Perez",
-      medicamento: "Amoxilina",
-      tratamiento: "c/8hs, 7 dias",
+      nombre: "nombre",
+      vacuna: "Vacuna",
+      inventario: "Inventario",
+      nextVacuna: "Proxima vacuna",
     },
     {
-      nombre: "Nombre",
-      medico: "Dr. Ibra",
-      medicamento: "Medicamento",
-      tratamiento: "Tratamiento",
+      nombre: "nombre",
+      vacuna: "Vacuna",
+      inventario: "Inventario",
+      nextVacuna: "Proxima vacuna",
     },
     {
-      nombre: "Nombre",
-      medico: "Dr. Fede",
-      medicamento: "Medicamento",
-      tratamiento: "Tratamiento",
+      nombre: "nombre",
+      vacuna: "Vacuna",
+      inventario: "Inventario",
+      nextVacuna: "Proxima vacuna",
     },
     {
-      nombre: "Nombre",
-      medico: "Dr. German",
-      medicamento: "Medicamento",
-      tratamiento: "Tratamiento",
+      nombre: "nombre",
+      vacuna: "Vacuna",
+      inventario: "Inventario",
+      nextVacuna: "Proxima vacuna",
     },
     {
-      nombre: "Nombre",
-      medico: "Dr. Denis",
-      medicamento: "Medicamento",
-      tratamiento: "Tratamiento",
+      nombre: "nombre",
+      vacuna: "Vacuna",
+      inventario: "Inventario",
+      nextVacuna: "Proxima vacuna",
     },
   ]
   
@@ -51,12 +51,12 @@ const AllergiesList = () => {
     <div className="h-full mb-[54px] text-white bg-[#6abce2]">
       <h2 className="py-6 text-[40px]">Alergias</h2>
       <div className="pb-3 flex justify-center items-center gap-5">
-        <Link to="/">
+        <Link to="/allergieslist">
           <div className="p-2 rounded-full border-2 border-white">
             <BsVirus className="text-3xl" />
           </div>
         </Link>
-        <Link to="/">
+        <Link to="">
           <div className="p-2 rounded-full border-2 border-white">
             <BsVirus className="text-3xl" />
           </div>
@@ -70,9 +70,9 @@ const AllergiesList = () => {
           <AccordionList key={i} open={open === i}
             toggle={() => toggle(i)}
             title={elem.nombre}
-            medico={elem.medico}
-            medicamento={elem.medicamento}
-            tratamiento={elem.tratamiento}
+            medico={elem.vacuna}
+            medicamento={elem.inventario}
+            tratamiento={elem.nextVacuna}
           />
         ))
       }

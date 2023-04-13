@@ -5,7 +5,7 @@ import { CheckIcon } from './check'
 import Check from '../../public/checkeed.svg'
 import Logo from '../../public/logosanva.png'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import emailjs from '@emailjs/browser'
 
 export const Register = () => {
@@ -176,7 +176,12 @@ export const Register = () => {
 									</div>
 								)}
 							</Field>
-
+							<div className='flex justify-center gap-3 text-slate-600'>
+								<p>¿Ya tienes una cuenta?</p>
+								<Link to="/">
+									<p className='hover:text-white transition duration-200 cursor-pointer'>Inicia Sesion</p>
+								</Link>
+							</div>
 							<div className="mt-3">
 								<button className="outline-none rounded-full " disabled={isSubmitting} type="submit">
 									<img className="hover:border-sky-700 hover:border-2 hover:rounded-full" src={Check}></img>
