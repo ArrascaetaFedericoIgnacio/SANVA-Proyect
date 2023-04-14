@@ -48,7 +48,7 @@ const AllergiesList = () => {
   ]
   
   return (
-    <div className="h-full mb-[54px] text-white bg-[#6abce2]">
+    <div className="h-screen flex flex-col text-white bg-[#6abce2]">
       <h2 className="py-6 text-[40px]">Alergias</h2>
       <div className="pb-3 flex justify-center items-center gap-5">
         <Link to="/allergieslist">
@@ -65,17 +65,19 @@ const AllergiesList = () => {
       <h2 className="text-xl py-2 bg-[#3982b8] text-white">
         Lista de Alergias
       </h2>
-      {
-        ListaAlergia?.map((elem, i) => (
-          <AccordionList key={i} open={open === i}
+      <div className="flex-1 bg-white">
+        {
+          ListaAlergia?.map((elem, i) => (
+            <AccordionList key={i} open={open === i}
             toggle={() => toggle(i)}
             title={elem.nombre}
             medico={elem.vacuna}
             medicamento={elem.inventario}
             tratamiento={elem.nextVacuna}
-          />
-        ))
-      }
+            />
+            ))
+          }
+      </div>
       <Footer />
     </div>
   )

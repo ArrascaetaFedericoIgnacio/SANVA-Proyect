@@ -37,7 +37,7 @@ const NuevaToma = () => {
    }
 
    return (
-      <div className="h-full mb-[54px]">
+      <div className="h-screen flex flex-col">
          <h1 className="py-6 bg-[#6abce2] text-white">Tomas</h1>
          <div className="pb-3 flex justify-center items-center gap-4 bg-[#6abce2] text-white">
             <div className="relative p-1 rounded-full border-2 border-white">
@@ -64,7 +64,7 @@ const NuevaToma = () => {
             validate={validateCamps}
          >
             {({ isSubmitting }) => (
-               <Form className="text-[#58afdd]">
+               <Form className="flex-1 text-[#58afdd]">
                   <button className="py-2 w-full text-xl rounded-none text-white bg-[#3982b8]" 
                      type="submit">
                         Nueva Toma

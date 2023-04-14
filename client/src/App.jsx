@@ -20,7 +20,7 @@ import ServicesList from './components/ServicesList'
 function App () {
   return (
     <BrowserRouter>
-      <div>
+      {/* <div> */}
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Login />} />
@@ -39,7 +39,7 @@ function App () {
           <Route path='/enfermedades' element={<FormEnfermedades />} />
         </Routes>
 
-      </div>
+      {/* </div> */}
     </BrowserRouter>
   )
 }
