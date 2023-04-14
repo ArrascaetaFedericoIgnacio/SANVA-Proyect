@@ -47,7 +47,7 @@ const ServicesList = () => {
   ]
 
   return (
-    <div className="h-full mb-[54px] text-white bg-[#6abce2]">
+    <div className="h-screen flex flex-col text-white bg-[#6abce2]">
       <h2 className="py-6 text-[40px]">Insumos y Servicios</h2>
       <div className="pb-3 flex justify-center items-center gap-5">
         <Link to="/">
@@ -64,17 +64,19 @@ const ServicesList = () => {
       <h2 className="text-xl py-2 bg-[#3982b8] text-white">
         Lista de Insumos y Servicios
       </h2>
+      <div className="flex-1 bg-white">
       {
         ListaInsumosServicios?.map((elem, i) => (
           <AccordionList key={i} open={open === i}
-            toggle={() => toggle(i)}
-            title={elem.nombre}
-            medico={elem.tipo}
-            medicamento={elem.proveedor}
-            tratamiento={elem.tipo}
+          toggle={() => toggle(i)}
+          title={elem.nombre}
+          medico={elem.tipo}
+          medicamento={elem.proveedor}
+          tratamiento={elem.tipo}
           />
-        ))
-      }
+          ))
+        }
+      </div>
       <Footer />
     </div>
   )

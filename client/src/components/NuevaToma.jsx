@@ -64,7 +64,7 @@ const NuevaToma = () => {
             validate={validateCamps}
          >
             {({ isSubmitting }) => (
-               <Form className="flex-1 text-[#58afdd]">
+               <Form className="flex-1 bg-white text-[#58afdd]">
                   <button className="py-2 w-full text-xl rounded-none text-white bg-[#3982b8]" 
                      type="submit">
                         Nueva Toma

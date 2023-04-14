@@ -64,7 +64,7 @@ const Tomas = () => {
          <h2 className="text-xl py-2 bg-[#3982b8] text-white">
             Ultimas Tomas
          </h2>
-         <div className="flex-1">
+         <div className="flex-1 bg-white">
             {
                accordionData.length ?
                accordionData.map((data, index) => (
