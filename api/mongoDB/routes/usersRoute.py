@@ -72,7 +72,7 @@ async def user(id: str):
         return {"deleted": False}
 
 
-@app.post("/login", response_model=User)
+@app.post("/login", response_model = User)
 async def login(login: Login):
     try:
         find_user = search_user("username", login.username)
