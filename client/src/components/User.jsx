@@ -19,7 +19,7 @@ export const User = () => {
   const { username, email, birthdate, gender, height, weight } = user || {}
 
   return (
-    <div className="h-full mb-[54px] text-lg font-semibold">
+    <div className="h-screen xl:h-full flex flex-col text-lg font-semibold">
       <div className="py-8 flex flex-col justify-between items-center bg-[#6abce2] text-white">
         <img
           className="mt-3 rounded-full w-28"
@@ -60,7 +60,7 @@ export const User = () => {
           <p>{weight} Kg.</p>
         </div>
       </div>
-      <div className="px-4 py-9 bg-[#3982b8] text-white">
+      <div className="flex-1 px-4 py-9 bg-[#3982b8] text-white">
         <p className="mb-3">Informacion Medica</p>
         <div className="flex flex-col items-start px-10 gap-4">
           <Link to="/diseaseslist">

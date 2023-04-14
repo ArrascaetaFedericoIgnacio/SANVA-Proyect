@@ -45,7 +45,7 @@ const Tomas = () => {
    }
 
    return (
-      <div className="h-full mb-[54px]">
+      <div className="h-screen xl:h-full flex flex-col">
          <h1 className="py-6 bg-[#6abce2] text-white">Tomas</h1>
          <div className="pb-3 flex justify-center items-center gap-4 bg-[#6abce2] text-white">
             <Link to="/nuevatoma">
@@ -64,12 +64,13 @@ const Tomas = () => {
          <h2 className="text-xl py-2 bg-[#3982b8] text-white">
             Ultimas Tomas
          </h2>
+         <div className="flex-1">
             {
                accordionData.length ?
                accordionData.map((data, index) => (
                   <AccordionData key={index} open={index === open} toggle={() => toggle(index)} title={data.title} desc={data.description} />
-               ))
-               : <div className="py-14 flex flex-col gap-6 justify-center items-center">
+                  ))
+                  : <div className="py-14 flex flex-col gap-6 justify-center items-center">
                   <p className="font-semibold text-[22px]">
                      No hay tomas...
                   </p>
@@ -78,6 +79,7 @@ const Tomas = () => {
                   </Link>
                   </div>
             }
+         </div>
          <Footer />
       </div>
    )

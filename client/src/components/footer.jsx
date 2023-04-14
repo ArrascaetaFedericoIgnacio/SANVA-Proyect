@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 export const Footer = () => {
   return (
-    <div className='fixed bottom-0 w-full flex justify-evenly py-3 bg-[#4194cb] text-white'>
+    <div className='sticky bottom-0 w-full flex justify-evenly py-3 bg-[#4194cb] text-white'>
       <HiHome className='text-3xl' />
       <Link to="/user">
         <HiOutlineUser className='text-3xl' />

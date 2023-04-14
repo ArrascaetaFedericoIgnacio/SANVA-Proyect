@@ -32,7 +32,7 @@ const FormEnfermedades = () => {
    }
 
    return (
-      <div className="h-full mb-[54px] text-white bg-[#6abce2]">
+      <div className="h-screen flex flex-col text-white bg-[#6abce2]">
          <h2 className="py-6 text-[40px]">Enfermedades</h2>
          <div className="pb-3 flex justify-center items-center gap-5">
             <Link to="/DiseasesList">
@@ -61,7 +61,7 @@ const FormEnfermedades = () => {
             validate={validateCamps}
          >
             {({ isSubmitting }) => (
-               <Form className="text-slate-500 bg-white">
+               <Form className="flex-1 text-slate-500 bg-white">
                   <button className="py-2 w-full rounded-none text-white bg-[#3982b8]" 
                      type="submit">
                         Agregar Enfermedad
