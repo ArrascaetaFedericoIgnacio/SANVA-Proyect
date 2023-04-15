@@ -1,11 +1,13 @@
 from fastapi import APIRouter, HTTPException, status
-from mongoDB.user import search_user
-from mongoDB.mySchema.models import User, Login
-from mongoDB.mySchema.hooks import user_schema, users_schema
+from mongoDB.functions import search_user, search_take, populate_user
+from mongoDB.mySchema.models import User, Login, Take
+from mongoDB.mySchema.hooks import user_schema, users_schema, take_schema, takes_schema
 from mongoDB.client import db
 from bson import ObjectId
 
 app = APIRouter(prefix="/user", tags=["User"], responses={status.HTTP_404_NOT_FOUND: {"description": "Not found"}})
+
+# ---------- Users ----------
 
 @app.get("/", response_model=list[User])
 async def index():
@@ -42,6 +44,7 @@ async def get_user_by_username(username : str):
     try:
         find_user = search_user("username", username)
         if type(find_user) == User:
+            populate_user(find_user)
             return find_user
         return "User not found"
     except Exception as e:
@@ -78,8 +81,30 @@ async def login(login: Login):
         find_user = search_user("username", login.username)
         if type(find_user) == User:
             if find_user.password == login.password:
-                return find_user
+                return dict(find_user)
             return "Wrong password"
         return "User not found"
     except Exception as e:
         return {"error": str(e)}
+    
+# ---------- Takes ----------
+
+@app.get("/take", response_model=list[Take])
+async def index():
+    return takes_schema(db.takes.find())
+    
+@app.post("/take", response_model=Take)
+async def post_take(take: Take):
+    print(take)
+    # if type(search_take("type", take.type)) == Take:
+    #     raise HTTPException(
+    #         status_code=status.HTTP_404_NOT_FOUND, detail="El tipo ya existe")
+    
+    take_dict = dict(take)
+    del take_dict["id"]
+
+    id = db.takes.insert_one(take_dict).inserted_id
+
+    new_take = take_schema(db.takes.find_one({"_id": id}))
+
+    return Take(**new_take)

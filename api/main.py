@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from mongoDB.routes import usersRoute
+from mongoDB.routes import routes
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -12,4 +12,4 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(usersRoute.app)
+app.include_router(routes.app)

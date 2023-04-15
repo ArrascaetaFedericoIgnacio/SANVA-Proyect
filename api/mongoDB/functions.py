@@ -11,7 +11,7 @@ def search_user(field: str, value):
 
 def search_take(field: str, value):
     try:
-        take = db.users.find_one({field: value})
+        take = db.takes.find_one({field: value})
         return Take(**take_schema(take))
     except Exception as e:
         return {"error": str(e)}

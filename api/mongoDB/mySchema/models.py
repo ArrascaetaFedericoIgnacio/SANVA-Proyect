@@ -22,6 +22,7 @@ class Take(BaseModel):
     inputPerDay : str
     periodOfUse : str
     provider : str
+    user_id : str
     comments : Optional[str]
 
 class Drug(BaseModel):

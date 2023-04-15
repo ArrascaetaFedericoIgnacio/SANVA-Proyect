@@ -26,5 +26,6 @@ def take_schema(take) -> dict:
             "inputPerDay": take["inputPerDay"],
             "periodOfUse": take["periodOfUse"],
             "provider": take["provider"],
-            "comments": take["comments"]
+            "user_id": take["user_id"],
+            "comments": take["comments"],
             }
