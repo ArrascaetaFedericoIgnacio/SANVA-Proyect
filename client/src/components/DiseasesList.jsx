@@ -1,50 +1,84 @@
 import React, { useState } from "react";
 import { Footer } from "./footer";
-import { HiOutlineHeart, HiCalendar } from "react-icons/hi";
+import { FaBacterium } from "react-icons/fa";
 import { BsBuildings } from "react-icons/bs";
-import AccordionData from "./AccodionData";
-import {BsVirus} from "react-icons/bs"
+import AccordionList from "./AcordionLista";
+import { Link } from "react-router-dom";
 
 const Diseases = () => {
+
+  const [open, setOpen] = useState(false)
+    const toggle = (index) => {
+      if (open === index) {
+        return setOpen(null)
+      }
+      setOpen(index)
+  }
+  const ListaEnfermdedades = [
+    {
+      nombre: "Covid-19",
+      medico: "Dr. Juan Perez",
+      medicamento: "Amoxilina",
+      tratamiento: "c/8hs, 7 dias",
+    },
+    {
+      nombre: "Nombrea",
+      medico: "Dr. Ibra Cardozo",
+      medicamento: "Medicamento",
+      tratamiento: "Tratamiento",
+    },
+    {
+      nombre: "Nombreas",
+      medico: "Dr. Fede Arrascaeta",
+      medicamento: "Medicamento",
+      tratamiento: "Tratamiento",
+    },
+    {
+      nombre: "Nombreasd",
+      medico: "Dr. German German",
+      medicamento: "Medicamento",
+      tratamiento: "Tratamiento",
+    },
+    {
+      nombre: "Nombreasda",
+      medico: "Dr. Denis Gabriel",
+      medicamento: "Medicamento",
+      tratamiento: "Tratamiento",
+    },
+  ]
+
   return (
-    <div className="max-w-360 mx-auto h-full bg-[#6abce2]">
-      <h2 className="text-center text-2xl font-bold mt-20  bg-[#6abce2]">Enfermedades</h2>
-      <div className=" bg-[#6abce2]">
-        <p className="text-center text-sm mt-5">Enfermedades</p>
+    <div className="h-screen flex flex-col text-white bg-[#6abce2]">
+      <h2 className="py-6 text-[40px]">Enfermedades</h2>
+      <div className="pb-3 flex justify-center items-center gap-5">
+        <Link to="/DiseasesList">
+          <div className="p-2 rounded-full border-2 border-white">
+            <FaBacterium className="text-3xl" />
+          </div>
+        </Link>
+        <Link to="/enfermedades">
+          <div className="p-2 rounded-full border-2 border-white">
+            <FaBacterium className="text-3xl" />
+          </div>
+        </Link>
       </div>
-      <div className="flex mt-20 px-5 mb-10 bg-[#6abce2] justify-center">
-       {/* usa el icono de virus */}
-       <div classname="p-2 rounded-full border-2 border-white px-2">
-        <BsVirus className="text-3xl text-white" />
-       </div>
-        <div classname="p-2 rounded-full border-2 border-white px-2">
-        <BsVirus className="text-3xl text-white" />
-        </div>
-
+      <h2 className="text-xl py-2 bg-[#3982b8] text-white">
+        Lista de Enfermedades
+      </h2>
+      <div className="flex-1 bg-white">
+      {
+        ListaEnfermdedades?.map((elem, i) => (
+          <AccordionList key={i} open={open === i}
+          toggle={() => toggle(i)}
+          title={elem.nombre}
+          medico={elem.medico}
+          medicamento={elem.medicamento}
+          tratamiento={elem.tratamiento}
+          />
+          ))
+        }
       </div>
-
-      <div className="flex justify-between items-center mt-5">
-        <p className="font-bold text-lg my-0 w-3/5">Agregar</p>
-      </div>
-      
-      <div className="bg-gray-200 p-4 rounded-lg">
-        <div className="flex justify-between items-center">
-          <p className="font-bold text-lg my-0 w-3/5 text-black">Diabetes</p>
-          <p className="text-right text-sm my-0 w-2/5 text-black">Dr. Juan Pérez</p>
-        </div>
-        <div className="flex justify-between items-center mt-5">
-          <p className="font-bold text-lg my-0 w-3/5 text-black">Hipertensión</p>
-          <p className="text-right text-sm my-0 w-2/5 text-black">Dr. Marta García</p>
-        </div>
-        <div className="flex justify-between items-center mt-5">
-          <p className="font-bold text-lg my-0 w-3/5 text-black">Asma</p>
-          <p className="text-right text-sm my-0 w-2/5 text-black">Dr. Ana Flores</p>
-        </div>
-        <div className="flex justify-between items-center mt-5">
-          <p className="font-bold text-lg my-0 w-3/5 text-black">Artritis</p>
-          <p className="text-right text-sm my-0 w-2/5 text-black">Dr. Luis González</p>
-        </div>
-      </div>
+      <Footer />
     </div>
 
     

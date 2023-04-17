@@ -11,13 +11,17 @@ import { PersonalData } from './components/PersonalData'
 import NuevaToma from './components/NuevaToma'
 import FormEnfermedades from './components/Form/FormEnfermedades'
 import DiseasesList from './components/DiseasesList'
-import DrugsList from './components/DrugsList'
+// import DrugsList from './components/DrugsList'
 import DrugsForm from './components/DrugsForm'
+import AllergiesForm from './components/AllergiesForm'
+import MedicinesList from './components/MedicinesList'
+import AllergiesList from './components/AllergiesList'
+import ServicesList from './components/ServicesList'
 
 function App () {
   return (
     <BrowserRouter>
-      <div>
+      {/* <div> */}
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Login />} />
@@ -26,14 +30,18 @@ function App () {
           <Route path='/tomas' element={<Tomas />} />
           <Route path='/nuevatoma' element={<NuevaToma />} />
           <Route path='/alianza' element={<Alianza />} />
-          <Route path='/DrugsList' element={<DrugsList/>} />
+          {/* <Route path='/DrugsList' element={<DrugsList/>} /> */}
           <Route path='/DrugsForm' element={<DrugsForm/>} />
           <Route path='/PersonalData' element={<PersonalData />} />
-          <Route path='/DiseasesList' element={<DiseasesList />} />
+          <Route path='/diseaseslist' element={<DiseasesList />} />
+          <Route path='/medicineslist' element={<MedicinesList />} />
+          <Route path='/allergieslist' element={<AllergiesList />} />
+          <Route path='/serviceslist' element={<ServicesList />} />
           <Route path='/enfermedades' element={<FormEnfermedades />} />
+          <Route path='/nuevaAlergia' element={<AllergiesForm />} />
         </Routes>
 
-      </div>
+      {/* </div> */}
     </BrowserRouter>
   )
 }
