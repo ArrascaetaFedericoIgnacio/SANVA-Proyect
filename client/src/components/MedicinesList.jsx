@@ -3,6 +3,7 @@ import { Footer } from "./footer"
 import { CgPill } from "react-icons/cg"
 import { Link } from "react-router-dom"
 import AccordionList from "./AcordionLista"
+import AccordionMedic from "./AccordionMedic"
 
 const MedicinesList = () => {
 
@@ -15,34 +16,39 @@ const MedicinesList = () => {
   }
   const ListaMedicamentos = [
     {
-      nombre: "Covid-19",
-      medico: "Dr. Juan Perez",
-      medicamento: "Amoxilina",
-      tratamiento: "c/8hs, 7 dias",
+      nombre: "Nombre",
+      dosis: "Proxima dosis",
+      hora: "10:00 AM",
+      cantidad: "2 pildoras",
+      next: "Cada 6 horas",
     },
     {
-      nombre: "Nombre",
-      medico: "Dr. Ibra",
-      medicamento: "Medicamento",
-      tratamiento: "Tratamiento",
+      nombre: "Nombrea",
+      dosis: "Proxima dosis",
+      hora: "10:00 AM",
+      cantidad: "2 pildoras",
+      next: "Cada 6 horas",
     },
     {
-      nombre: "Nombre",
-      medico: "Dr. Fede",
-      medicamento: "Medicamento",
-      tratamiento: "Tratamiento",
+      nombre: "Nombreas",
+      dosis: "Proxima dosis",
+      hora: "10:00 AM",
+      cantidad: "2 pildoras",
+      next: "Cada 6 horas",
     },
     {
-      nombre: "Nombre",
-      medico: "Dr. German",
-      medicamento: "Medicamento",
-      tratamiento: "Tratamiento",
+      nombre: "Nombreasd",
+      dosis: "Proxima dosis",
+      hora: "10:00 AM",
+      cantidad: "2 pildoras",
+      next: "Cada 6 horas",
     },
     {
-      nombre: "Nombre",
-      medico: "Dr. Denis",
-      medicamento: "Medicamento",
-      tratamiento: "Tratamiento",
+      nombre: "Nombreasda",
+      dosis: "Proxima dosis",
+      hora: "10:00 AM",
+      cantidad: "2 pildoras",
+      next: "Cada 6 horas",
     },
   ]
   
@@ -67,12 +73,13 @@ const MedicinesList = () => {
       <div className="flex-1 bg-white">
       {
         ListaMedicamentos?.map((elem, i) => (
-          <AccordionList key={i} open={open === i}
+          <AccordionMedic key={i} open={open === i}
           toggle={() => toggle(i)}
-          title={elem.nombre}
-          medico={elem.medico}
-          medicamento={elem.medicamento}
-          tratamiento={elem.tratamiento}
+          nombre={elem.nombre}
+          dosis={elem.dosis}
+          hora={elem.hora}
+          cantidad={elem.cantidad}
+          next={elem.next}
           />
           ))
         }
