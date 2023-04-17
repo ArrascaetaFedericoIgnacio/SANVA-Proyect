@@ -14,6 +14,7 @@ import DiseasesList from './components/DiseasesList'
 import DrugsList from './components/DrugsList'
 import DrugsForm from './components/DrugsForm'
 import AllergiesForm from './components/AllergiesForm'
+import SuppliesForm from './components/SuppliesForm'
 
 function App () {
   return (
@@ -33,6 +34,7 @@ function App () {
           <Route path='/DiseasesList' element={<DiseasesList />} />
           <Route path='/enfermedades' element={<FormEnfermedades />} />
           <Route path='/nuevaAlergia' element={<AllergiesForm />} />
+          <Route path='/nuevoInsumo' element={<SuppliesForm />} />
         </Routes>
 
       </div>

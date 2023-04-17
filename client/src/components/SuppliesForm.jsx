@@ -9,7 +9,7 @@ import { FaBriefcaseMedical } from 'react-icons/fa'
 import { checkSwitch } from './switch.js'
 import axios from 'axios'
 
-const DrugsForm = () => {
+const SuppliesForm = () => {
   const navigate = useNavigate()
 
   //   const PostInfo = async (values) => {
@@ -237,6 +237,7 @@ const DrugsForm = () => {
                                 </div>
                             )}
                         </div>
+                        </div>
                         )}
                     </Field>
                     </div>
@@ -251,4 +252,4 @@ const DrugsForm = () => {
   )
 }
 
-export default DrugsForm
+export default SuppliesForm
