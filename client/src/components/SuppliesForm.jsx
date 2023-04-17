@@ -33,12 +33,12 @@ const SuppliesForm = () => {
   const validateFields = (values) => {
     const errors = {}
 
-    // validate allergieNname
+    // validate name
     if (!values.name) {
       errors.name = 'El nombre del insumo es obligatorio'
       //       errors.name = 'El nombre del servicio es obligatorio'
     }
-    // verify vaccine
+    // verify type
     if (!values.type) {
       errors.type = 'El tipo es obligatorio'
     }
@@ -46,7 +46,7 @@ const SuppliesForm = () => {
     if (!values.inventory) {
       errors.inventory = 'El inventario es obligatorio'
     }
-    // verify vaccineFrequency
+    // verify dailySupply
     if (!values.dailySupply) {
       errors.dailySupply = 'Los insumos por día son obligatorios'
     }
@@ -65,13 +65,13 @@ const SuppliesForm = () => {
             <Link to="/serviceslist">
                 <div>
                 <BsCircle className="w-11 h-11"/>
-                <BsBriefcaseFill className="w-8 h-8 absolute -translate-y-[38px] translate-x-[6px]"/>
+                <BsBriefcaseFill className="w-7 h-7 absolute -translate-y-[36px] translate-x-[8px]"/>
                 </div>
             </Link>
             {/* <Link to="/AllergiesForm"> */}
                 <div>
                 <BsCircle className="w-11 h-11"/>
-                <FaBriefcaseMedical className="w-8 h-8 absolute -translate-y-[38px] translate-x-[6px]"/>
+                <FaBriefcaseMedical className="w-7 h-7 absolute -translate-y-[38px] translate-x-[8px]"/>
                 {/* <BiPlusMedical className="w-3 h-3 absolute text-black -translate-y-6 translate-x-5"/> */}
                 </div>
             {/* </Link> */}
@@ -105,7 +105,7 @@ const SuppliesForm = () => {
                         <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
                         <label className="w-[50%]">Nombre </label>
-                        <input type="text" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="Nombre de alergia" {...field}></input>
+                        <input type="text" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="Nombre del insumo" {...field}></input>
                         {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                             {meta.error}
@@ -186,7 +186,7 @@ const SuppliesForm = () => {
                         <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
                         <label className="w-[70%]">Proveedor </label>
-                        <input type="text" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="Nombre de alergia" {...field}></input>
+                        <input type="text" className="bg-white w-[80%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="Nombre del proveedor" {...field}></input>
                             {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                             {meta.error}
