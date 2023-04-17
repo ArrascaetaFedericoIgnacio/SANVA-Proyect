@@ -3,7 +3,7 @@ import { Footer } from './footer.jsx'
 import { Link } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 import { useNavigate } from 'react-router'
-import { BiPlusMedical } from 'react-icons/bi'
+// import { BiPlusMedical } from 'react-icons/bi'
 import { BsBriefcaseFill } from 'react-icons/bs'
 import { FaBriefcaseMedical } from 'react-icons/fa'
 import { checkSwitch } from './switch.js'
@@ -68,7 +68,7 @@ const DrugsForm = () => {
                 <div>
                 <BsCircle className="w-11 h-11"/>
                 <FaBriefcaseMedical className="w-8 h-8 absolute -translate-y-[38px] translate-x-[6px]"/>
-                <BiPlusMedical className="w-3 h-3 absolute text-black -translate-y-6 translate-x-5"/>
+                {/* <BiPlusMedical className="w-3 h-3 absolute text-black -translate-y-6 translate-x-5"/> */}
                 </div>
             {/* </Link> */}
             </div>
@@ -80,7 +80,7 @@ const DrugsForm = () => {
           type: '',
           inventory: 0,
           dailySupply: 0,
-          consumptionDays: 'false',
+          consumptionDays: 0,
           supplier: '',
           comments: '',
           lackfOfInventoryAlert: false
@@ -114,17 +114,21 @@ const DrugsForm = () => {
 
                     <Field
                     name='type'
+                    as="select"
                     >
                     {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
                         <label className="w-[50%]">Tipo </label>
-                        <input type="text" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="Nombre de vacuna" {...field}></input>
-                        {meta.touched && meta.error && (
+                        <select name="type" className="bg-white w-[50%] rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" {...field}>
+                            <option value="supply">Insumo</option>
+                            <option value="service">Servicio</option>
+                          </select>
+                          {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                             {meta.error}
                             </div>
-                        )}
+                          )}
                         </div>
                         </div>
                     )}
@@ -154,8 +158,8 @@ const DrugsForm = () => {
                     {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between items-center">
-                        <label className="w-[60%]">Días de consumo </label>
-                        <select name="vaccineFrequency" className="w-[40%] mr-10 bg-white text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" {...field}>
+                        <label className="w-[60%]">Días de uso </label>
+                        <select name="consumptionDays" className="w-[40%] mr-10 bg-white text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" {...field}>
                             <option value="oncePerWeek">Semanal</option>
                             <option value="oncePerThreeWeeks">Cada tres semanas</option>
                             <option value="oncePerFourWeeks">Cada cuatro semanas</option>
@@ -178,14 +182,7 @@ const DrugsForm = () => {
                         <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
                         <label className="w-[70%]">Proveedor </label>
-                                <input
-                                className={checkSwitch}
-                                type='checkbox'
-                                role="switch"
-                                // placeholder='Recordatorio de vacuna:'
-                                {...field}
-                                style={{ scale: '1.3' }}
-                                />
+                        <input type="text" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="Nombre de alergia" {...field}></input>
                             {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                             {meta.error}
@@ -223,17 +220,17 @@ const DrugsForm = () => {
                     name='lackOfInventoryAlert'
                     >
                         {({ field, form: { touched, errors }, meta }) => (
-                        <div>
-                            <div className="py-4 flex justify-between px-[30px] items-center">
-                                <p>Alerta por falta de inventario </p>
-                                <textarea
-                                className='text-black h-20 w-full rounded-lg bg-white px-4 py-3 outline-none border-2 focus:border-sky-600 transition duration-200'
-                                type='textarea'
-                                placeholder='Comentarios'
-                                style={{ resize: 'none' }}
-                                {...field}
-                                />
-                            </div>
+                        <div className="border-b-[1.8px] border-[#3982b8]">
+                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
+                          <label className="w-[70%]">Alerta por falta de inventario: </label>
+                                <input
+                                  className={checkSwitch}
+                                  type='checkbox'
+                                  role="switch"
+                                  // placeholder='Alerta por falta de inventario'
+                                  {...field}
+                                  style={{ scale: '1.3' }}
+                                  />
                             {meta.touched && meta.error && (
                                 <div className='pb-2 text-red-600 font-semibold'>
                                 {meta.error}
