@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Footer } from './footer.jsx'
 import { Link } from 'react-router-dom'
-import { Formik, Form, Field } from 'formik'
+import { Formik, Form, Field, FormikConsumer } from 'formik'
 import { useNavigate } from 'react-router'
 // import { BiPlusMedical } from 'react-icons/bi'
 import { BsBriefcaseFill, BsCircle } from 'react-icons/bs'
@@ -12,6 +12,7 @@ import axios from 'axios'
 const SuppliesForm = () => {
   const navigate = useNavigate()
 
+  const [type, setType] = useState('')
   const PostInfo = async (values) => {
     try {
       console.log(values)
@@ -59,25 +60,27 @@ const SuppliesForm = () => {
 
   return (
     <div>
-        <header className="w-screen h-52 bg-[#4194cb] text-white flex justify-center items-center flex-col">
-            <h1>Insumos</h1>
+        {/* <header className="w-screen h-52 bg-[#4194cb] text-white flex justify-center items-center flex-col"> */}
+          {/* <FormikConsumer>
+            {values.type === 'service' ? <h1>Servicios</h1> : <h1>Insumos</h1>}
+          </FormikConsumer>
             <div className="flex flex-row space-x-7 mt-12">
             <Link to="/serviceslist">
                 <div>
                 <BsCircle className="w-11 h-11"/>
                 <BsBriefcaseFill className="w-7 h-7 absolute -translate-y-[36px] translate-x-[8px]"/>
                 </div>
-            </Link>
-            {/* <Link to="/AllergiesForm"> */}
-                <div>
+            </Link> */}
+            {/* <Link to="/SuppliesForm"> */}
+                {/* <div>
                 <BsCircle className="w-11 h-11"/>
-                <FaBriefcaseMedical className="w-7 h-7 absolute -translate-y-[38px] translate-x-[8px]"/>
+                <FaBriefcaseMedical className="w-7 h-7 absolute -translate-y-[38px] translate-x-[8px]"/> */}
                 {/* <BiPlusMedical className="w-3 h-3 absolute text-black -translate-y-6 translate-x-5"/> */}
-                </div>
+                {/* </div> */}
             {/* </Link> */}
-            </div>
-        </header>
-        <main>
+            {/* </div> */}
+        {/* </header> */}
+        {/* <main> */}
         <Formik
         initialValues={{
           name: '',
@@ -91,8 +94,30 @@ const SuppliesForm = () => {
         }}
         onSubmit={HandleSubmit}
         validate={validateFields}>
-        {({ isSubmitting }) => (
-        <Form className="text-black bg-white">
+        {({ values, isSubmitting }) => (
+          <Form className="text-black bg-white">
+          <header className="w-screen h-52 bg-[#4194cb] text-white flex justify-center items-center flex-col">
+          <FormikConsumer>
+            {({ values }) => values.type === 'service' ? <h1>Servicios</h1> : <h1>Insumos</h1>}
+          </FormikConsumer>
+            <div className="flex flex-row space-x-7 mt-12">
+            <Link to="/serviceslist">
+                <div>
+                <BsCircle className="w-11 h-11"/>
+                <BsBriefcaseFill className="w-7 h-7 absolute -translate-y-[36px] translate-x-[8px]"/>
+                </div>
+            </Link>
+            {/* <Link to="/SuppliesForm"> */}
+                <div>
+                <BsCircle className="w-11 h-11"/>
+                <FaBriefcaseMedical className="w-7 h-7 absolute -translate-y-[38px] translate-x-[8px]"/>
+                {/* <BiPlusMedical className="w-3 h-3 absolute text-black -translate-y-6 translate-x-5"/> */}
+                </div>
+            {/* </Link> */}
+            </div>
+            </header>
+            <main>
+
             <div className='flex flex-col bg-[#58afdd] text-white bg-white'>
             <button className="py-2 w-full rounded-none text-white bg-[#3982b8]"
                     type="submit">
@@ -140,12 +165,32 @@ const SuppliesForm = () => {
 
                     <Field
                     name='inventory'
+                    disabled={values.type === 'service'}
                     >
                     {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
-                        <label className="w-[50%]">Inventario </label>
-                        <input type="number" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="1" {...field}></input>
+                        {values.type === 'service' ? <label className="w-[50%] text-slate-300">Inventario </label> : <label className="w-[50%] text-slate-400">Inventario </label>}
+                        <input disabled={values.type === 'service'} type="number" className={values.type === 'inventario' ? 'bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200' : 'bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200 text-slate-3000'} placeholder='0' {...field}></input>
+                        {meta.touched && meta.error && (
+                            <div className='pt-2 text-red-600 font-semibold'>
+                            {meta.error}
+                            </div>
+                        )}
+                        </div>
+                        </div>
+                    )}
+                    </Field>
+
+                    <Field
+                    name='dailySupply'
+                    disabled={values.type === 'service'}
+                    >
+                    {({ field, form: { touched, errors }, meta }) => (
+                        <div className="border-b-[1.8px] border-[#3982b8]">
+                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
+                        {values.type === 'service' ? <label className="w-[50%] text-slate-300">Insumo por día </label> : <label className="w-[50%] text-slate-400">Insumo por día </label>}
+                        <input disabled={values.type === 'service'} type="number" className={values.type === 'inventario' ? 'bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200' : 'bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200 text-slate-3000'} placeholder='0' {...field}></input>
                         {meta.touched && meta.error && (
                             <div className='pt-2 text-red-600 font-semibold'>
                             {meta.error}
@@ -158,12 +203,14 @@ const SuppliesForm = () => {
 
                     <Field
                     name='consumptionDays'
+                    disabled={values.type === 'service'}
+
                     >
                     {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between items-center">
-                        <label className="w-[60%]">Días de uso </label>
-                        <select name="consumptionDays" className="w-[40%] mr-10 bg-white text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" {...field}>
+                        {values.type === 'service' ? <label className="w-[60%] text-slate-300">Días de uso </label> : <label className="w-[60%] text-slate-400">Días de uso </label>}
+                        <select name="consumptionDays" disabled={values.type === 'service'} className="w-[40%] mr-10 bg-white text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" {...field}>
                             <option value="oncePerWeek">Semanal</option>
                             <option value="oncePerThreeWeeks">Cada tres semanas</option>
                             <option value="oncePerFourWeeks">Cada cuatro semanas</option>
@@ -226,11 +273,12 @@ const SuppliesForm = () => {
                         {({ field, form: { touched, errors }, meta }) => (
                         <div className="border-b-[1.8px] border-[#3982b8]">
                         <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
-                          <label className="w-[70%]">Alerta por falta de inventario: </label>
+                          {values.type === 'service' ? <label className="w-[70%] text-slate-300">Alerta por falta de inventario: </label> : <label className="w-[70%] text-slate-400">Alerta por falta de inventario: </label> }
                                 <input
                                   className={checkSwitch}
                                   type='checkbox'
                                   role="switch"
+                                  disabled={values.type === 'service'}
                                   // placeholder='Alerta por falta de inventario'
                                   {...field}
                                   style={{ scale: '1.3' }}
@@ -245,9 +293,9 @@ const SuppliesForm = () => {
                         )}
                     </Field>
                     </div>
+                </main>
                 </Form>)}
                 </Formik>
-        </main>
         <footer>
 
         <Footer/>
