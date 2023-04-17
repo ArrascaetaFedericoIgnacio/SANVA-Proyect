@@ -15,7 +15,6 @@ async def index():
 
 @app.post("/", response_model=User)
 async def post_user(user: User):
-    print(user)
     if type(search_user("email", user.email)) == User:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="El usuario ya existe")
@@ -44,7 +43,7 @@ async def get_user_by_username(username : str):
     try:
         find_user = search_user("username", username)
         if type(find_user) == User:
-            populate_user(find_user)
+            find_user.user_takes = populate_user(find_user)
             return find_user
         return "User not found"
     except Exception as e:
@@ -95,11 +94,6 @@ async def index():
     
 @app.post("/take", response_model=Take)
 async def post_take(take: Take):
-    print(take)
-    # if type(search_take("type", take.type)) == Take:
-    #     raise HTTPException(
-    #         status_code=status.HTTP_404_NOT_FOUND, detail="El tipo ya existe")
-    
     take_dict = dict(take)
     del take_dict["id"]
 

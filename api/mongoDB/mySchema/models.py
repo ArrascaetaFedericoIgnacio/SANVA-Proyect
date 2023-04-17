@@ -10,6 +10,10 @@ class User(BaseModel):
     gender : str
     height : str
     weight : str
+    user_takes : Optional[list]
+
+    class Config:
+        allow_mutation = True
 
 class Login(BaseModel):
     username : str
