@@ -13,6 +13,7 @@ import FormEnfermedades from './components/Form/FormEnfermedades'
 import DiseasesList from './components/DiseasesList'
 // import DrugsList from './components/DrugsList'
 import DrugsForm from './components/DrugsForm'
+import AllergiesForm from './components/AllergiesForm'
 import MedicinesList from './components/MedicinesList'
 import AllergiesList from './components/AllergiesList'
 import ServicesList from './components/ServicesList'
@@ -37,6 +38,7 @@ function App () {
           <Route path='/allergieslist' element={<AllergiesList />} />
           <Route path='/serviceslist' element={<ServicesList />} />
           <Route path='/enfermedades' element={<FormEnfermedades />} />
+          <Route path='/nuevaAlergia' element={<AllergiesForm />} />
         </Routes>
 
       {/* </div> */}
