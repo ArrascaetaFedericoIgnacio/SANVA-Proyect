@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Footer } from "./footer";
 import { FaBacterium } from "react-icons/fa";
 import { BsBuildings } from "react-icons/bs";
-import AccordionList from "./Form/AcordionLista";
+import AccordionList from "./AcordionLista";
 import { Link } from "react-router-dom";
 
 const Diseases = () => {
@@ -22,33 +22,33 @@ const Diseases = () => {
       tratamiento: "c/8hs, 7 dias",
     },
     {
-      nombre: "Nombre",
-      medico: "Dr. Ibra",
+      nombre: "Nombrea",
+      medico: "Dr. Ibra Cardozo",
       medicamento: "Medicamento",
       tratamiento: "Tratamiento",
     },
     {
-      nombre: "Nombre",
-      medico: "Dr. Fede",
+      nombre: "Nombreas",
+      medico: "Dr. Fede Arrascaeta",
       medicamento: "Medicamento",
       tratamiento: "Tratamiento",
     },
     {
-      nombre: "Nombre",
-      medico: "Dr. German",
+      nombre: "Nombreasd",
+      medico: "Dr. German German",
       medicamento: "Medicamento",
       tratamiento: "Tratamiento",
     },
     {
-      nombre: "Nombre",
-      medico: "Dr. Denis",
+      nombre: "Nombreasda",
+      medico: "Dr. Denis Gabriel",
       medicamento: "Medicamento",
       tratamiento: "Tratamiento",
     },
   ]
 
   return (
-    <div className="h-full mb-[54px] text-white bg-[#6abce2]">
+    <div className="h-screen flex flex-col text-white bg-[#6abce2]">
       <h2 className="py-6 text-[40px]">Enfermedades</h2>
       <div className="pb-3 flex justify-center items-center gap-5">
         <Link to="/DiseasesList">
@@ -65,17 +65,19 @@ const Diseases = () => {
       <h2 className="text-xl py-2 bg-[#3982b8] text-white">
         Lista de Enfermedades
       </h2>
+      <div className="flex-1 bg-white">
       {
         ListaEnfermdedades?.map((elem, i) => (
           <AccordionList key={i} open={open === i}
-            toggle={() => toggle(i)}
-            title={elem.nombre}
-            medico={elem.medico}
-            medicamento={elem.medicamento}
-            tratamiento={elem.tratamiento}
+          toggle={() => toggle(i)}
+          title={elem.nombre}
+          medico={elem.medico}
+          medicamento={elem.medicamento}
+          tratamiento={elem.tratamiento}
           />
-        ))
-      }
+          ))
+        }
+      </div>
       <Footer />
     </div>
 
