@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 import { useNavigate } from 'react-router'
 // import { BiPlusMedical } from 'react-icons/bi'
-import { BsBriefcaseFill } from 'react-icons/bs'
+import { BsBriefcaseFill, BsCircle } from 'react-icons/bs'
 import { FaBriefcaseMedical } from 'react-icons/fa'
 import { checkSwitch } from './switch.js'
 import axios from 'axios'
@@ -12,17 +12,17 @@ import axios from 'axios'
 const SuppliesForm = () => {
   const navigate = useNavigate()
 
-  //   const PostInfo = async (values) => {
-  //     try {
-  //       console.log(values)
-  //       const response = await axios.post(
-  //         'https://apisanva.onrender.com/user',
-  //         values
-  //       )
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
+  const PostInfo = async (values) => {
+    try {
+      console.log(values)
+      const response = await axios.post(
+        'https://apisanva.onrender.com/user',
+        values
+      )
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const HandleSubmit = (values, { setSubmitting }) => {
     setSubmitting(false)
@@ -30,28 +30,32 @@ const SuppliesForm = () => {
     navigate('/user')
   }
 
-  //   const validateFields = (values) => {
-  //     const errors = {}
+  const validateFields = (values) => {
+    const errors = {}
 
-  //     // validate allergieNname
-  //     if (!values.allergieName) {
-  //       errors.allergieNname = 'El nombre de la alergia es obligatorio'
-  //     }
-  //     // verify vaccine
-  //     if (!values.vaccine) {
-  //       errors.vaccine = 'El nombre de la vacuna es obligatorio'
-  //     }
-  //     // verify inventory
-  //     if (!values.inventory) {
-  //       errors.inventory = 'El inventario es obligatorio'
-  //     }
-  //     // verify vaccineFrequency
-  //     if (!values.vaccineFrequency) {
-  //       errors.vaccineFrequency = 'La frecuencia de la vacuna es obligatoria'
-  //     }
+    // validate allergieNname
+    if (!values.name) {
+      errors.name = 'El nombre del insumo es obligatorio'
+      //       errors.name = 'El nombre del servicio es obligatorio'
+    }
+    // verify vaccine
+    if (!values.type) {
+      errors.type = 'El tipo es obligatorio'
+    }
+    // verify inventory
+    if (!values.inventory) {
+      errors.inventory = 'El inventario es obligatorio'
+    }
+    // verify vaccineFrequency
+    if (!values.dailySupply) {
+      errors.dailySupply = 'Los insumos por día son obligatorios'
+    }
+    if (!values.provider) {
+      errors.provider = 'El proveedor es obligatorio'
+    }
 
-  //     return errors
-  //   }
+    return errors
+  }
 
   return (
     <div>
