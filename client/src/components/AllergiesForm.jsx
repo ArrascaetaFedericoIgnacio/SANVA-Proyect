@@ -7,21 +7,25 @@ import { BiPlusMedical } from 'react-icons/bi'
 import { BsCircle, BsVirus } from 'react-icons/bs'
 import { checkSwitch } from './switch.js'
 import axios from 'axios'
+import useAllergiesStore from '../store/allergiesStore.jsx'
 
 const DrugsForm = () => {
   const navigate = useNavigate()
 
   const PostInfo = async (values) => {
     try {
-      console.log(values)
+      console.log(values);
+      // Guardar el formulario en el store de alergias
+      allergiesStore.setListaAlergia([...allergiesStore.ListaAlergia, values]);
+      // Realizar la petición POST a la API
       const response = await axios.post(
         'https://apisanva.onrender.com/user',
         values
-      )
+      );
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   const HandleSubmit = (values, { setSubmitting }) => {
     setSubmitting(false)

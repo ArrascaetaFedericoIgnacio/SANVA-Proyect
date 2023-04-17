@@ -3,8 +3,11 @@ import { Footer } from "./footer";
 import { BsVirus } from "react-icons/bs"
 import { Link } from "react-router-dom";
 import AccordionList from "./AcordionLista";
+import useAllergiesStore from "../store/allergiesStore";
 
 const AllergiesList = () => {
+
+  const { ListaAlergiaa } = useAllergiesStore();
   
   const [open, setOpen] = useState(false)
     const toggle = (index) => {
@@ -14,38 +17,38 @@ const AllergiesList = () => {
       setOpen(index)
   }
 
-  const ListaAlergia = [
-    {
-      nombre: "nombre",
-      vacuna: "Vacuna",
-      inventario: "Inventario",
-      nextVacuna: "Proxima vacuna",
-    },
-    {
-      nombre: "nombre",
-      vacuna: "Vacuna",
-      inventario: "Inventario",
-      nextVacuna: "Proxima vacuna",
-    },
-    {
-      nombre: "nombre",
-      vacuna: "Vacuna",
-      inventario: "Inventario",
-      nextVacuna: "Proxima vacuna",
-    },
-    {
-      nombre: "nombre",
-      vacuna: "Vacuna",
-      inventario: "Inventario",
-      nextVacuna: "Proxima vacuna",
-    },
-    {
-      nombre: "nombre",
-      vacuna: "Vacuna",
-      inventario: "Inventario",
-      nextVacuna: "Proxima vacuna",
-    },
-  ]
+  // const ListaAlergiaa = [
+  //   {
+  //     nombre: "nombre",
+  //     vacuna: "Vacuna",
+  //     inventario: "Inventario",
+  //     nextVacuna: "Proxima vacuna",
+  //   },
+  //   {
+  //     nombre: "nombre",
+  //     vacuna: "Vacuna",
+  //     inventario: "Inventario",
+  //     nextVacuna: "Proxima vacuna",
+  //   },
+  //   {
+  //     nombre: "nombre",
+  //     vacuna: "Vacuna",
+  //     inventario: "Inventario",
+  //     nextVacuna: "Proxima vacuna",
+  //   },
+  //   {
+  //     nombre: "nombre",
+  //     vacuna: "Vacuna",
+  //     inventario: "Inventario",
+  //     nextVacuna: "Proxima vacuna",
+  //   },
+  //   {
+  //     nombre: "nombre",
+  //     vacuna: "Vacuna",
+  //     inventario: "Inventario",
+  //     nextVacuna: "Proxima vacuna",
+  //   },
+  // ]
   
   return (
     <div className="h-screen flex flex-col text-white bg-[#6abce2]">
@@ -67,7 +70,7 @@ const AllergiesList = () => {
       </h2>
       <div className="flex-1 bg-white">
         {
-          ListaAlergia?.map((elem, i) => (
+          ListaAlergiaa?.map((elem, i) => (
             <AccordionList key={i} open={open === i}
             toggle={() => toggle(i)}
             title={elem.nombre}
