@@ -1,4 +1,4 @@
-from mongoDB.mySchema.hooks import user_schema, take_schema, takes_schema
+from mongoDB.mySchema.hooks import user_schema, take_schema, drug_schema, disease_schema, allergie_schema, supply_schema, service_schema
 from mongoDB.mySchema.models import User, Take
 from mongoDB.client import db
 
@@ -15,15 +15,37 @@ def search_take(field: str, value):
         return Take(**take_schema(take))
     except Exception as e:
         return {"error": str(e)}
-
-def populate_user(user):
+    
+def populate(user):
     try:
-        user_takes = []
-        takes = list(db.takes.find())
-        for take in takes:
-            if user.id == take["user_id"]:
-                user_takes.append(take_schema(take))
-        print("marmota: ",type(user_takes))
-        return user_takes
+        user.user_takes = populate_user(user, "takes")
+        user.user_drugs = populate_user(user, "drugs")
+        user.user_diseases = populate_user(user, "diseases")
+        user.user_allergies = populate_user(user, "allergies")
+        user.user_supplies = populate_user(user, "supplies")
+        user.user_services = populate_user(user, "services")
+        return user
+    except Exception as e:
+        return {"error": str(e)}
+
+def populate_user(user, name):
+    try:
+        to_populate = []
+        entries = list(db[name].find())
+        for entry in entries:
+            if user.id == entry["user_id"]:
+                if name == "takes":
+                    to_populate.append(take_schema(entry))
+                elif name == "drugs":
+                    to_populate.append(drug_schema(entry))
+                elif name == "diseases":
+                    to_populate.append(disease_schema(entry))
+                elif name == "allergies":
+                    to_populate.append(allergie_schema(entry))
+                elif name == "supplies":
+                    to_populate.append(supply_schema(entry))
+                elif name == "services":
+                    to_populate.append(service_schema(entry))
+        return to_populate
     except Exception as e:
         return {"error": str(e)}

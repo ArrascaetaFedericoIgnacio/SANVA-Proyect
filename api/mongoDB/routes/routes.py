@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, status
-from mongoDB.functions import search_user, search_take, populate_user
-from mongoDB.mySchema.models import User, Login, Take
-from mongoDB.mySchema.hooks import user_schema, users_schema, take_schema, takes_schema
+from mongoDB.functions import search_user, populate
+from mongoDB.mySchema.models import User, Login, Take, Drug, Disease, Allergie, Supply, Service
+from mongoDB.mySchema.hooks import user_schema, users_schema, takes_schema
 from mongoDB.client import db
 from bson import ObjectId
 
@@ -18,14 +18,10 @@ async def post_user(user: User):
     if type(search_user("email", user.email)) == User:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="El usuario ya existe")
-
     user_dict = dict(user)
     del user_dict["id"]
-
     id = db.users.insert_one(user_dict).inserted_id
-
     new_user = user_schema(db.users.find_one({"_id": id}))
-
     return User(**new_user)
 
 @app.get("/email/{email}", response_model=User)
@@ -43,7 +39,6 @@ async def get_user_by_username(username : str):
     try:
         find_user = search_user("username", username)
         if type(find_user) == User:
-            find_user.user_takes = populate_user(find_user)
             return find_user
         return "User not found"
     except Exception as e:
@@ -80,7 +75,8 @@ async def login(login: Login):
         find_user = search_user("username", login.username)
         if type(find_user) == User:
             if find_user.password == login.password:
-                return dict(find_user)
+                find_user = populate(find_user)
+                return find_user
             return "Wrong password"
         return "User not found"
     except Exception as e:
@@ -92,13 +88,66 @@ async def login(login: Login):
 async def index():
     return takes_schema(db.takes.find())
     
-@app.post("/take", response_model=Take)
+@app.post("/take", response_model=User)
 async def post_take(take: Take):
     take_dict = dict(take)
     del take_dict["id"]
+    db.takes.insert_one(take_dict).inserted_id
+    find_user = search_user("_id", ObjectId(take.user_id))
+    find_user = populate(find_user)
+    return find_user
 
-    id = db.takes.insert_one(take_dict).inserted_id
+# ---------- Drugs ----------
 
-    new_take = take_schema(db.takes.find_one({"_id": id}))
+@app.post("/drug", response_model=User)
+async def post_drug(drug: Drug):
+    drug_dict = dict(drug)
+    del drug_dict["id"]
+    db.drugs.insert_one(drug_dict).inserted_id
+    find_user = search_user("_id", ObjectId(drug.user_id))
+    find_user = populate(find_user)
+    return find_user
 
-    return Take(**new_take)
+# ---------- Disease ----------
+
+@app.post("/disease", response_model=User)
+async def post_drug(disease: Disease):
+    disease_dict = dict(disease)
+    del disease_dict["id"]
+    db.diseases.insert_one(disease_dict).inserted_id
+    find_user = search_user("_id", ObjectId(disease.user_id))
+    find_user = populate(find_user)
+    return find_user
+
+# ---------- Allergie ----------
+
+@app.post("/allergie", response_model=User)
+async def post_allergie(allergie: Allergie):
+    allergie_dict = dict(allergie)
+    del allergie_dict["id"]
+    db.allergies.insert_one(allergie_dict).inserted_id
+    find_user = search_user("_id", ObjectId(allergie.user_id))
+    find_user = populate(find_user)
+    return find_user
+
+# ---------- Supply ----------
+
+@app.post("/supply", response_model=User)
+async def post_supply(supply: Supply):
+    supply_dict = dict(supply)
+    del supply_dict["id"]
+    db.supplies.insert_one(supply_dict).inserted_id
+    find_user = search_user("_id", ObjectId(supply.user_id))
+    find_user = populate(find_user)
+    return find_user
+
+# ---------- Services ----------
+
+@app.post("/service", response_model=User)
+async def post_service(service: Service):
+    service_dict = dict(service)
+    del service_dict["id"]
+    # db.services.insert_one(service_dict).inserted_id
+    find_user = search_user("_id", ObjectId(service.user_id))
+    find_user = populate(find_user)
+    return find_user
