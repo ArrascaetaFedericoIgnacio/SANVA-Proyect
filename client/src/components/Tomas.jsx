@@ -3,8 +3,9 @@ import { HiOutlineHeart, HiCalendar } from "react-icons/hi"
 import { FaPlus } from "react-icons/fa"
 import { BsBuildings } from "react-icons/bs"
 import AccordionData from "./AccodionData"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import axios from "axios"
 const Tomas = () => {
    const accordionData = [
       {
@@ -36,6 +37,15 @@ const Tomas = () => {
          description: "lorem"
       },
    ]
+   const [accordionTomas, SetAccordionTomas] = useState()
+   useEffect(() => {
+      const getTomas = localStorage.getItem('user')
+      const getTomasParseado = JSON.parse(getTomas)
+      console.log("get ->", getTomasParseado);
+      SetAccordionTomas(getTomas.user_takes)
+   },[])
+   console.log("ready ->", accordionTomas);
+   
    const [open, setOpen] = useState(false)
    const toggle = (index) => {
       if (open === index) {
@@ -66,16 +76,18 @@ const Tomas = () => {
          </h2>
          <div className="flex-1 bg-white">
             {
-               accordionData.length ?
-               accordionData.map((data, index) => (
+               accordionTomas ?
+               accordionTomas.map((data, index) => (
                   <AccordionData key={index} open={index === open} toggle={() => toggle(index)} title={data.title} desc={data.description} />
                   ))
                   : <div className="py-14 flex flex-col gap-6 justify-center items-center">
-                  <p className="font-semibold text-[22px]">
+                  <p className="font-semibold text-slate-600 text-[22px]">
                      No hay tomas...
                   </p>
                   <Link to="/nuevatoma">
-                     <button className="font-medium rounded-2xl text-xl bg-[#0091cb]">Añadir Nueva Toma</button>
+                     <button className="font-medium rounded-2xl py-2 px-5 text-xl bg-[#0091cb]">
+                        Añadir Nueva Toma
+                     </button>
                   </Link>
                   </div>
             }
