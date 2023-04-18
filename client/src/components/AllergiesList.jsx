@@ -19,6 +19,7 @@ const AllergiesList = () => {
 
   // const ListaAlergiaa = [
   //   {
+    
   //     nombre: "nombre",
   //     vacuna: "Vacuna",
   //     inventario: "Inventario",
