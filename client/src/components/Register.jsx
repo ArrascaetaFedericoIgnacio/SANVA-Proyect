@@ -106,7 +106,7 @@ export const Register = () => {
 	}
 
 	return (
-		<div className="relative w-screen h-screen flex justify-center items-center">
+		<div className="relative overflow-hidden w-screen h-screen flex justify-center items-center">
 			<div className="absolute w-screen h-screen -translate-y-40 skew-y-[40deg] bg-[#6abce2]"></div>
 			<div className="absolute w-screen h-screen translate-y-20 skew-y-[40deg] bg-[#58afdd]"></div>
 			<div className="absolute w-screen h-screen translate-y-[48rem] skew-y-[40deg] bg-[#3982b8]"></div>

@@ -7,12 +7,25 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import {Field, Form, Formik} from "formik"
 import DatePikerField from "./DatePicker"
+import axios from "axios"
 
 const NuevaToma = () => {
+
+   const postToma = async (values) => {
+      try {
+         console.log(values);
+         const result = await axios.post("https://apisanva.onrender.com/", values)
+         // const data = result.data
+         console.log("newtoma ->", result.data);
+      } catch (error) {
+         console.log("newtomaerror -->", error);
+      }
+   }
 
    const HandleSubmit = (values) => {
       console.log("tomas", values);
       console.log("type", JSON.parse(JSON.stringify(values)));
+      postToma(values)
    }
 
    const validateCamps = (values) => {

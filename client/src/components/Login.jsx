@@ -54,7 +54,7 @@ export const Login = () => {
 
   return (
     <>
-      <div className="relative w-screen h-screen flex justify-center items-center">
+      <div className="relative overflow-hidden w-screen h-screen flex justify-center items-center">
         <div className="absolute w-screen h-screen -translate-y-10 skew-y-[40deg] bg-[#b8e2f4]"></div>
         <div className="absolute w-screen h-screen skew-y-[40deg] bg-[#8dcfec]"></div>
         <div className="absolute w-screen h-screen translate-y-10 skew-y-[40deg] bg-[#6abce2]"></div>
