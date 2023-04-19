@@ -56,7 +56,7 @@ const AllergiesList = () => {
             <BsVirus className="text-3xl" />
           </div>
         </Link>
-        <Link to="">
+        <Link to="/nuevaAlergia">
           <div className="p-2 rounded-full border-2 border-white">
             <BsVirus className="text-3xl" />
           </div>
