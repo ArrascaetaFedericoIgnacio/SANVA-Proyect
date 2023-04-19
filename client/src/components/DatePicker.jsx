@@ -13,9 +13,9 @@ const DatePikerField = ({ ...props }) => {
     {...props}
     selected={field.value && new Date(field.value)}
     onChange={(date) => setValue(date)}
-    placeholderText='Fecha de Nacimiento'
+    placeholderText='Elegir fecha'
     dateFormat="dd/MM/yyyy"
-    className="bg-white text-black w-36 h-8"
+    className="text-black h-10 w-[10.5rem] rounded-lg bg-white px-5 outline-none border-2 focus:border-sky-600 transition duration-200"
     dropdownMode="select"
     scrollableMonthYearDropdown="true" showMonthDropdown="true" showYearDropdown="true"></DatePicker>
   </div></div>

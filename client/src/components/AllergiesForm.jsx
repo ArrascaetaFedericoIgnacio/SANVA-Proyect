@@ -7,6 +7,7 @@ import { BiPlusMedical } from 'react-icons/bi'
 import { BsCircle, BsVirus } from 'react-icons/bs'
 import { checkSwitch } from './switch.js'
 import axios from 'axios'
+import { FaPlus } from 'react-icons/fa'
 
 const DrugsForm = () => {
   const navigate = useNavigate()
@@ -24,9 +25,10 @@ const DrugsForm = () => {
   }
 
   const HandleSubmit = (values, { setSubmitting }) => {
-    setSubmitting(false)
-    PostInfo(values)
-    navigate('/user')
+    console.log(values);
+    // setSubmitting(false)
+    // PostInfo(values)
+    // navigate('/user')
   }
 
   const validateFields = (values) => {
@@ -34,7 +36,7 @@ const DrugsForm = () => {
 
     // validate allergieNname
     if (!values.allergieName) {
-      errors.allergieNname = 'El nombre de la alergia es obligatorio'
+      errors.allergieName = 'El nombre de la alergia es obligatorio'
     }
     // verify vaccine
     if (!values.vaccine) {
@@ -53,27 +55,22 @@ const DrugsForm = () => {
   }
 
   return (
-    <div>
-        <header className="w-screen h-52 bg-[#4194cb] text-white flex justify-center items-center flex-col">
-            <h1>Alergias</h1>
-            <div className="flex flex-row space-x-7 mt-12">
-              <Link to="/allergieslist">
-                <div>
-                  <BsCircle className="w-11 h-11"/>
-                  <BsVirus className="w-8 h-8 absolute -translate-y-[38px] translate-x-[6px]"/>
-                </div>
-              </Link>
-              {/* <Link to="/AllergiesForm"> */}
-                <div>
-                  <BsCircle className="w-11 h-11"/>
-                  <BsVirus className="w-8 h-8 absolute -translate-y-[38px] translate-x-[6px]"/>
-                  <BiPlusMedical className="w-3 h-3 absolute text-black -translate-y-6 translate-x-5"/>
-                </div>
-              {/* </Link> */}
-            </div>
-        </header>
-        <main>
-        <Formik
+    <div className='h-screen flex flex-col text-white bg-[#6abce2]'>
+      <h2 className='py-6 text-[40px]'>Alergias</h2>
+      <div className="pb-3 flex justify-center items-center gap-5">
+        <Link to="/allergieslist">
+          <div className='p-2 rounded-full border-2 border-white'>
+            <BsVirus className="text-3xl"/>
+          </div>
+        </Link>
+        {/* <Link to="/AllergiesForm"> */}
+          <div className='relative p-2 rounded-full border-2 border-white'>
+            <BsVirus className="text-3xl"/>
+            <FaPlus className="absolute text-blue-950 text-[1.1rem] top-[1.4rem] right-2"/>
+          </div>
+        {/* </Link> */}
+      </div>
+      <Formik
         initialValues={{
           allergieName: '',
           vaccine: '',
@@ -83,147 +80,125 @@ const DrugsForm = () => {
           comments: ''
         }}
         onSubmit={HandleSubmit}
-        validate={validateFields}>
+        validate={validateFields}
+      >
         {({ isSubmitting }) => (
-          <Form className="text-black bg-white">
-            <div className='flex flex-col bg-[#58afdd] text-white bg-white'>
-              <button className="py-2 w-full rounded-none text-white bg-[#3982b8]"
-                     type="submit">
-                        Agregar
-                  </button>
-                    <Field
-                      name='allergieName'
-                    >
-                      {({ field, form: { touched, errors }, meta }) => (
-                        <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
-                          <label className="w-[50%]">Nombre </label>
-                          <input type="text" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="Nombre de alergia" {...field}></input>
-                          {meta.touched && meta.error && (
-                            <div className='pt-2 text-red-600 font-semibold'>
-                              {meta.error}
-                            </div>
-                          )}
-                          </div>
-                          </div>
-                      )}
-                    </Field>
-
-                    <Field
-                      name='vaccine'
-                    >
-                      {({ field, form: { touched, errors }, meta }) => (
-                        <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
-                          <label className="w-[50%]">Vacuna </label>
-                          <input type="text" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="Nombre de vacuna" {...field}></input>
-                          {meta.touched && meta.error && (
-                            <div className='pt-2 text-red-600 font-semibold'>
-                              {meta.error}
-                            </div>
-                          )}
-                          </div>
-                          </div>
-                      )}
-                    </Field>
-
-                    <Field
-                      name='inventory'
-                    >
-                      {({ field, form: { touched, errors }, meta }) => (
-                        <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
-                          <label className="w-[50%]">Inventario </label>
-                          <input type="number" className="bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="1" {...field}></input>
-                          {meta.touched && meta.error && (
-                            <div className='pt-2 text-red-600 font-semibold'>
-                              {meta.error}
-                            </div>
-                          )}
-                          </div>
-                          </div>
-                      )}
-                    </Field>
-
-                    <Field
-                      name='vaccineFrequency'
-                    >
-                      {({ field, form: { touched, errors }, meta }) => (
-                        <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between items-center">
-                          <label className="w-[60%]">Frecuencia de vacuna </label>
-                          <select name="vaccineFrequency" className="w-[40%] mr-10 bg-white text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200" {...field}>
-                            <option value="oncePerWeek">Semanal</option>
-                            <option value="oncePerThreeWeeks">Cada tres semanas</option>
-                            <option value="oncePerFourWeeks">Cada cuatro semanas</option>
-                            <option value="oncePerMonth">Mensual</option>
-                          </select>
-                          {meta.touched && meta.error && (
-                            <div className='pt-2 text-red-600 font-semibold'>
-                              {meta.error}
-                            </div>
-                          )}
-                          </div>
-                          </div>
-                      )}
-                    </Field>
-
-                    <Field
-                      name='vaccineReminder'
-                    >
-                      {({ field, form: { touched, errors }, meta }) => (
-                        <div className="border-b-[1.8px] border-[#3982b8]">
-                        <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
-                          <label className="w-[70%]">Recordatorio de vacuna: </label>
-                                <input
-                                  className={checkSwitch}
-                                  type='checkbox'
-                                  role="switch"
-                                  // placeholder='Recordatorio de vacuna:'
-                                  {...field}
-                                  style={{ scale: '1.3' }}
-                                  />
-                            {meta.touched && meta.error && (
-                            <div className='pt-2 text-red-600 font-semibold'>
-                              {meta.error}
-                            </div>
-                            )}
-                          </div>
-                      </div>
-                      )}
-                    </Field>
-
-                    <Field
-                      name='comments'
-                    >
-                        {({ field, form: { touched, errors }, meta }) => (
-                          <div>
-                            <div className="py-4 flex justify-between px-[30px] items-center">
-                                {/* <p>Comentarios</p> */}
-                                <textarea
-                                  className='text-black h-20 w-full rounded-lg bg-white px-4 py-3 outline-none border-2 focus:border-sky-600 transition duration-200'
-                                  type='textarea'
-                                  placeholder='Comentarios'
-                                  style={{ resize: 'none' }}
-                                  {...field}
-                                  />
-                            </div>
-                            {meta.touched && meta.error && (
-                                <div className='pb-2 text-red-600 font-semibold'>
-                                  {meta.error}
-                                </div>
-                            )}
-                          </div>
-                        )}
-                    </Field>
+          <Form className="flex-1 text-slate-500 bg-white">
+            <button className="py-2 w-full rounded-none text-white bg-[#3982b8]"
+              type="submit">
+                Agregar
+            </button>
+            <Field name='allergieName'>
+              {({ field, form: { touched, errors }, meta }) => (
+                <div className="border-b-[1.8px] border-[#3982b8]">
+                  <div className="pt-4 pb-3 flex justify-between px-[30px] items-center">
+                    <label className="font-medium">Nombre</label>
+                    <input type="text" className="text-black h-9 w-[11.5rem] rounded-lg bg-white px-3.5 outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="Nombre de alergia" {...field}></input>
+                  </div>
+                  {meta.touched && meta.error && (
+                    <div className='pb-2 text-red-600 font-semibold'>
+                      {meta.error}
                     </div>
-                  </Form>)}
-                </Formik>
-        </main>
-        <footer>
-
-            <Footer/>
-        </footer>
+                  )}
+                </div>
+              )}
+            </Field>
+            <Field name='vaccine'>
+              {({ field, form: { touched, errors }, meta }) => (
+                <div className="border-b-[1.8px] border-[#3982b8]">
+                  <div className="pt-4 pb-3 flex justify-between px-[30px] items-center">
+                    <label className="font-medium">Vacuna </label>
+                    <input type="text" className="text-black h-9 w-[11.5rem] rounded-lg bg-white px-3.5 outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="Nombre de vacuna" {...field}></input>
+                  </div>
+                  {meta.touched && meta.error && (
+                    <div className='pb-2 text-red-600 font-semibold'>
+                      {meta.error}
+                    </div>
+                  )}
+                </div>
+              )}
+            </Field>
+            <Field name='inventory'>
+              {({ field, form: { touched, errors }, meta }) => (
+                <div className="border-b-[1.8px] border-[#3982b8]">
+                  <div className="pt-4 pb-3 flex justify-between px-[30px] items-center">
+                    <label className="font-medium">Inventario </label>
+                    <input type="number" className="text-black h-9 w-[9em] rounded-lg bg-white px-3.5 outline-none border-2 focus:border-sky-600 transition duration-200" placeholder="1" {...field}></input>
+                  </div>
+                  {meta.touched && meta.error && (
+                    <div className='pb-2 text-red-600 font-semibold'>
+                      {meta.error}
+                    </div>
+                  )}
+                </div>
+              )}
+            </Field>
+            <Field name='vaccineFrequency'>
+              {({ field, form: { touched, errors }, meta }) => (
+                <div className="border-b-[1.8px] border-[#3982b8]">
+                  <div className="pt-4 pb-3 flex justify-between px-[30px] items-center">
+                    <label className="font-medium">Frecuencia de vacuna </label>
+                    <select name="vaccineFrequency" className="text-black h-9 w-[9rem] rounded-lg bg-white px-3.5 outline-none border-2 focus:border-sky-600 transition duration-200" {...field}>
+                    <option value="oncePerWeek">Semanal</option>
+                    <option value="oncePerThreeWeeks">Cada tres semanas</option>
+                    <option value="oncePerFourWeeks">Cada cuatro semanas</option>
+                    <option value="oncePerMonth">Mensual</option>
+                    </select>
+                  </div>
+                  {meta.touched && meta.error && (
+                    <div className='pb-2 text-red-600 font-semibold'>
+                      {meta.error}
+                    </div>
+                  )}
+                </div>
+              )}
+            </Field>
+            <Field name='vaccineReminder'>
+              {({ field, form: { touched, errors }, meta }) => (
+                <div className="border-b-[1.8px] border-[#3982b8]">
+                  <div className="h-[56px] py-3 flex justify-between pl-[30px] pr-[60px] items-center">
+                    <label className="font-medium">Recordatorio de vacuna</label>
+                    <input
+                      className={checkSwitch}
+                      type='checkbox'
+                      role="switch"
+                      // placeholder='Recordatorio de vacuna:'
+                      {...field}
+                      style={{ scale: '1.3' }}
+                    />
+                  </div>
+                  {meta.touched && meta.error && (
+                  <div className='pb-2 text-red-600 font-semibold'>
+                    {meta.error}
+                  </div>
+                  )}
+                </div>
+              )}
+            </Field>
+            <Field name='comments'>
+                {({ field, form: { touched, errors }, meta }) => (
+                  <div>
+                    <div className="py-4 flex justify-between px-[30px] items-center">
+                        {/* <p>Comentarios</p> */}
+                        <textarea
+                          className='text-black h-20 w-full rounded-lg bg-white px-4 py-3 outline-none border-2 focus:border-sky-600 transition duration-200'
+                          type='textarea'
+                          placeholder='Comentarios'
+                          style={{ resize: 'none' }}
+                          {...field}
+                          />
+                    </div>
+                    {meta.touched && meta.error && (
+                        <div className='pb-2 text-red-600 font-semibold'>
+                          {meta.error}
+                        </div>
+                    )}
+                  </div>
+                )}
+            </Field>
+          </Form>)}
+        </Formik>
+      <Footer/>
     </div>
   )
 }

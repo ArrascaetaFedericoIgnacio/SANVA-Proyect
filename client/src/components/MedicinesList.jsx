@@ -54,7 +54,7 @@ const MedicinesList = () => {
   
   return (
     <div className="h-screen flex flex-col text-white bg-[#6abce2]">
-      <h2 className="py-6 text-[40px]">Medicamentos</h2>
+      <h1 className="py-6 text-[40px]">Medicamentos</h1>
       <div className="pb-3 flex justify-center items-center gap-5">
         <Link to="/medicineslist">
           <div className="p-2 rounded-full border-2 border-white">
