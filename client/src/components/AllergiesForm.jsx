@@ -7,8 +7,10 @@ import { BiPlusMedical } from 'react-icons/bi'
 import { BsCircle, BsVirus } from 'react-icons/bs'
 import { checkSwitch } from './switch.js'
 import axios from 'axios'
+import {useAllergies} from '../store/useAllergies.jsx'
 
 const DrugsForm = () => {
+  
   const navigate = useNavigate()
 
   const PostInfo = async (values) => {
@@ -23,9 +25,13 @@ const DrugsForm = () => {
     }
   }
 
+   const {allergies, setAllergies} = useAllergies()
+
   const HandleSubmit = (values, { setSubmitting }) => {
     setSubmitting(false)
     PostInfo(values)
+    //setea allergies con el nuevo valor
+    setAllergies([...allergies, values])
     navigate('/user')
   }
 

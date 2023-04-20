@@ -3,6 +3,7 @@ import { Footer } from "./footer";
 import { BsVirus } from "react-icons/bs"
 import { Link } from "react-router-dom";
 import AccordionList from "./AcordionLista";
+import {useAllergies} from "../store/useAllergies";
 
 const AllergiesList = () => {
   
@@ -13,6 +14,8 @@ const AllergiesList = () => {
       }
       setOpen(index)
   }
+
+  const {allergies} = useAllergies();
 
   const ListaAlergia = [
     {

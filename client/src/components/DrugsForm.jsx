@@ -8,8 +8,13 @@ import { BiPlusMedical } from 'react-icons/bi'
 import { BsCircle } from 'react-icons/bs'
 import { checkSwitch } from './switch.js'
 import axios from 'axios'
+import useDrugsForm from '../store/useDrugsForm.jsx'
 
 const DrugsForm = () => {
+
+  const { drug, setDrug, clearDrug } = useDrugsForm()
+
+
   const navigate = useNavigate()
 
   const PostInfo = async (values) => {
@@ -28,6 +33,10 @@ const DrugsForm = () => {
   const HandleSubmit = (values, { setSubmitting }) => {
     setSubmitting(false)
     PostInfo(values)
+    //setea el estado drugs con la info del formulario
+    clearDrug()
+    setDrug(...drug, values)
+
     navigate('/user')
   }
 
