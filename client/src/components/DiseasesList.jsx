@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Footer } from "./footer";
 import { FaBacterium, FaPlus } from "react-icons/fa";
 import { BsBuildings } from "react-icons/bs";
 import AccordionList from "./AcordionLista";
 import { Link } from "react-router-dom";
+import useDiseases from "../store/useDiseases";
 
 const Diseases = () => {
 
@@ -47,6 +48,11 @@ const Diseases = () => {
     },
   ]
 
+  const { diseases } = useDiseases()
+  useEffect(() => {
+    console.log("enfermedades ->", diseases);
+  },[diseases])
+
   return (
     <div className="h-screen flex flex-col text-white bg-[#6abce2]">
       <h2 className="py-6 text-[40px]">Enfermedades</h2>
@@ -68,11 +74,11 @@ const Diseases = () => {
       </h2>
       <div className="flex-1 bg-white">
       {
-        ListaEnfermdedades ?
-        ListaEnfermdedades.map((elem, i) => (
+        diseases.length > 0 ?
+        diseases.map((elem, i) => (
           <AccordionList key={i} open={open === i}
           toggle={() => toggle(i)}
-          title={elem.nombre}
+          title={elem.name}
           medico={elem.medico}
           medicamento={elem.medicamento}
           tratamiento={elem.tratamiento}

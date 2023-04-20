@@ -1,7 +1,7 @@
 import {create} from 'zustand'
 
 const useDiseases = create((set) => ({
-    diseases: {},
+    diseases: [],
     setDiseases: (diseases) => set({...diseases,diseases}),
     clearDiseases: () => set({diseases: {}}),
 }))

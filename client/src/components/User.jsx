@@ -4,19 +4,26 @@ import { Footer } from './footer'
 import { Link } from 'react-router-dom'
 
 export const User = () => {
-  const [user, setUser] = useState(null)
-  console.log('user', user)
+  // const [user, setUser] = useState(null)
+  // console.log('user', user)
 
-  useEffect(() => {
-    console.log('useEffect')
-    const userlocal = localStorage.getItem('user')
-    console.log('userlocal', userlocal)
-    const userparseado = JSON.parse(userlocal)
-    console.log('userparseado', userparseado)
-    setUser(userparseado)
-  }, [])
+  const username = localStorage.getItem('username')
+  const email = localStorage.getItem('email')
+  const birthdate = localStorage.getItem('birthdate')
+  const gender = localStorage.getItem('sexo')
+  const height = localStorage.getItem('height')
+  const weight = localStorage.getItem('weight')
+  // const gendervalue = btoa(gender.toString())
+  const birthdateStr = birthdate.split("").slice(4,15).join("");
+  // useEffect(() => {
+  //   console.log('useEffect')
+  //   console.log('userlocal', userlocal)
+  //   const userparseado = JSON.parse(userlocal)
+  //   console.log('userparseado', userparseado)
+  //   setUser(userparseado)
+  // }, [])
 
-  const { username, email, birthdate, gender, height, weight } = user || {}
+  // const { username, email, birthdate, gender, height, weight } = user || {}
 
   return (
     <div className="h-screen xl:h-full flex flex-col text-lg font-semibold">
@@ -45,11 +52,11 @@ export const User = () => {
         </div>
         <div className="flex justify-between">
           <p>Fecha</p>
-          <p>{birthdate}</p>
+          <p>{birthdateStr}</p>
         </div>
         <div className="flex justify-between">
           <p>Sexo</p>
-          <p>{gender === 'm' ? 'Masculino' : 'Femenino'}.</p>
+          <p>{gender === 'M' ? 'Masculino' : 'Femenino'}.</p>
         </div>
         <div className="flex justify-between">
           <p>Talla</p>

@@ -8,28 +8,32 @@ import { BsBriefcaseFill, BsCircle } from "react-icons/bs";
 import { FaBriefcaseMedical, FaPlus } from "react-icons/fa";
 import { checkSwitch } from "./switch.js";
 import axios from "axios";
+import useSupplies from "../store/useSuppliesForm.jsx";
 
 const SuppliesForm = () => {
   const navigate = useNavigate();
 
-  const [type, setType] = useState("");
-  const PostInfo = async (values) => {
-    try {
-      console.log(values);
-      const response = await axios.post(
-        "https://apisanva.onrender.com/user",
-        values
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const [type, setType] = useState("");
+  // const PostInfo = async (values) => {
+  //   try {
+  //     console.log(values);
+  //     const response = await axios.post(
+  //       "https://apisanva.onrender.com/user",
+  //       values
+  //     );
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  const { supplies, setSupplies} = useSupplies()
 
   const HandleSubmit = (values, { setSubmitting }) => {
+    setSupplies([...supplies, values])
+    console.log(supplies);
     console.log(values);
     // setSubmitting(false)
     // PostInfo(values)
-    // navigate('/user')
+    navigate('/user')
   };
 
   const validateFields = (values) => {
@@ -52,8 +56,11 @@ const SuppliesForm = () => {
     if (!values.dailySupply) {
       errors.dailySupply = "Los insumos por día son obligatorios";
     }
-    if (!values.provider) {
-      errors.provider = "El proveedor es obligatorio";
+    if (!values.consumptionDays) {
+      errors.consumptionDays = "los dias de insumos son obligatorios"
+    }
+    if (!values.supplier) {
+      errors.supplier = "El proveedor es obligatorio";
     }
 
     return errors;
@@ -190,7 +197,7 @@ const SuppliesForm = () => {
                 <div className="border-b-[1.8px] border-[#3982b8]">
                   <div className="pt-4 pb-3 flex justify-between px-[30px] items-center">
                     <label className={`font-medium ${values.type === "service" ? "text-slate-300" : ""}`}>
-                      Insumo por día
+                      Dias de uso
                     </label>
                     <select
                       name="consumptionDays"
@@ -216,7 +223,6 @@ const SuppliesForm = () => {
                 </div>
               )}
             </Field>
-
             <Field name="supplier">
               {({ field, form: { touched, errors }, meta }) => (
                 <div className="border-b-[1.8px] border-[#3982b8]">
@@ -237,7 +243,6 @@ const SuppliesForm = () => {
                 </div>
               )}
             </Field>
-
             <Field name="comments">
               {({ field, form: { touched, errors }, meta }) => (
                 <div className="border-b-[1.8px] border-[#3982b8]">
