@@ -18,6 +18,9 @@ const DrugsForm = () => {
 
   const navigate = useNavigate()
 
+  useEffect(() => {
+    console.log(medicines)
+  }, [medicines])
 
   const HandleSubmit = (values, { setSubmitting }) => {
     setSubmitting(false)
