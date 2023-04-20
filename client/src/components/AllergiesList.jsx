@@ -31,31 +31,7 @@ const AllergiesList = () => {
       vacuna: "Vacuna",
       inventario: "Inventario",
       nextVacuna: "Proxima vacuna",
-    },
-    {
-      nombre: "nombre",
-      vacuna: "Vacuna",
-      inventario: "Inventario",
-      nextVacuna: "Proxima vacuna",
-    },
-    {
-      nombre: "nombre",
-      vacuna: "Vacuna",
-      inventario: "Inventario",
-      nextVacuna: "Proxima vacuna",
-    },
-    {
-      nombre: "nombre",
-      vacuna: "Vacuna",
-      inventario: "Inventario",
-      nextVacuna: "Proxima vacuna",
-    },
-    {
-      nombre: "nombre",
-      vacuna: "Vacuna",
-      inventario: "Inventario",
-      nextVacuna: "Proxima vacuna",
-    },
+    }
   ]
   
   return (
