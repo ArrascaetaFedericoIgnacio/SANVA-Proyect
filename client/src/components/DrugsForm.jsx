@@ -10,7 +10,7 @@ import { checkSwitch } from './switch.js'
 import axios from 'axios'
 
 import { FaPlus } from 'react-icons/fa'
-import { useMedicines } from '../store/useMedicines'
+import  useMedicines  from '../store/useMedicines'
 
 const DrugsForm = () => {
 
