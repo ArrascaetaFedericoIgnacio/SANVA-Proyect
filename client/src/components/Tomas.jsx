@@ -41,14 +41,15 @@ const Tomas = () => {
          description: "lorem"
       },
    ]
-   const [accordionTomas, SetAccordionTomas] = useState()
+   // const [accordionTomas, SetAccordionTomas] = useState()
    useEffect(() => {
-      const getTomas = localStorage.getItem('user')
-      const getTomasParseado = JSON.parse(getTomas)
-      console.log("get ->", getTomasParseado);
+      // const getTomas = localStorage.getItem('user')
+      // const getTomasParseado = JSON.parse(getTomas)
+      // console.log("get ->", getTomasParseado);
       // SetAccordionTomas(getTomas.user_takes)
-   },[])
-   console.log("ready ->", accordionTomas);
+      console.log("tomas ->", tomas);
+   },[tomas])
+   // console.log("ready ->", accordionTomas);
    
    const [open, setOpen] = useState(false)
    const toggle = (index) => {
@@ -80,9 +81,9 @@ const Tomas = () => {
          </h2>
          <div className="flex-1 bg-white">
             {
-               tomas ?
+               tomas.length > 0 ?
                tomas.map((data, index) => (
-                  <AccordionData key={index} open={index === open} toggle={() => toggle(index)} title={data.title} desc={data.description} />
+                  <AccordionData key={index} open={index === open} toggle={() => toggle(index)} date={data.date.toLocaleDateString()} heartRate={data.heartRate} tas={data.tas} glucose={data.glucoseLevel} />
                   ))
                   : <div className="py-14 flex flex-col gap-6 justify-center items-center">
                   <p className="font-semibold text-slate-600 text-[22px]">

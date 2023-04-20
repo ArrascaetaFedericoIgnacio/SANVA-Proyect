@@ -48,7 +48,7 @@ const MedicinesList = () => {
       </h2>
       <div className="flex-1 bg-white">
       {
-        medicines.length ?
+        medicines.length > 0 ?
         medicines.map((elem, i) => (
           <AccordionMedic key={i} open={open === i}
           toggle={() => toggle(i)}
@@ -59,11 +59,16 @@ const MedicinesList = () => {
           next={elem.next}
           />
           ))
-          :
-
-          <div className="flex justify-center items-center h-full">
-            <h1 className="text-2xl">No hay medicamentos</h1>
-          </div>
+          : <div className="py-14 flex flex-col gap-6 justify-center items-center">
+          <p className="font-semibold text-slate-600 text-[22px]">
+          No hay Medicamentos...
+          </p>
+        <Link to="/DrugsForm">
+          <button className="font-medium rounded-2xl py-2 px-5 text-xl bg-[#0091cb]">
+            Añadir Medicamento
+          </button>
+        </Link>
+      </div>
       }
       </div>
 

@@ -67,20 +67,17 @@ const AllergiesList = () => {
             />
           ))
         ) : 
-        //sino renderiza listAlergia
-        (
-          ListaAlergia.map((allergy, i) => (
-            <AccordionList
-              key={i}
-              open={open === i}
-              toggle={() => toggle(i)}
-              title={allergy.nombre}
-              medico={allergy.vacuna}
-              medicamento={allergy.inventario}
-              tratamiento={allergy.nextVacuna}
-            />
-          ))
-        )}
+        <div className="py-14 flex flex-col gap-6 justify-center items-center">
+            <p className="font-semibold text-slate-600 text-[22px]">
+            No hay Alergias...
+            </p>
+          <Link to="/nuevaAlergia">
+            <button className="font-medium rounded-2xl py-2 px-5 text-xl bg-[#0091cb]">
+              Añadir Alergia
+            </button>
+          </Link>
+        </div>
+        }
       </div>
       <Footer />
     </div>
