@@ -10,30 +10,22 @@ import { checkSwitch } from './switch.js'
 import axios from 'axios'
 
 import { FaPlus } from 'react-icons/fa'
+import { useMedicines } from '../store/useMedicines'
 
 const DrugsForm = () => {
 
+  const { medicines,setMedicines} = useMedicines()
+
   const navigate = useNavigate()
 
-  const PostInfo = async (values) => {
-    try {
-      values.doseAmount.toString()
-      console.log(values)
-      const response = await axios.post(
-        'https://apisanva.onrender.com/user',
-        values
-      )
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
   const HandleSubmit = (values, { setSubmitting }) => {
     setSubmitting(false)
     // PostInfo(values)
     //setea el estado drugs con la info del formulario
-    clearDrug()
-    setDrug(...drug, values)
+    setMedicines(values)
+    console.log(values)
+    console.log(medicines)
 
     navigate('/user')
   }

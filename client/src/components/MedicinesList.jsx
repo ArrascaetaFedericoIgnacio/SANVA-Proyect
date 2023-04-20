@@ -5,8 +5,18 @@ import { Link } from "react-router-dom"
 import AccordionList from "./AcordionLista"
 import AccordionMedic from "./AccordionMedic"
 import { FaPlus } from "react-icons/fa"
+import useMedicines from "../store/useMedicines"
+import {useEffect} from 'react'
 
 const MedicinesList = () => {
+
+  const { medicines } = useMedicines()
+
+  useEffect(() => {
+    console.log(medicines)
+  }, [medicines])
+
+
 
   const [open, setOpen] = useState(false)
   const toggle = (index) => {
@@ -25,27 +35,6 @@ const MedicinesList = () => {
     },
     {
       nombre: "Nombrea",
-      dosis: "Proxima dosis",
-      hora: "10:00 AM",
-      cantidad: "2 pildoras",
-      next: "Cada 6 horas",
-    },
-    {
-      nombre: "Nombreas",
-      dosis: "Proxima dosis",
-      hora: "10:00 AM",
-      cantidad: "2 pildoras",
-      next: "Cada 6 horas",
-    },
-    {
-      nombre: "Nombreasd",
-      dosis: "Proxima dosis",
-      hora: "10:00 AM",
-      cantidad: "2 pildoras",
-      next: "Cada 6 horas",
-    },
-    {
-      nombre: "Nombreasda",
       dosis: "Proxima dosis",
       hora: "10:00 AM",
       cantidad: "2 pildoras",
@@ -74,32 +63,34 @@ const MedicinesList = () => {
       </h2>
       <div className="flex-1 bg-white">
       {
-        ListaMedicamentos ?
-        ListaMedicamentos.map((elem, i) => (
+        medicines ?
+        medicines.map((elem, i) => (
           <AccordionMedic key={i} open={open === i}
           toggle={() => toggle(i)}
-          nombre={elem.nombre}
-          dosis={elem.dosis}
-          hora={elem.hora}
-          cantidad={elem.cantidad}
+          nombre={elem.name}
+          dosis={elem.doseFrequency}
+          hora={elem.firstDoseHour}
+          cantidad={elem.inventary}
           next={elem.next}
           />
           ))
-          : <div className="py-14 flex flex-col gap-6 justify-center items-center">
-              <p className="font-semibold text-slate-600 text-[22px]">
-                  No hay Medicamentos...
-              </p>
-              <Link to="/DrugsForm">
-                  <button className="font-medium rounded-2xl py-2 px-5 text-xl bg-[#0091cb]">
-                    Añadir Medicamentos
-                  </button>
-              </Link>
-            </div>
-        }
+          : 
+          //sino renderiza listmedicamentos
+          ListaMedicamentos.map((elem, i) => (
+            <AccordionMedic key={i} open={open === i}
+            toggle={() => toggle(i)}
+            nombre={elem.nombre}
+            dosis={elem.dosis}
+            hora={elem.hora}
+            cantidad={elem.cantidad}
+            next={elem.next}
+            />
+            ))
+      }
       </div>
       <Footer />
     </div>
   )
 }
 
-export default MedicinesList;
+export default MedicinesList
