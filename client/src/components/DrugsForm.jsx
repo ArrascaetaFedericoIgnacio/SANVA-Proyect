@@ -8,11 +8,8 @@ import { BiPlusMedical } from 'react-icons/bi'
 import { BsCircle } from 'react-icons/bs'
 import { checkSwitch } from './switch.js'
 import axios from 'axios'
-<<<<<<< HEAD
 import useDrugsForm from '../store/useDrugsForm.jsx'
-=======
 import { FaPlus } from 'react-icons/fa'
->>>>>>> 090e5c448a9a7d928858239b2229d1344012323b
 
 const DrugsForm = () => {
 
@@ -35,20 +32,13 @@ const DrugsForm = () => {
   }
 
   const HandleSubmit = (values, { setSubmitting }) => {
-<<<<<<< HEAD
     setSubmitting(false)
-    PostInfo(values)
+    // PostInfo(values)
     //setea el estado drugs con la info del formulario
     clearDrug()
     setDrug(...drug, values)
 
     navigate('/user')
-=======
-    console.log(values);
-    // setSubmitting(false)
-    // PostInfo(values)
-    // navigate('/user')
->>>>>>> 090e5c448a9a7d928858239b2229d1344012323b
   }
 
   const validateFields = (values) => {
