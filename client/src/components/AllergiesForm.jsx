@@ -7,11 +7,8 @@ import { BiPlusMedical } from 'react-icons/bi'
 import { BsCircle, BsVirus } from 'react-icons/bs'
 import { checkSwitch } from './switch.js'
 import axios from 'axios'
-<<<<<<< HEAD
-import {useAllergies} from '../store/useAllergies.jsx'
-=======
 import { FaPlus } from 'react-icons/fa'
->>>>>>> 090e5c448a9a7d928858239b2229d1344012323b
+import { useAllergies } from '../store/useAllergies'
 
 const DrugsForm = () => {
   
@@ -32,18 +29,11 @@ const DrugsForm = () => {
    const {allergies, setAllergies} = useAllergies()
 
   const HandleSubmit = (values, { setSubmitting }) => {
-<<<<<<< HEAD
     setSubmitting(false)
     PostInfo(values)
     //setea allergies con el nuevo valor
     setAllergies([...allergies, values])
     navigate('/user')
-=======
-    console.log(values);
-    // setSubmitting(false)
-    // PostInfo(values)
-    // navigate('/user')
->>>>>>> 090e5c448a9a7d928858239b2229d1344012323b
   }
 
   const validateFields = (values) => {
