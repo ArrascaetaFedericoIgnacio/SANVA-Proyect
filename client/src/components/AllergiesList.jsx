@@ -3,11 +3,10 @@ import { Footer } from "./footer";
 import { BsVirus } from "react-icons/bs"
 import { Link } from "react-router-dom";
 import AccordionList from "./AcordionLista";
-<<<<<<< HEAD
 import {useAllergies} from "../store/useAllergies";
-=======
 import { FaPlus } from "react-icons/fa";
->>>>>>> 090e5c448a9a7d928858239b2229d1344012323b
+import { FaPlus } from "react-icons/fa";
+
 
 const AllergiesList = () => {
   
