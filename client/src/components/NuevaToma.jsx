@@ -4,7 +4,7 @@ import { FaPlus } from "react-icons/fa"
 import { TbDroplet, TbCandy } from "react-icons/tb"
 import { BsBuildings } from "react-icons/bs"
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import {Field, Form, Formik} from "formik"
 import DatePikerField from "./DatePicker"
 import axios from "axios"
@@ -12,6 +12,7 @@ import useTomas from "../store/useTomas"
 
 const NuevaToma = () => {
    const {tomas, setTomas} = useTomas()
+   const navigate = useNavigate()
 
    // const postToma = async (values) => {
 
@@ -31,9 +32,12 @@ const NuevaToma = () => {
       //usa tomas para guardar los datos
       setTomas([...tomas, values])
       console.log(values)
+      console.log(typeof(values.date.toLocaleDateString()));
+      console.log(values.date.toLocaleDateString());
 
       // console.log("type", JSON.parse(JSON.stringify(values)));
       // postToma(values)
+      navigate("/user")
    }
 
    const validateCamps = (values) => {
