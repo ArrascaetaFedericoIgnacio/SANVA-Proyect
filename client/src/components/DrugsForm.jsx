@@ -8,13 +8,10 @@ import { BiPlusMedical } from 'react-icons/bi'
 import { BsCircle } from 'react-icons/bs'
 import { checkSwitch } from './switch.js'
 import axios from 'axios'
-import useDrugsForm from '../store/useDrugsForm.jsx'
+
 import { FaPlus } from 'react-icons/fa'
 
 const DrugsForm = () => {
-
-  const { drug, setDrug, clearDrug } = useDrugsForm()
-
 
   const navigate = useNavigate()
 
