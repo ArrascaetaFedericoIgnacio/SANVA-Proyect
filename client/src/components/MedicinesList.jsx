@@ -48,7 +48,7 @@ const MedicinesList = () => {
       </h2>
       <div className="flex-1 bg-white">
       {
-        medicines ?
+        medicines.length ?
         medicines.map((elem, i) => (
           <AccordionMedic key={i} open={open === i}
           toggle={() => toggle(i)}
