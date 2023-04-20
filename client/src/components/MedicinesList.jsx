@@ -25,15 +25,7 @@ const MedicinesList = () => {
     }
     setOpen(index)
   }
-  const ListaMedicamentos = [
-    {
-      nombre: "Nombre",
-      dosis: "Proxima dosis",
-      hora: "10:00 AM",
-      cantidad: "2 pildoras",
-      next: "Cada 6 horas",
-    },
-  ]
+ 
   
   return (
     <div className="h-screen flex flex-col text-white bg-[#6abce2]">
@@ -67,22 +59,18 @@ const MedicinesList = () => {
           next={elem.next}
           />
           ))
-          : 
-          //sino renderiza listmedicamentos
-          ListaMedicamentos.map((elem, i) => (
-            <AccordionMedic key={i} open={open === i}
-            toggle={() => toggle(i)}
-            nombre={elem.nombre}
-            dosis={elem.dosis}
-            hora={elem.hora}
-            cantidad={elem.cantidad}
-            next={elem.next}
-            />
-            ))
+          :
+
+          <div className="flex justify-center items-center h-full">
+            <h1 className="text-2xl">No hay medicamentos</h1>
+          </div>
       }
       </div>
+
       <Footer />
+
     </div>
+
   )
 }
 
