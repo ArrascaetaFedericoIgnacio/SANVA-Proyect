@@ -2,14 +2,21 @@ import { Field, Form, Formik } from "formik";
 import { FaBacterium, FaPlus } from "react-icons/fa"
 import { Footer } from "../footer";
 import DatePikerField from "../DatePicker";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { checkSwitch } from "../switch";
+import useDiseases from "../../store/useDiseases";
 
 
 const FormEnfermedades = () => {
 
+   const navigate = useNavigate()
+
+   const {diseases, setDiseases} = useDiseases()
    const HandleSubmit = (values) => {
+      setDiseases([...diseases, values])
+      console.log(diseases);
       console.log("enfermedades ->", values);
+      navigate("/user")
    }
 
    const validateCamps = (values) => {

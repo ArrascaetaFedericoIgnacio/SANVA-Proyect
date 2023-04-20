@@ -42,7 +42,7 @@ const Tomas = () => {
       const getTomas = localStorage.getItem('user')
       const getTomasParseado = JSON.parse(getTomas)
       console.log("get ->", getTomasParseado);
-      SetAccordionTomas(getTomas.user_takes)
+      // SetAccordionTomas(getTomas.user_takes)
    },[])
    console.log("ready ->", accordionTomas);
    

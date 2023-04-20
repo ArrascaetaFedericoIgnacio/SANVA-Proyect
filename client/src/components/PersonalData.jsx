@@ -20,7 +20,7 @@ export const PersonalData = () => {
         values
       )
       console.log(response)
-      localStorage.removeItem('user')
+      // localStorage.removeItem('user')
       localStorage.setItem('user', JSON.stringify(response.data))
       navigate('/user')
     } catch (error) {
@@ -31,6 +31,10 @@ export const PersonalData = () => {
   const HandleSubmit = (values, { setSubmitting }) => {
     setSubmitting(false)
     PostInfo(values)
+    localStorage.setItem('birthdate', values.birthdate)
+    localStorage.setItem('sexo', values.gender)
+    localStorage.setItem('height', values.height)
+    localStorage.setItem('weight', values.weight)
     navigate('/user')
   }
 

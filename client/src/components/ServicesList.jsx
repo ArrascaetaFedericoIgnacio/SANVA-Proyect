@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Footer } from "./footer";
 import { BsBriefcaseFill } from "react-icons/bs"
 import { Link } from "react-router-dom";
 import AccordionList from "./AcordionLista";
 import { FaPlus } from "react-icons/fa";
+import useSupplies from "../store/useSuppliesForm";
 
 const ServicesList = () => {
   
@@ -46,6 +47,11 @@ const ServicesList = () => {
       inventario: "Inventario",
     },
   ]
+  const { supplies } = useSupplies()
+
+  useEffect(() => {
+    console.log("supplies ->", supplies);
+  },[supplies])
 
   return (
     <div className="h-screen flex flex-col text-white bg-[#6abce2]">
@@ -68,14 +74,14 @@ const ServicesList = () => {
       </h2>
       <div className="flex-1 bg-white">
       {
-        !ListaInsumosServicios ?
-        ListaInsumosServicios?.map((elem, i) => (
+        supplies.length > 0 ?
+        supplies?.map((elem, i) => (
           <AccordionList key={i} open={open === i}
           toggle={() => toggle(i)}
-          title={elem.nombre}
-          medico={elem.tipo}
-          medicamento={elem.proveedor}
-          tratamiento={elem.tipo}
+          title={elem.name}
+          medico={elem.type}
+          medicamento={elem.supplier}
+          tratamiento={elem.inventory}
           />
           ))
           : <div className="py-14 flex flex-col gap-6 justify-center items-center">
