@@ -8,7 +8,7 @@ import { BsCircle, BsVirus } from 'react-icons/bs'
 import { checkSwitch } from './switch.js'
 import axios from 'axios'
 import { FaPlus } from 'react-icons/fa'
-import { useAllergies } from '../store/useAllergies'
+import  useAllergies  from '../store/useAllergies'
 
 const DrugsForm = () => {
   
