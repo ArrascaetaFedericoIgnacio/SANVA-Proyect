@@ -3,6 +3,7 @@ import { Footer } from "./footer";
 import { BsVirus } from "react-icons/bs"
 import { Link } from "react-router-dom";
 import AccordionList from "./AcordionLista";
+import { FaPlus } from "react-icons/fa";
 
 const AllergiesList = () => {
   
@@ -57,8 +58,9 @@ const AllergiesList = () => {
           </div>
         </Link>
         <Link to="/nuevaAlergia">
-          <div className="p-2 rounded-full border-2 border-white">
+          <div className="relative p-2 rounded-full border-2 border-white">
             <BsVirus className="text-3xl" />
+            <FaPlus className="absolute text-blue-950 text-[1.1rem] top-[1.4rem] right-2" />
           </div>
         </Link>
       </div>
@@ -67,7 +69,8 @@ const AllergiesList = () => {
       </h2>
       <div className="flex-1 bg-white">
         {
-          ListaAlergia?.map((elem, i) => (
+          ListaAlergia ?
+          ListaAlergia.map((elem, i) => (
             <AccordionList key={i} open={open === i}
             toggle={() => toggle(i)}
             title={elem.nombre}
@@ -76,6 +79,16 @@ const AllergiesList = () => {
             tratamiento={elem.nextVacuna}
             />
             ))
+            : <div className="py-14 flex flex-col gap-6 justify-center items-center">
+                <p className="font-semibold text-slate-600 text-[22px]">
+                    No hay Alergias...
+                </p>
+                <Link to="/nuevaAlergia">
+                    <button className="font-medium rounded-2xl py-2 px-5 text-xl bg-[#0091cb]">
+                      Añadir Alergias
+                    </button>
+                </Link>
+              </div>
           }
       </div>
       <Footer />

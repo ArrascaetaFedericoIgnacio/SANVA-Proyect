@@ -146,23 +146,10 @@ const SuppliesForm = () => {
                     <label className={`font-medium ${values.type === "service" ? "text-slate-300" : ""}`}>
                       Inventario
                     </label>
-                    {/* {values.type === "service" ? (
-                      <label className="font-medium text-slate-300">
-                        Inventario{" "}
-                      </label>
-                    ) : (
-                      <label className="font-medium text-slate-400">
-                        Inventario{" "}
-                      </label>
-                    )} */}
                     <input
                       disabled={values.type === "service"}
                       type="number"
-                      className={
-                        values.type === "inventario"
-                          ? "bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200"
-                          : "bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200 text-slate-3000"
-                      }
+                      className="text-black h-9 w-[9rem] rounded-lg bg-white px-3.5 outline-none border-2 focus:border-sky-600 transition duration-200"
                       placeholder="0"
                       {...field}
                     ></input>
@@ -175,31 +162,17 @@ const SuppliesForm = () => {
                 </div>
               )}
             </Field>
-
             <Field name="dailySupply" disabled={values.type === "service"}>
               {({ field, form: { touched, errors }, meta }) => (
                 <div className="border-b-[1.8px] border-[#3982b8]">
-                  <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between px-[30px] items-center">
+                  <div className="pt-4 pb-3 flex justify-between px-[30px] items-center">
                     <label className={`font-medium ${values.type === "service" ? "text-slate-300" : ""}`}>
                       Insumo por día
                     </label>
-                    {/* {values.type === "service" ? (
-                      <label className="w-[50%] text-slate-300">
-                        Insumo por día{" "}
-                      </label>
-                    ) : (
-                      <label className="w-[50%] text-slate-400">
-                        Insumo por día{" "}
-                      </label>
-                    )} */}
                     <input
                       disabled={values.type === "service"}
                       type="number"
-                      className={
-                        values.type === "inventario"
-                          ? "bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200"
-                          : "bg-white w-[50%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200 text-slate-3000"
-                      }
+                      className="text-black h-9 w-[9rem] rounded-lg bg-white px-3.5 outline-none border-2 focus:border-sky-600 transition duration-200"
                       placeholder="0"
                       {...field}
                     ></input>
@@ -212,24 +185,17 @@ const SuppliesForm = () => {
                 </div>
               )}
             </Field>
-
             <Field name="consumptionDays" disabled={values.type === "service"}>
               {({ field, form: { touched, errors }, meta }) => (
                 <div className="border-b-[1.8px] border-[#3982b8]">
-                  <div className="w-screen bg-white text-slate-400 py-[17.5px] flex justify-between items-center">
-                    {values.type === "service" ? (
-                      <label className="w-[60%] text-slate-300">
-                        Días de uso{" "}
-                      </label>
-                    ) : (
-                      <label className="w-[60%] text-slate-400">
-                        Días de uso{" "}
-                      </label>
-                    )}
+                  <div className="pt-4 pb-3 flex justify-between px-[30px] items-center">
+                    <label className={`font-medium ${values.type === "service" ? "text-slate-300" : ""}`}>
+                      Insumo por día
+                    </label>
                     <select
                       name="consumptionDays"
                       disabled={values.type === "service"}
-                      className="w-[40%] mr-10 bg-white text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200"
+                      className="text-black h-9 w-[9rem] rounded-lg bg-white px-3.5 outline-none border-2 focus:border-sky-600 transition duration-200"
                       {...field}
                     >
                       <option value="oncePerWeek">Semanal</option>
@@ -254,11 +220,11 @@ const SuppliesForm = () => {
             <Field name="supplier">
               {({ field, form: { touched, errors }, meta }) => (
                 <div className="border-b-[1.8px] border-[#3982b8]">
-                  <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
-                    <label className="w-[70%]">Proveedor </label>
+                  <div className="pt-4 pb-3 flex justify-between px-[30px] items-center">
+                    <label className="font-medium">Proveedor </label>
                     <input
                       type="text"
-                      className="bg-white w-[80%] text-center rounded-lg outline-none border-2 focus:border-sky-600 transition duration-200"
+                      className="text-black h-9 w-[11.5rem] rounded-lg bg-white px-3.5 outline-none border-2 focus:border-sky-600 transition duration-200"
                       placeholder="Nombre del proveedor"
                       {...field}
                     ></input>
@@ -274,7 +240,7 @@ const SuppliesForm = () => {
 
             <Field name="comments">
               {({ field, form: { touched, errors }, meta }) => (
-                <div>
+                <div className="border-b-[1.8px] border-[#3982b8]">
                   <div className="py-4 flex justify-between px-[30px] items-center">
                     {/* <p>Comentarios</p> */}
                     <textarea
@@ -296,16 +262,10 @@ const SuppliesForm = () => {
             <Field name="lackOfInventoryAlert">
               {({ field, form: { touched, errors }, meta }) => (
                 <div className="border-b-[1.8px] border-[#3982b8]">
-                  <div className="w-screen bg-white text-slate-400 py-[16px] flex justify-between px-[30px] items-center">
-                    {values.type === "service" ? (
-                      <label className="w-[70%] text-slate-300">
-                        Alerta por falta de inventario:{" "}
-                      </label>
-                    ) : (
-                      <label className="w-[70%] text-slate-400">
-                        Alerta por falta de inventario:{" "}
-                      </label>
-                    )}
+                  <div className="h-[56px] py-3 flex justify-between pl-[30px] pr-[60px] items-center">
+                    <label className={`font-medium ${values.type === "service" ? "text-slate-300" : ""}`}>
+                      Insumo por día
+                    </label>
                     <input
                       className={checkSwitch}
                       type="checkbox"
