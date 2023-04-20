@@ -33,13 +33,6 @@ const MedicinesList = () => {
       cantidad: "2 pildoras",
       next: "Cada 6 horas",
     },
-    {
-      nombre: "Nombrea",
-      dosis: "Proxima dosis",
-      hora: "10:00 AM",
-      cantidad: "2 pildoras",
-      next: "Cada 6 horas",
-    },
   ]
   
   return (
