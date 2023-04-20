@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import AccordionList from "./AcordionLista";
 import {useAllergies} from "../store/useAllergies";
 import { FaPlus } from "react-icons/fa";
-import { FaPlus } from "react-icons/fa";
+
 
 
 const AllergiesList = () => {
