@@ -19,6 +19,7 @@ const AllergiesList = () => {
   }
 
   const {allergies} = useAllergies();
+  console.log("allergies ->", allergies);
 
   const ListaAlergia = [
     {

@@ -30,9 +30,12 @@ const DrugsForm = () => {
 
   const HandleSubmit = (values, { setSubmitting }) => {
     setSubmitting(false)
-    PostInfo(values)
+    // PostInfo(values)
     //setea allergies con el nuevo valor
     setAllergies([...allergies, values])
+    //consologea el nuevo valor
+    console.log(allergies)
+    console.log(values);
     navigate('/user')
   }
 
