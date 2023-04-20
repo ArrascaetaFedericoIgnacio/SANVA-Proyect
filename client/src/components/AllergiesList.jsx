@@ -11,15 +11,18 @@ import { FaPlus } from "react-icons/fa";
 const AllergiesList = () => {
   
   const [open, setOpen] = useState(false)
-    const toggle = (index) => {
-      if (open === index) {
-        return setOpen(null)
-      }
-      setOpen(index)
+  const toggle = (index) => {
+    if (open === index) {
+      return setOpen(null)
+    }
+    setOpen(index)
   }
 
-  const {allergies} = useAllergies();
-  console.log("allergies ->", allergies);
+  const { allergies } = useAllergies();
+
+  useEffect(() => {
+    console.log("allergies ->", allergies);
+  }, [allergies]);
 
   const ListaAlergia = [
     {
