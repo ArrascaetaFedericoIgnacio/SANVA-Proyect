@@ -25,7 +25,7 @@ const NuevaToma = () => {
    const HandleSubmit = (values) => {
       console.log("tomas", values);
       console.log("type", JSON.parse(JSON.stringify(values)));
-      postToma(values)
+      // postToma(values)
    }
 
    const validateCamps = (values) => {

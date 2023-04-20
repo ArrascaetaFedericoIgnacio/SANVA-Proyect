@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Footer } from "./footer";
-import { FaBacterium } from "react-icons/fa";
+import { FaBacterium, FaPlus } from "react-icons/fa";
 import { BsBuildings } from "react-icons/bs";
 import AccordionList from "./AcordionLista";
 import { Link } from "react-router-dom";
@@ -57,8 +57,9 @@ const Diseases = () => {
           </div>
         </Link>
         <Link to="/enfermedades">
-          <div className="p-2 rounded-full border-2 border-white">
+          <div className="relative p-2 rounded-full border-2 border-white">
             <FaBacterium className="text-3xl" />
+            <FaPlus className="absolute text-blue-950 text-[1.1rem] top-[1.4rem] right-2" />
           </div>
         </Link>
       </div>
@@ -67,7 +68,8 @@ const Diseases = () => {
       </h2>
       <div className="flex-1 bg-white">
       {
-        ListaEnfermdedades?.map((elem, i) => (
+        ListaEnfermdedades ?
+        ListaEnfermdedades.map((elem, i) => (
           <AccordionList key={i} open={open === i}
           toggle={() => toggle(i)}
           title={elem.nombre}
@@ -76,6 +78,16 @@ const Diseases = () => {
           tratamiento={elem.tratamiento}
           />
           ))
+        : <div className="py-14 flex flex-col gap-6 justify-center items-center">
+            <p className="font-semibold text-slate-600 text-[22px]">
+            No hay Enfermedades...
+            </p>
+          <Link to="/enfermedades">
+            <button className="font-medium rounded-2xl py-2 px-5 text-xl bg-[#0091cb]">
+              Añadir Enfermedad
+            </button>
+          </Link>
+        </div>
         }
       </div>
       <Footer />

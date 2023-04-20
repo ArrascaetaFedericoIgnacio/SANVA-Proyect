@@ -184,7 +184,7 @@ export const Register = () => {
 							</div>
 							<div className="mt-3">
 								<button className="outline-none rounded-full " disabled={isSubmitting} type="submit">
-									<img className="hover:border-sky-700 hover:border-2 hover:rounded-full" src={Check}></img>
+									<img className="h-[5rem] hover:border-sky-700 hover:border-2 hover:rounded-full" src={Check}></img>
 								</button>
 							</div>
 						</Form>
