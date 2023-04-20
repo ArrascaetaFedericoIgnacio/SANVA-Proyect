@@ -74,8 +74,8 @@ const AllergiesList = () => {
       </h2>
       <div className="flex-1 bg-white">
         {
-          ListaAlergia ?
-          ListaAlergia.map((elem, i) => (
+          allergies ?
+          allergies.map((elem, i) => (
             <AccordionList key={i} open={open === i}
             toggle={() => toggle(i)}
             title={elem.nombre}
