@@ -78,32 +78,37 @@ const AllergiesList = () => {
         Lista de Alergias
       </h2>
       <div className="flex-1 bg-white">
-        {
-          allergies ?
-          allergies.map((elem, i) => (
-            <AccordionList key={i} open={open === i}
-            toggle={() => toggle(i)}
-            title={elem.nombre}
-            medico={elem.vacuna}
-            medicamento={elem.inventario}
-            tratamiento={elem.nextVacuna}
+        {allergies.length > 0 ? (
+          allergies.map((allergy, i) => (
+            <AccordionList
+              key={i}
+              open={open === i}
+              toggle={() => toggle(i)}
+              title={allergy.allergieName}
+              medico={allergy.vaccine}
+              medicamento={allergy.inventory}
+              tratamiento={allergy.vaccineFrequency}
             />
-            ))
-            : <div className="py-14 flex flex-col gap-6 justify-center items-center">
-                <p className="font-semibold text-slate-600 text-[22px]">
-                    No hay Alergias...
-                </p>
-                <Link to="/nuevaAlergia">
-                    <button className="font-medium rounded-2xl py-2 px-5 text-xl bg-[#0091cb]">
-                      Añadir Alergias
-                    </button>
-                </Link>
-              </div>
-          }
+          ))
+        ) : 
+        //sino renderiza listAlergia
+        (
+          ListaAlergia.map((allergy, i) => (
+            <AccordionList
+              key={i}
+              open={open === i}
+              toggle={() => toggle(i)}
+              title={allergy.nombre}
+              medico={allergy.vacuna}
+              medicamento={allergy.inventario}
+              tratamiento={allergy.nextVacuna}
+            />
+          ))
+        )}
       </div>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
 export default AllergiesList;
