@@ -8,23 +8,31 @@ import { Link } from "react-router-dom"
 import {Field, Form, Formik} from "formik"
 import DatePikerField from "./DatePicker"
 import axios from "axios"
+import useTomas from "../store/useTomas"
 
 const NuevaToma = () => {
+   const {tomas, setTomas} = useTomas()
 
-   const postToma = async (values) => {
-      try {
-         console.log(values);
-         const result = await axios.post("https://apisanva.onrender.com/", values)
-         // const data = result.data
-         console.log("newtoma ->", result.data);
-      } catch (error) {
-         console.log("newtomaerror -->", error);
-      }
-   }
+   // const postToma = async (values) => {
+
+   //  }
+   //    try {
+   //       console.log(values);
+   //       // const result = await axios.post("https://apisanva.onrender.com/", values)
+   //       // const data = result.data
+   //       console.log("newtoma ->", result.data);
+   //    } catch (error) {
+   //       console.log("newtomaerror -->", error);
+   //    }
+   // }
 
    const HandleSubmit = (values) => {
       console.log("tomas", values);
-      console.log("type", JSON.parse(JSON.stringify(values)));
+      //usa tomas para guardar los datos
+      setTomas([...tomas, values])
+      console.log(values)
+
+      // console.log("type", JSON.parse(JSON.stringify(values)));
       // postToma(values)
    }
 

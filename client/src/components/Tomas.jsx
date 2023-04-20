@@ -6,7 +6,11 @@ import AccordionData from "./AccodionData"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import axios from "axios"
+import useTomas from "../store/useTomas"
+
 const Tomas = () => {
+
+   const {tomas, setTomas} = useTomas()
    const accordionData = [
       {
          title: "04 de Abril de 2023",
@@ -76,8 +80,8 @@ const Tomas = () => {
          </h2>
          <div className="flex-1 bg-white">
             {
-               accordionTomas ?
-               accordionTomas.map((data, index) => (
+               tomas ?
+               tomas.map((data, index) => (
                   <AccordionData key={index} open={index === open} toggle={() => toggle(index)} title={data.title} desc={data.description} />
                   ))
                   : <div className="py-14 flex flex-col gap-6 justify-center items-center">
