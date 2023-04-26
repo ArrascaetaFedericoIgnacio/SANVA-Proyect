@@ -15,6 +15,7 @@ export const User = () => {
   const weight = localStorage.getItem('weight')
   // const gendervalue = btoa(gender.toString())
   const birthdateStr = birthdate.split("").slice(4,15).join("");
+  console.log(birthdateStr);
   // useEffect(() => {
   //   console.log('useEffect')
   //   console.log('userlocal', userlocal)
@@ -52,7 +53,7 @@ export const User = () => {
         </div>
         <div className="flex justify-between">
           <p>Fecha</p>
-          <p>{birthdateStr}</p>
+          <p>{birthdateStr ? birthdateStr : "dd/mm/yyyy"}</p>
         </div>
         <div className="flex justify-between">
           <p>Sexo</p>
