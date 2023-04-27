@@ -14,8 +14,8 @@ export const User = () => {
   const height = localStorage.getItem('height')
   const weight = localStorage.getItem('weight')
   // const gendervalue = btoa(gender.toString())
-  const birthdateStr = birthdate.split("").slice(4,15).join("");
-  console.log(birthdateStr);
+  // const birthdateStr = birthdate.split("").slice(4,15).join("");
+  // console.log(birthdateStr);
   // useEffect(() => {
   //   console.log('useEffect')
   //   console.log('userlocal', userlocal)
@@ -44,7 +44,7 @@ export const User = () => {
               )}
           <FaPencilAlt />
         </div>
-        <p>{email}</p>
+        <p>{email ? email : "correo@gmail.com"}</p>
       </div>
       <div className="flex flex-col py-8 gap-3 px-14 bg-[#58afdd] text-white">
         <div className="flex justify-center items-center gap-2">
@@ -53,19 +53,19 @@ export const User = () => {
         </div>
         <div className="flex justify-between">
           <p>Fecha</p>
-          <p>{birthdateStr ? birthdateStr : "dd/mm/yyyy"}</p>
+          <p>{birthdate ? birthdate.split("").slice(4,15).join("") : "dd/mm/yyyy"}</p>
         </div>
         <div className="flex justify-between">
           <p>Sexo</p>
-          <p>{gender === 'M' ? 'Masculino' : 'Femenino'}.</p>
+          <p>{gender ? gender === 'M' ? 'Masculino' : 'Femenino' : "Genero"}.</p>
         </div>
         <div className="flex justify-between">
           <p>Talla</p>
-          <p>{height} Mts.</p>
+          <p>{height ? height : "0"} Mts.</p>
         </div>
         <div className="flex justify-between">
           <p>Peso</p>
-          <p>{weight} Kg.</p>
+          <p>{weight ? weight : "0"} Kg.</p>
         </div>
       </div>
       <div className="flex-1 px-4 py-9 bg-[#3982b8] text-white">
