@@ -1,0 +1,6 @@
+.env
+__pycache__
+fastapi-env
+routes.__pycache__
+mySchema.__pycache__
+mongoDB.__pycache__
